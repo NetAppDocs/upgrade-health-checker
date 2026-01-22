@@ -8,7 +8,7 @@ settings:
 
 sidebar: 
   entries:
-  - title: Upgrade Health Checker documentation
+  - title: Upgrade Health Checker docs
     url: "/index.html"
   - title: Release notes
     entries:
