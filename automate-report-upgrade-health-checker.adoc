@@ -11,7 +11,7 @@ summary: ""
 :imagesdir: ./media/
 
 [.lead]
-You can automate Upgrade Health Checker to reports to reduce 
+You can automate Upgrade Health Checker to reports to reduce your manual effort when planning ONTAP upgrades for large and complex environments.
 
 .Steps
 
@@ -46,11 +46,11 @@ Cron job:
 0 4 * * 1-5 /usr/local/bin/uhccron.sh
 ----
 
-. After Upgrade Health Checker completes it checks, navigate to the `runs` folder to view the upgrade plan and cluster report.
+. After Upgrade Health Checker completes its checks, navigate to the `runs` folder to view the upgrade plan and cluster report.
 +
 NOTE: Each execution of the program is a unique run and will have all the associated data, logs and results in the associated `runs` folder.
 
-.. Open the report file (named `<cluster-name>_<YYYYMMDDHHMMSS>.html`) in a web browser to view the report. If you are running it on a remote host, first download the report file to a machine where you can view the report on a web browser.
+. Open the report file (named `<cluster-name>_<YYYYMMDDHHMMSS>.html`) in a web browser to view the report. If you are running it on a remote host, first download the report file to a machine where you can view the report on a web browser.
 +
 The log path and report path are as follows:
 

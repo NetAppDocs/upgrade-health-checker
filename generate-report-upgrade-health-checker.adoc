@@ -52,7 +52,7 @@ CLUSTER:
 
 . Run Upgrade Health Checker by entering the target ONTAP version, accepting the EULA, and running any additional parameters as needed.
 +
-NOTE: The EULA is a multi-page document. Enter "all" to see the entire document at once and enter "y" to accept it.
+NOTE: The EULA is a multi-page document. Enter `all` to see the entire document at once and enter `y` to accept it.
 +
 After the AutoSupport log is downloaded for a cluster, processing generally takes 1–2 minutes depending on the number of cluster nodes. Because different ONTAP software versions handle AutoSupport collection differently, each Upgrade Health Checker run depends on the current load of the cluster and the current ONTAP version.
 
@@ -72,7 +72,7 @@ After the AutoSupport log is downloaded for a cluster, processing generally take
 --config-path /path/to/config.yaml
 ----
 +
-If you do not specify a custom config.yaml file path, the default path will be './config.yaml'.
+If you do not specify a custom config.yaml file path, the default path will be `./config.yaml`.
 
 ** To specify a custom runs path, use the following parameter:
 +
@@ -83,13 +83,13 @@ If you do not specify a custom config.yaml file path, the default path will be '
 +
 *BEST PRACTICE*: Create a custom output directory for each cluster to organize your reports and logs effectively.
 +
-You can also specify the runs path in the config.yaml file. If you do not specify a runs path, the default path will be './runs/<cluster-name>/'. The priority for specifying a runs path is as follows: CLI parameter > config.yaml > default path.
+You can also specify the runs path in the config.yaml file. If you do not specify a runs path, the default path will be `./runs/<cluster-name>/`. The priority for specifying a runs path is as follows: CLI parameter > config.yaml > default path.
 
-. After Upgrade Health Checker completes it checks, navigate to the `runs` folder to view the upgrade plan and cluster report.
+. After Upgrade Health Checker completes its checks, navigate to the `runs` folder to view the upgrade plan and cluster report.
 +
 NOTE: Each execution of the program is a "unique run" and will have all the associated data, logs and results in the associated `runs` folder.
 
-.. Open the report file (named `<cluster-name>_<YYYYMMDDHHMMSS>.html`) in a web browser to view the report. If you are running it on a remote host, first download the report file to a machine where you can view the report on a web browser.
+. Open the report file (named `<cluster-name>_<YYYYMMDDHHMMSS>.html`) in a web browser to view the report. If you are running it on a remote host, first download the report file to a machine where you can view the report on a web browser.
 +
 The log path and report path are as follows:
 
