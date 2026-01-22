@@ -16,6 +16,6 @@ Learn what's new in Upgrade Health Checker. You can find additional enhancement 
 
 == (release date will be here)
 
-Upgrade Health Checker offers a new solution for generating comprehensive, onsite reports to enable you to complete a successful ONTAP upgrade. It can be used with existing automation and orchestration frameworks to enhance efficiency when upgrading single or multiple clusters.
+Upgrade Health Checker offers a new solution for generating comprehensive, onsite reports to enable you to complete a successful ONTAP upgrade. It can be used with existing automation and orchestration frameworks to enhance efficiency when upgrading single or multiple clusters. Supported target ONTAP versions include ONTAP 9.11.1 and later.
 
 link:learn-about-upgrade-health-checker.html[Learn more about Upgrade Health Checker].
