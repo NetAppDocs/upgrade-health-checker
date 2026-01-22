@@ -1,5 +1,5 @@
 settings:
-  name: "Product Name"
+  name: "Upgrade Health Checker"
   internal:
     pdf_enabled: true
   prod:
@@ -8,5 +8,21 @@ settings:
 
 sidebar: 
   entries:
+  - title: Release notes
+    entries:
+    - title: What's new
+      url: whats-new.html
+  - title: Get started
+    entries:
+    - title: Learn about Upgrade Health Checker
+      url: learn-about-upgrade-health-checker.html
+    - Title: Set up Upgrade Health Checker
+      url: set-up-upgrade-health-checker.html
+  - title: Use Upgrade Health Checker
+    entries:
+    - title: Generate an ONTAP upgrade report
+      url: generate-report-upgrade-health-checker.html
+  - title: FAQ
+    url: faq-upgrade-health-checker.html
   - title: Legal notices
     url: /legal-notices.html
