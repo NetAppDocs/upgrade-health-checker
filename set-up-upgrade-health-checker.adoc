@@ -30,6 +30,33 @@ When preparing to set up the Upgrade Health Checker virtual machine, it is recom
 
 . Set up the Upgrade Health Checker virtual machine and use SSH to place the binary in the location of your choice.
 
+. Verify the digital signature of Upgrade Health Checker.
++
+Upgrade Health Checker has a public code signing certificate (`UHC-Linux-codesigning-certificate-public.pem`) and intermediate and root certificates chain (`UHC-Linux-chain-certificates-public.pem`).
+
+.. (Optional) Verify the code signing certificate against the chain:
++
+----
+openssl verify -CAfile UHC-Linux-chain-certificates-public.pem UHC-Linux-codesigning-certificate-public.pem
+----
++
+Output `OK` confirms a valid chain of trust.
+
+.. Extract Public Key from Code Signing Certificate
++
+----
+openssl x509 -in UHC-Linux-codesigning-certificate-public.pem -pubkey -noout -out UHC-Linux-public.pub
+----
+
+.. Verify the signature file uhc.sig against the Upgrade Health Checker binary using the public key:
++
+----
+openssl dgst -sha256 -verify UHC-Linux-public.pub -signature uhc.sig uhc
+----
++
+Output `Verified OK` confirms the signature is valid.
+
+
 . Configure a service account and role for cluster access. For cluster access via Upgrade Health Checker, it is recommended to create the service role as a REST-role. 
 +
 NOTE: It is recommended to build an Ansible playbook to automate the deployment of the role and user to all clusters.
@@ -39,35 +66,22 @@ You must create the service account for the http application. Use the following 
 [source,cli]
 ----
 security login rest-role create -role uhctool -api /api -access readonly -vserver
-----
-+
-[source,cli]
-----
+
 security login rest-role create -role uhctool -api /api/support/autosupport -access read_create_modify -vserver
-----
-+
-[source,cli]
-----
+
 security login rest-role create -role uhctool -api /api/support/autosupport/messages -access read_create_modify -vserver
-----
-+
-[source,cli]
-----
+
 vserver services web access create -name spi -role uhctool -vserver
-----
-+
-[source,cli]
-----
+
 security login create -user-or-group-name uhctool -role uhctool -application http -authentication-method password
-----
-+
-[source,cli]
-----
+
 security login create -user-or-group-name uhctool -role uhctool -application ssh -authentication-method password
 ----
 
 
-. Set up credential management to secure access to the application. If you have CyberArk and Conjour, you can configure your environment to avoid passing credentials through a yaml file or command line.
+. Set up credential management to secure access to the application. 
++
+For example, if you have CyberArk and Conjour, you can configure your environment to avoid passing credentials through a yaml file or command line.
 .. Create required CyberArk Safes:
 ... Create a Safe (Main-Conjur-Safe) that holds the application credentials and secrets
 ... Create a Safe (API-Credentials-Safe) that holds the Conjur Host ID and API Key
@@ -104,3 +118,7 @@ conjur_username: "{{ lookup('cyberark.conjur.conjur_variable', 'prodvault/devops
 conjur_password: "{{ lookup('cyberark.conjur.conjur_variable', 'prodvault/devops/<Main-Conjur-Safe>/<Account name>/password', validate_certs=false) }}"
 ----
 
+
+.What's next?
+
+You can use Upgrade Health Checker to help you plan for an ONTAP upgrade by link:generate-report-upgrade-health-checker.html[generating an upgrade report].

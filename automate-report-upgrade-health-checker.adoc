@@ -1,0 +1,57 @@
+---
+sidebar: sidebar
+permalink: automate-report-upgrade-health-checker.html
+keywords: upgrade, health, checker
+summary: ""
+---
+= Automate generating upgrade plans with Upgrade Health Checker
+:hardbreaks:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+[.lead]
+You can automate Upgrade Health Checker to reports to reduce 
+
+.Steps
+
+. To ensure the successful creation of your upgrade reports, complete any necessary set up steps and one-time tasks outlined in link:generate-upgrade-health-checker-report.html[Generate an Upgrade Health Checker report].
+
+. Create a script to run Upgrade Health Checker with the appropriate parameters for your environment.
++
+[source,cli]
+----
+./uhc \
+  --cluster-ip=<cluster-ip> \
+  --cluster-username=<cluster-username> \
+  --cluster-password=<cluster-password> \
+  --target-ontap-version=<target-ontap-version> \
+  --accept-eula=true
+----
++
+Here is an example of a cronjob that runs the tool Monday through Friday at 4AM. The binary and config.yaml have been installed into /opt/uhc/tool/.
++
+Bash script:
+----
+#!/bin/bash
+cd /opt/uhc/tool
+/opt/uhc/tool/uhc --accept-eula true --cluster-ip cluster-mgmt1.example.com --target-ontap-version current --cluster-username uhctool --cluster-password passw0rd
+/opt/uhc/tool/uhc --accept-eula true --cluster-ip cluster-mgmt2.example.com --target-ontap-version 9.14.1 --cluster-username uhctool --cluster-password passw0rd
+----
++
+Cron job:
+----
+0 4 * * 1-5 /usr/local/bin/uhccron.sh
+----
+
+. After Upgrade Health Checker completes it checks, navigate to the `runs` folder to view the upgrade plan and cluster report.
++
+NOTE: Each execution of the program is a unique run and will have all the associated data, logs and results in the associated `runs` folder.
+
+.. Open the report file (named `<cluster-name>_<YYYYMMDDHHMMSS>.html`) in a web browser to view the report. If you are running it on a remote host, first download the report file to a machine where you can view the report on a web browser.
++
+The log path and report path are as follows:
+
+** Log Path: `<output-path>/<unique-run-dir>/<cluster-name>/logs`
+** Report Path: `<output-path>/<unique-run-dir>/<cluster-name>/results/<cluster-name>_<YYYYMMDDHHMMSS>.html`
+
