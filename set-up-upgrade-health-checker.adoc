@@ -32,6 +32,8 @@ When preparing to set up the Upgrade Health Checker virtual machine, it is recom
 
 . Configure a service account and role for cluster access. For cluster access via Upgrade Health Checker, it is recommended to create the service role as a REST-role. 
 +
+NOTE: It is recommended to build an Ansible playbook to automate the deployment of the role and user to all clusters.
++
 You must create the service account for the http application. Use the following CLI commands to configure the necessary permissions:
 +
 [source,cli]
@@ -54,8 +56,6 @@ security login rest-role create -role uhctool -api /api/support/autosupport/mess
 vserver services web access create -name spi -role uhctool -vserver
 ----
 +
-NOTE: This final command is essential for granting SPI access, enabling ASUP downloads to the VM.
-+
 [source,cli]
 ----
 security login create -user-or-group-name uhctool -role uhctool -application http -authentication-method password
@@ -65,8 +65,7 @@ security login create -user-or-group-name uhctool -role uhctool -application htt
 ----
 security login create -user-or-group-name uhctool -role uhctool -application ssh -authentication-method password
 ----
-+
-NOTE: It is recommended to build an Ansible playbook to automate the deployment of the role and user to all clusters.
+
 
 . Set up credential management to secure access to the application. If you have CyberArk and Conjour, you can configure your environment to avoid passing credentials through a yaml file or command line.
 .. Create required CyberArk Safes:

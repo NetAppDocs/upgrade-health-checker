@@ -22,7 +22,7 @@ You can use Upgrade Health Checker to generate an update plan for a single or mu
 chmod +x uhc
 ----
 +
-NOTE: Upgrade Health Checker is a self-contained package and will need to unpack itself before executing. This may take a few seconds.
+NOTE: Upgrade Health Checker is a self-contained package and will need to unpack itself before executing. This can take a few seconds.
 
 . Before completing a full run of Upgrade Health Checker, perform a comprehensive check to verify available disk space and connectivity to the cluster and telemetry endpoint via HTTPS:
 +
@@ -31,9 +31,9 @@ NOTE: Upgrade Health Checker is a self-contained package and will need to unpack
 ./uhc --test all
 ----
 
-. (Optional) If you would like to use a configuration file to store parameters, rename the sample 'config.yaml.example' file located in the same location you downloaded the binary to 'config.yaml'.
+. (Optional) If you would like to use a configuration file to store parameters, rename the sample `config.yaml.example` file located in the same location you downloaded the binary to `config.yaml`.
 +
-Here is a sample config.yaml file:
+Here is a example config.yaml file:
 +
 ----
 # Application Configuration
@@ -83,7 +83,7 @@ You can also specify the runs path in the config.yaml file. If you do not specif
 
 +
 Alternatively, you can run Upgrade Health Checker with automatically with a script. Here is an example of a cronjob that runs the tool Monday through Friday at 4AM.
-
++
 In this example the binary and config.yaml have been installed into /opt/uhc/tool/.
 +
 Bash script:
@@ -98,9 +98,8 @@ Cron job:
 ----
 0 4 * * 1-5 /usr/local/bin/uhccron.sh
 ----
-
-
-.Script
++
+.Another example Script
 --
 
 [source,cli]
@@ -112,9 +111,6 @@ Cron job:
   --target-ontap-version=<target-ontap-version> \
   --accept-eula=true
 ----
-
---
-====
 +
 NOTE: The EULA is a multi-page document. Enter "all" to see the entire document at once and enter "y" to accept it.
 +
