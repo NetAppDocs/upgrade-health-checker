@@ -15,7 +15,7 @@ You can download Upgrade Health Checker to generate onsite, comprehensive checks
 
 .Before you begin
 
-When preparing to set up the Upgrade Health Checker virtual machine, it is recommended to acquire a virtual machine with the following specifications:
+When preparing to set up the Upgrade Health Checker virtual machine, acquire a virtual machine with the following specifications:
 
 * Processing and memory: m5.large VM or equivalent with 2 vCPUs and 8 GiB RAM.
 * Operating system: Ubuntu 22.04 for optimal compatibility.
@@ -57,9 +57,9 @@ openssl dgst -sha256 -verify UHC-Linux-public.pub -signature uhc.sig uhc
 Output `Verified OK` confirms the signature is valid.
 
 
-. Configure a service account and role for cluster access. For cluster access via Upgrade Health Checker, it is recommended to create the service role as a REST-role. 
+. Configure a service account and role for cluster access. For cluster access via Upgrade Health Checker, create the service role as a REST-role. 
 +
-NOTE: It is recommended to build an Ansible playbook to automate the deployment of the role and user to all clusters.
+NOTE: You can build an Ansible playbook to automate the deployment of the role and user to all clusters.
 +
 You must create the service account for the http application. Use the following CLI commands to configure the necessary permissions:
 +
