@@ -18,7 +18,7 @@ Frequently asked questions (FAQ) for Upgrade Health Checker.
 
 Upgrade Health Checker is an onsite tool suitable for users with large or complex environments, limited access to the internet, or existing automation and orchestration frameworks. Upgrade Advisor is suitable for users with a smaller environment who prefer a cloud-based, UI-centered experience.
 
-You can learn more about about link:learn-about-upgrade-health-checker.html[Upgrade Health Checker] and link:https://docs.netapp.com/us-en/ontap/upgrade-advisor/index.html[Upgrade Advisor^] to determine which tool best fits your needs.
+You can learn more about about link:learn-about-upgrade-health-checker.html[Upgrade Health Checker] and link:https://docs.netapp.com/us-en/active-iq/upgrade_advisor_overview.html[Upgrade Advisor^] to determine which tool best fits your needs.
 
 
 == What information does an Upgrade Health Checker report include?
