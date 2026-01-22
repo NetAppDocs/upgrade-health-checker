@@ -24,6 +24,8 @@ sidebar:
     entries:
     - title: Generate an ONTAP upgrade report
       url: "/generate-report-upgrade-health-checker.html"
+    - title: Automate report generation
+      url: "/automate-report-upgrade-health-checker.html"
   - title: FAQ
     url: "/faq-upgrade-health-checker.html"
   - title: Legal notices
