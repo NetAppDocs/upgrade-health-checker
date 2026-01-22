@@ -15,7 +15,7 @@ You can automate Upgrade Health Checker to reports to reduce
 
 .Steps
 
-. To ensure the successful creation of your upgrade reports, complete any necessary set up steps and one-time tasks outlined in link:generate-upgrade-health-checker-report.html[Generate an Upgrade Health Checker report].
+. To ensure the successful creation of your upgrade reports, complete any necessary set up steps and one-time tasks outlined in link:generate-upgrade-health-checker-report.html[Generate an ONTAP upgrade report].
 
 . Create a script to run Upgrade Health Checker with the appropriate parameters for your environment.
 +
@@ -32,6 +32,7 @@ You can automate Upgrade Health Checker to reports to reduce
 Here is an example of a cronjob that runs the tool Monday through Friday at 4AM. The binary and config.yaml have been installed into /opt/uhc/tool/.
 +
 Bash script:
++
 ----
 #!/bin/bash
 cd /opt/uhc/tool

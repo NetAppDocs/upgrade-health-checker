@@ -82,6 +82,7 @@ security login create -user-or-group-name uhctool -role uhctool -application ssh
 . Set up credential management to secure access to the application. 
 +
 For example, if you have CyberArk and Conjour, you can configure your environment to avoid passing credentials through a yaml file or command line.
+
 .. Create required CyberArk Safes:
 ... Create a Safe (Main-Conjur-Safe) that holds the application credentials and secrets
 ... Create a Safe (API-Credentials-Safe) that holds the Conjur Host ID and API Key
