@@ -11,24 +11,23 @@ summary: ""
 :imagesdir: ./media/
 
 [.lead]
-You can download Upgrade Health Checker to generate onsite, comprehensive checks before upgrading to a newer version of ONTAP.
+You can download Upgrade Health Checker to generate onsite, comprehensive reports before upgrading to a newer version of ONTAP.
 
 .Before you begin
 
-When preparing to set up the Upgrade Health Checker virtual machine, set up a virtual machine with the following specifications:
+Set up a virtual machine for Upgrade Health Checker with the following specifications:
 
 * Processing and memory: m5.large VM or equivalent with 2 vCPUs and 8 GiB RAM.
 * Recommended operating system: Ubuntu 22.04 for optimal compatibility.
 * Storage: Provide a root volume with a minimum of 100 GB and an additional NFS volume of at least 100GB to ensure data preservation if the VM is compromised.
-* Hosting requirements: Place the VM in a location with cluster connectivity and internet access to allow for automatic tool updates. If internet access is unavailable, consult NetApp for guidance.
-* Recommended packages: Install a Web Server to facilitate access.
-
-Additionally, ensure the virtual machine can:
-
-* Connect to the telemetry endpoint (https://support.netapp.com/) through HTTPS to enable NetApp to receive AutoSupport information about your upgrade plans.
-* Access the following endpoints through HTTPS to conduct automatic updates to Upgrade Health Checker:
+* Hosting requirements: Place the VM in a location with cluster connectivity and internet access to allow for automatic tool updates. The machine should have access to these endpoints through HTTPS to conduct automatic updates:
 ** https://api.uhc.netapp.com
 ** https://gql.aiq.netapp.com
++
+If internet access is unavailable, consult NetApp for guidance.
+* Recommended packages: Install a Web Server to facilitate access.
+
+Additionally, ensure the virtual machine can connect to the telemetry endpoint (https://support.netapp.com/) through HTTPS to enable NetApp to receive AutoSupport information about your upgrade plans.
 
 
 
@@ -89,7 +88,7 @@ security login create -user-or-group-name uhctool -role uhctool -application ssh
 
 . Set up credential management to secure access to the application. 
 +
-For example, if you have CyberArk and Conjour, you can configure your environment to avoid passing credentials through a yaml file or command line.
+For example, if you have CyberArk and Conjur, you can configure your environment to avoid passing credentials through a yaml file or command line.
 
 .. Create required CyberArk Safes:
 ... Create a Safe (Main-Conjur-Safe) that holds the application credentials and secrets
@@ -114,7 +113,7 @@ password XXXXXX
 ----
 
 +
-Here is an example of how to use CyberArk and Conjour in an Ansible playbook:
+Here is an example of how to use CyberArk and Conjur in an Ansible playbook:
 .. Install Conjur Ansible Collection, which includes the Conjur Ansible Lookup Plugin, on Ansible Host: 
 +                           
 ----

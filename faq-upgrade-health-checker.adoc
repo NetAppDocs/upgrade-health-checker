@@ -23,7 +23,7 @@ You can learn more about about link:learn-about-upgrade-health-checker.html[Upgr
 
 == What information does an Upgrade Health Checker report include?
 
-Upgrade Health Checker reports provide detailed information on potential blockers and warnings that need to be addressed before upgrading your ONTAP clusters, risks associated with your clusters, and information about new features and enhancements in your target ONTAP version.
+Upgrade Health Checker reports provide detailed information on potential blockers and warnings that need to be addressed before upgrading your ONTAP clusters, risks associated with your clusters, and information about new features and enhancements in the ONTAP version you're upgrading to.
 
 
 == Can Upgrade Health Checker be used without an internet connection?
@@ -32,6 +32,6 @@ You don't need an internet connection to run Upgrade Health Checker. It generate
 
 However, internet access is required for automatic tool updates. If your environment lacks internet connectivity, contact NetApp for guidance on how to ensure your Upgrade Health Checker tool remains up to date.
 
-== What versions of ONTAP does Upgrade Health Checker support as a target?
+== What versions of ONTAP does Upgrade Health Checker support?
 
 Upgrade Health Checker supports upgrades to ONTAP 9.11.1 and later.

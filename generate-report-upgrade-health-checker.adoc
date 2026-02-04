@@ -36,7 +36,7 @@ The comprehensive check ensures the virtual machine hosting Upgrade Health Check
 ** Connectivity to the ONTAP cluster IP address through HTTPS
 ** Connectivity to the telemetry endpoint (https://support.netapp.com/) through HTTPS
 ** Connectivity to the auto-update endpoints (https://api.uhc.netapp.com and https://gql.aiq.netapp.com) through HTTPS
-** At least 4 GB of available /tmp space
+** At least 4 GB of available `/tmp` space
 
 . (Optional) If you want to use a configuration file to store parameters, rename the `config.yaml.example` file located in the same location you downloaded the binary to `config.yaml`.
 +
@@ -57,7 +57,7 @@ CLUSTER:
 ----
 
 
-. Run Upgrade Health Checker by entering the target ONTAP version, accepting the EULA, including additional parameters as needed.
+. Run Upgrade Health Checker by entering the ONTAP version you want to upgrade to and accepting the EULA, including additional parameters as needed.
 +
 NOTE: The EULA is a multi-page document. Enter `all` to see the entire document at once and enter `y` to accept it.
 +
