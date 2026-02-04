@@ -24,12 +24,19 @@ chmod +x uhc
 +
 NOTE: Upgrade Health Checker is a self-contained package and will need to unpack itself before executing. This can take a few seconds.
 
-. Before completing a full run of Upgrade Health Checker, perform a comprehensive check to verify available disk space and connectivity to the cluster and telemetry endpoint via HTTPS:
+. Before completing a full run of Upgrade Health Checker, perform a comprehensive check to ensure the tool can connect to the cluster and required endpoints:
 +
 [source,cli]
 ----
 ./uhc --test all
 ----
++
+The comprehensive check ensures the virtual machine hosting Upgrade Health Checker has:
++
+** Connectivity to the ONTAP cluster IP address through HTTPS
+** Connectivity to the telemetry endpoint (https://support.netapp.com/) through HTTPS
+** Connectivity to the auto-update endpoints (https://api.uhc.netapp.com and https://gql.aiq.netapp.com) through HTTPS
+** At least 4 GB of available /tmp space
 
 . (Optional) If you want to use a configuration file to store parameters, rename the `config.yaml.example` file located in the same location you downloaded the binary to `config.yaml`.
 +
@@ -46,15 +53,15 @@ CLUSTER:
   USERNAME: "admin"
   PASSWORD: "xyz"
   TARGET_ONTAP_VERSION: ""  # Optional: Specify target ONTAP version (e.g., "9.16.1" or "current" to keep existing version). Leave empty to prompt user.
-  ACCEPT_EULA: false  # Optional: Set to true to accept EULA via config. If false/empty, user will be prompted interactively.
+  ACCEPT_EULA: false  # Optional: Set to true to accept EULA through config. If false/empty, user will be prompted interactively.
 ----
 
 
-. Run Upgrade Health Checker by entering the target ONTAP version, accepting the EULA, and running any additional parameters as needed.
+. Run Upgrade Health Checker by entering the target ONTAP version, accepting the EULA, including additional parameters as needed.
 +
 NOTE: The EULA is a multi-page document. Enter `all` to see the entire document at once and enter `y` to accept it.
 +
-After the AutoSupport log is downloaded for a cluster, processing generally takes 1–2 minutes depending on the number of cluster nodes. Because different ONTAP software versions handle AutoSupport collection differently, each Upgrade Health Checker run depends on the current load of the cluster and the current ONTAP version.
+After the AutoSupport log is downloaded for a cluster, processing generally takes one to two minutes depending on the number of cluster nodes. Because different ONTAP software versions handle AutoSupport collection differently, each Upgrade Health Checker run depends on the current load of the cluster and the current ONTAP version.
 
 .. Familiarize yourself with the available Upgrade Health Checker commands and parameters by running the help command:
 +
