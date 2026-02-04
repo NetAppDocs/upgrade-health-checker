@@ -19,13 +19,13 @@ Set up a virtual machine for Upgrade Health Checker with the following specifica
 
 * Processing and memory: m5.large VM or equivalent with 2 vCPUs and 8 GiB RAM.
 * Recommended operating system: Ubuntu 22.04 for optimal compatibility.
-* Storage: Provide a root volume with a minimum of 100 GB and an additional NFS volume of at least 100GB to ensure data preservation if the VM is compromised.
-* Hosting requirements: Place the VM in a location with cluster connectivity and internet access to allow for automatic tool updates. The machine should have access to these endpoints through HTTPS to conduct automatic updates:
+* Storage: Provide a root volume with a minimum of 100 GB and an additional NFS volume of at least 100 GB to ensure data preservation if the virtual machine is compromised.
+* Hosting requirements: Place the VM in a location with cluster connectivity and internet access to allow for automatic tool updates. The machine should have access to the following endpoints through HTTPS to conduct automatic updates:
 ** https://api.uhc.netapp.com
 ** https://gql.aiq.netapp.com
 +
 If internet access is unavailable, consult NetApp for guidance.
-* Recommended packages: Install a Web Server to facilitate access.
+* Recommended packages: Install a web server to facilitate access.
 
 Additionally, ensure the virtual machine can connect to the telemetry endpoint (https://support.netapp.com/) through HTTPS to enable NetApp to receive AutoSupport information about your upgrade plans.
 
@@ -47,24 +47,24 @@ Upgrade Health Checker has a public code signing certificate (`UHC-Linux-codesig
 openssl verify -CAfile UHC-Linux-chain-certificates-public.pem UHC-Linux-codesigning-certificate-public.pem
 ----
 +
-Output `OK` confirms a valid chain of trust.
+An output of `OK` confirms a valid chain of trust.
 
-.. Extract Public Key from Code Signing Certificate
+.. Extract the public key from the code signing certificate:
 +
 ----
 openssl x509 -in UHC-Linux-codesigning-certificate-public.pem -pubkey -noout -out UHC-Linux-public.pub
 ----
 
-.. Verify the signature file uhc.sig against the Upgrade Health Checker binary using the public key:
+.. Verify the signature file (`uhc.sig`) against the Upgrade Health Checker binary using the public key:
 +
 ----
 openssl dgst -sha256 -verify UHC-Linux-public.pub -signature uhc.sig uhc
 ----
 +
-Output `Verified OK` confirms the signature is valid.
+An output of `Verified OK` confirms the signature is valid.
 
 
-. Configure a service account and role for cluster access. For cluster access through Upgrade Health Checker, create the service role as a REST-role. 
+. Configure a service account and role for ONTAP cluster access. For cluster access through Upgrade Health Checker, create the service role as a REST-role. 
 +
 NOTE: You can build an Ansible playbook to automate the deployment of the role and user to all ONTAP clusters.
 +

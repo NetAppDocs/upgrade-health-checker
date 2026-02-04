@@ -11,7 +11,7 @@ summary: ""
 :imagesdir: ./media/
 
 [.lead]
-You can use Upgrade Health Checker to generate an update plan for a single or multiple ONTAP clusters.
+You can use Upgrade Health Checker to generate an upgrade plan for a single or multiple ONTAP clusters.
 
 .Steps
 
@@ -93,7 +93,7 @@ If you do not specify a custom config.yaml file path, the default path will be `
 You can also specify the run path in the config.yaml file. If you do not specify a run path, the default path will be `./runs/<cluster-name>/`. The priority for specifying a run path is as follows: CLI parameter > config.yaml > default path.
 
 . After Upgrade Health Checker completes its checks, navigate to the `runs` folder to view the upgrade plan and cluster report.
-+``
++
 NOTE: Each execution of the program is a "unique run" and will have all the associated data, logs and results in the associated `runs` folder.
 
 . Open the report file (named `<cluster-name>_<YYYYMMDDHHMMSS>.html`) in a web browser to view the report. If you are running it on a remote host, first download the report file to a machine where you can view the report on a web browser.

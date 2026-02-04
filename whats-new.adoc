@@ -14,8 +14,8 @@ summary: "Learn what's new in this doc site."
 Learn what's new in Upgrade Health Checker. You can find additional enhancement information in the link:https://mysupport.netapp.com/site/tools/tool-eula/upgrade-health-checker[latest Upgrade Health Checker download files^].
 
 
-== (release date will be here)
+== 12 February 2026
 
-Upgrade Health Checker offers a new solution for generating comprehensive, onsite reports to enable you to complete a successful ONTAP upgrade. It can be used with existing automation and orchestration frameworks to enhance efficiency when upgrading single or multiple clusters. Supported target ONTAP versions include ONTAP 9.11.1 and later.
+Upgrade Health Checker offers a new solution for generating comprehensive, onsite reports to enable you to complete a successful ONTAP upgrade. It can be used with existing automation and orchestration frameworks to enhance efficiency when upgrading single or multiple clusters. Upgrade Health Checker supports upgrades to ONTAP 9.11.1 and later.
 
 link:learn-about-upgrade-health-checker.html[Learn more about Upgrade Health Checker].
