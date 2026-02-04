@@ -15,18 +15,18 @@ You can download Upgrade Health Checker to generate onsite, comprehensive checks
 
 .Before you begin
 
-When preparing to set up the Upgrade Health Checker virtual machine, acquire a virtual machine with the following specifications:
+When preparing to set up the Upgrade Health Checker virtual machine, set up a virtual machine with the following specifications:
 
 * Processing and memory: m5.large VM or equivalent with 2 vCPUs and 8 GiB RAM.
-* Operating system: Ubuntu 22.04 for optimal compatibility.
-* Storage: Provide a root volume with a minimum of 100GB and an additional NFS volume of at least 100GB to ensure data preservation if the VM is compromised.
+* Recommended operating system: Ubuntu 22.04 for optimal compatibility.
+* Storage: Provide a root volume with a minimum of 100 GB and an additional NFS volume of at least 100GB to ensure data preservation if the VM is compromised.
 * Hosting requirements: Place the VM in a location with cluster connectivity and internet access to allow for automatic tool updates. If internet access is unavailable, consult NetApp for guidance.
 * Recommended packages: Install a Web Server to facilitate access.
 
 
 .Steps
 
-. Download the Upgrade Health Checker binary from the link:https://mysupport.netapp.com/site/tools/tool-eula/upgrade-health-checker[NetApp Support Site^].
+. Download the Upgrade Health Checker binary from the link:https://mysupport.netapp.com/site/tools/tool-eula/upgrade-health-checker[Toolchest on the NetApp Support Site^].
 
 . Set up the Upgrade Health Checker virtual machine and use SSH to place the binary in the location of your choice.
 
@@ -57,9 +57,9 @@ openssl dgst -sha256 -verify UHC-Linux-public.pub -signature uhc.sig uhc
 Output `Verified OK` confirms the signature is valid.
 
 
-. Configure a service account and role for cluster access. For cluster access via Upgrade Health Checker, create the service role as a REST-role. 
+. Configure a service account and role for cluster access. For cluster access through Upgrade Health Checker, create the service role as a REST-role. 
 +
-NOTE: You can build an Ansible playbook to automate the deployment of the role and user to all clusters.
+NOTE: You can build an Ansible playbook to automate the deployment of the role and user to all ONTAP clusters.
 +
 You must create the service account for the http application. Use the following CLI commands to configure the necessary permissions:
 +
@@ -106,7 +106,7 @@ password XXXXXX
 ----
 
 +
-Here is an example of how to use CyberArk and Conjour in an ansible playbook:
+Here is an example of how to use CyberArk and Conjour in an Ansible playbook:
 .. Install Conjur Ansible Collection, which includes the Conjur Ansible Lookup Plugin, on Ansible Host: 
 +                           
 ----
