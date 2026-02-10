@@ -28,7 +28,7 @@ NOTE: Upgrade Health Checker is a self-contained package and will need to unpack
 +
 [source,cli]
 ----
-./uhc --test all
+--test all
 ----
 +
 The comprehensive check ensures the virtual machine hosting Upgrade Health Checker has:
@@ -67,8 +67,19 @@ After the AutoSupport log is downloaded for a cluster, processing generally take
 +
 [source,cli]
 ----
-./uhc --help
+--help
 ----
++
+To learn more about a specific parameter, refer to the Input Parameters Guide in the link:https://mysupport.netapp.com/site/tools/tool-eula/upgrade-health-checker[latest Upgrade Health Checker download files^].
+
+.. (Optional) You can skip Upgrade Health Checker's hardware compatibility checks when specifying the ONTAP version you want to upgrade to:
++
+[source,cli]
+----
+--skip-compatibility-check
+----
++
+You should only use this parameter if you are certain that your cluster hardware is compatible with the ONTAP version you want to upgrade to. Upgrade Health Checker enables hardware compatibility checks by default.
 
 .. (Optional) Specify a custom configuration file path and run path to streamline your workflow.
 
@@ -90,7 +101,7 @@ If you do not specify a custom config.yaml file path, the default path will be `
 +
 *BEST PRACTICE*: Create a custom output directory for each cluster to organize your reports and logs effectively.
 +
-You can also specify the run path in the config.yaml file. If you do not specify a run path, the default path will be `./runs/<cluster-name>/`. The priority for specifying a run path is as follows: CLI parameter > config.yaml > default path.
+You can also specify the run path in the config.yaml file. If you do not specify a run path, the default path will be `./runs/<cluster-name>/`. The priority for specifying a run path is CLI parameter > config.yaml > default path.
 
 . After Upgrade Health Checker completes its checks, navigate to the `runs` folder to view the upgrade plan and cluster report.
 +

@@ -11,7 +11,7 @@ summary: ""
 :imagesdir: ./media/
 
 [.lead]
-You can automate generating Upgrade Health Checker reports to reduce your manual effort when planning ONTAP upgrades for large and complex environments.
+You can automate generating Upgrade Health Checker reports to reduce your manual effort when planning ONTAP upgrades in large, complex environments.
 
 .Steps
 
