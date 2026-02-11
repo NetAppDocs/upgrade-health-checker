@@ -13,12 +13,11 @@ summary: "You can use Upgrade Health Checker to generate an upgrade plan for a s
 [.lead]
 You can use Upgrade Health Checker to generate an upgrade plan for a single or multiple ONTAP clusters.
 
-You can automate also link:automate-upgrade-health-checker.html[automate generating upgrade reports] to assist with maintaining up-to-date upgrade plans if you have a large, complex environment with multiple clusters.
+You can automate also link:automate-report-upgrade-health-checker.html[automate generating upgrade reports] to assist with maintaining up-to-date upgrade plans if you have a large, complex environment with multiple clusters.
 
 .Before you begin
 
-To learn more about a specific Upgrade Health Checker parameter and the priority order for how the tool accepts input, refer to the link:upgrade-health-checker-input-parameters-guide.html[Input Parameters Guide for Upgrade Health Checker].
-
+To learn more about a specific Upgrade Health Checker parameter and the priority order for how the tool accepts input, refer to the link:upgrade-health-checker-input-parameters.html[Input Parameters Guide for Upgrade Health Checker].
 .Steps
 
 . Set the execute permission on the binary before running it the first time:
@@ -69,22 +68,7 @@ NOTE: The EULA is a multi-page document. Enter `all` to see the entire document 
 +
 After the AutoSupport log is downloaded for a cluster, processing generally takes one to two minutes depending on the number of cluster nodes. Because different ONTAP software versions handle AutoSupport collection differently, each Upgrade Health Checker run depends on the current load of the cluster and the current ONTAP version.
 
-.. Familiarize yourself with the available Upgrade Health Checker commands and parameters by running the help command:
-+
-[source,cli]
-----
---help
-----
-
-
-.. (Optional) You can skip Upgrade Health Checker's hardware compatibility checks when specifying the ONTAP version you want to upgrade to:
-+
-[source,cli]
-----
---skip-compatibility-check
-----
-+
-You should only use this parameter if you are certain that your cluster hardware is compatible with the ONTAP version you want to upgrade to. Upgrade Health Checker enables hardware compatibility checks by default.
+.. Familiarize yourself with the available Upgrade Health Checker parameters and input priority order by reading the link:upgrade-health-checker-input-parameters.html[Input Parameters Guide for Upgrade Health Checker].
 
 .. (Optional) Specify a custom configuration file path and run path to streamline your workflow.
 
