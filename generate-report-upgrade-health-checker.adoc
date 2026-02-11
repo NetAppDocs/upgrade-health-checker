@@ -13,11 +13,12 @@ summary: "You can use Upgrade Health Checker to generate an upgrade plan for a s
 [.lead]
 You can use Upgrade Health Checker to generate an upgrade plan for a single or multiple ONTAP clusters.
 
-You can automate also link:automate-report-upgrade-health-checker.html[automate generating upgrade reports] to assist with maintaining up-to-date upgrade plans if you have a large, complex environment with multiple clusters.
+You can also link:automate-report-upgrade-health-checker.html[automate generating upgrade reports] to assist with maintaining up-to-date upgrade plans if you have a large, complex environment with multiple clusters.
 
 .Before you begin
 
 To learn more about a specific Upgrade Health Checker parameter and the priority order for how the tool accepts input, refer to the link:upgrade-health-checker-input-parameters.html[Input Parameters Guide for Upgrade Health Checker].
+
 .Steps
 
 . Set the execute permission on the binary before running it the first time:
