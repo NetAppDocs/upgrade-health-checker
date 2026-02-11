@@ -29,7 +29,7 @@ sidebar:
   - title: Reference
     entries:
     - title: Input Parameters Guide
-      url: "/upgrade-health-checker-input-parameters-guide.html"
+      url: "/upgrade-health-checker-input-parameters.html"
   - title: FAQ
     url: "/faq-upgrade-health-checker.html"
   - title: Legal notices
