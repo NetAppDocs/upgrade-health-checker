@@ -11,7 +11,7 @@ summary: "Learn what's new in this doc site."
 :imagesdir: ./media/
 
 [.lead]
-Learn what's new in Upgrade Health Checker. You can find additional enhancement information in the link:https://mysupport.netapp.com/site/tools/tool-eula/upgrade-health-checker[latest Upgrade Health Checker download files^].
+Learn what's new in Upgrade Health Checker. You can find additional enhancement information by navigating to the Upgrade Health Checker tile in the link:https://console.netapp.com/automationHub[NetApp Console Automation Hub^] and viewing the latest Upgrade Health Checker download files.
 
 
 == 12 February 2026

@@ -2,7 +2,7 @@
 sidebar: sidebar
 permalink: automate-report-upgrade-health-checker.html
 keywords: upgrade, health, checker
-summary: ""
+summary: "You can automate generating Upgrade Health Checker reports to reduce your manual effort when planning ONTAP upgrades in large, complex environments."
 ---
 = Automate generating upgrade plans with Upgrade Health Checker
 :hardbreaks:

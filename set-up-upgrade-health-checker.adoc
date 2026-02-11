@@ -1,8 +1,8 @@
 ---
 sidebar: sidebar
 permalink: set-up-upgrade-health-checker.html
-keywords: upgrade, health, checker
-summary: ""
+keywords: upgrade, health, checker, set up, download
+summary: "You can download Upgrade Health Checker to generate onsite, comprehensive reports before upgrading to a newer version of ONTAP."
 ---
 = Download and set up Upgrade Health Checker
 :hardbreaks:
@@ -33,7 +33,7 @@ Additionally, ensure the virtual machine can connect to the telemetry endpoint (
 
 .Steps
 
-. Download the Upgrade Health Checker binary from the link:https://mysupport.netapp.com/site/tools/tool-eula/upgrade-health-checker[Toolchest on the NetApp Support Site^].
+. Download the Upgrade Health Checker binary by link:https://console.netapp.com/automationHub[navigating to the NetApp Console Automation Hub] and finding the Upgrade Health Checker tile.
 
 . Set up the Upgrade Health Checker virtual machine and use SSH to place the binary in the location of your choice.
 

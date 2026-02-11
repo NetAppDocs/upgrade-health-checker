@@ -26,6 +26,10 @@ sidebar:
       url: "/generate-report-upgrade-health-checker.html"
     - title: Automate report generation
       url: "/automate-report-upgrade-health-checker.html"
+  - title: Reference
+    entries:
+    - title: Input Parameters Guide
+      url: "/upgrade-health-checker-input-parameters-guide.html"
   - title: FAQ
     url: "/faq-upgrade-health-checker.html"
   - title: Legal notices

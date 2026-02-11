@@ -1,0 +1,326 @@
+---
+sidebar: sidebar
+permalink: upgrade-health-checker-input-parameters.html
+keywords: upgrade, health, checker, input, parameter
+summary: "You can learn more about the input parameters for Upgrade Health Checker to assist you with generating an upgrade report for your ONTAP cluster."
+---
+= Input Parameters Guide for Upgrade Health Checker
+:hardbreaks:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+[.lead]
+You can learn more about the input parameters for Upgrade Health Checker and how to provide them through CLI arguments, configuration files, or interactive prompts to assist you with generating an upgrade report for your ONTAP cluster.
+
+== Input methods priority
+
+Upgrade Health Checker provides flexible input options for all input parameters. Each parameter can be provided through multiple methods with a clear priority order.
+
+The priority order is as follows:
+
+. CLI Arguments (Highest priority)
+. Configuration File (`config.yaml`)
+. Interactive Prompts (Lowest priority)
+
+When a parameter is provided through multiple methods, the tool will use the value from the highest priority source.
+
+== Input parameters
+
+=== Cluster IP 
+
+The `--cluster-ip` paramater specifies the IP address or hostname of the ONTAP cluster to connect to. 
+
+The priority order for providing this parameter is as follows:
+
+* CLI argument: `--cluster-ip`
+* Config file: `CLUSTER.IP`
+* Interactive prompt
+
+.Examples
+[%collapsible]
+====
+
+[source,bash]
+----
+# Via CLI argument
+./uhc --cluster-ip 192.168.1.100
+
+# Via config.yaml
+CLUSTER:
+  IP: "192.168.1.100"
+
+# Interactive mode (if not provided above)
+# Tool will prompt: "Enter cluster IP address:"
+----
+====
+
+=== Cluster username
+
+The `--cluster-username` parameter specifies the username for authenticating with the ONTAP cluster. 
+
+The priority order for providing this parameter is as follows:
+
+* CLI argument: `--cluster-username`
+* Config file: `CLUSTER.USERNAME`
+* Interactive prompt
+
+.Examples
+[%collapsible]
+====
+
+[source,bash]
+----
+# Via CLI argument
+./uhc --cluster-username admin
+
+# Via config.yaml
+CLUSTER:
+  USERNAME: "admin"
+
+# Interactive mode (if not provided above)
+# Tool will prompt: "Enter cluster username:"
+----
+====
+
+
+=== Cluster password
+
+The `--cluster-password` parameter specifies the password for authenticating with the ONTAP cluster. 
+
+The priority order for providing this parameter is as follows:
+
+* CLI argument: `--cluster-password`
+* Config file: `CLUSTER.PASSWORD`
+* Interactive prompt (secure input)
+
+.Examples
+[%collapsible]
+====
+
+
+[source,bash]
+----
+# Via CLI argument (not recommended for security)
+./uhc --cluster-password mypassword
+
+# Via config.yaml (ensure file permissions are restricted)
+CLUSTER:
+  PASSWORD: "mypassword"
+
+# Interactive mode (recommended - password hidden)
+# Tool will prompt: "Enter cluster password:"
+----
+====
+
+
+=== Target ONTAP version
+
+The `--target-ontap-version` parameter specifies the target ONTAP version for upgrade analysis. Use "current" to keep the existing cluster ONTAP version.
+
+The priority order for providing this parameter is as follows:
+
+* CLI argument: `--target-ontap-version`
+* Config file: `CLUSTER.TARGET_ONTAP_VERSION`
+* Interactive selection menu
+
+.Examples
+[%collapsible]
+====
+
+
+[source,bash]
+----
+# Via CLI argument
+./uhc --target-ontap-version 9.15.1
+
+# Keep current version
+./uhc --target-ontap-version current
+
+# Via config.yaml
+CLUSTER:
+  TARGET_ONTAP_VERSION: "9.15.1"
+
+# Interactive mode (if not provided above)
+# Tool will display available versions and prompt for selection
+----
+====
+
+=== EULA acceptance
+
+The `--accept-eula` parameter specifies whether to accept the End User License Agreement. Must be set to `true` to proceed.
+
+The priority order for providing this parameter is as follows:
+
+* CLI argument: `--accept-eula`
+* Config file: `CLUSTER.ACCEPT_EULA`
+* Interactive prompt
+
+.Examples
+[%collapsible]
+====
+
+
+[source,bash]
+----
+# Via CLI argument
+./uhc --accept-eula true
+
+# Via config.yaml
+CLUSTER:
+  ACCEPT_EULA: true
+
+# Interactive mode (if not provided above)
+# Tool will display EULA and prompt for acceptance
+----
+====
+
+
+=== Configuration file path
+
+The `--config-path` parameter specifies the path to a custom configuration YAML file.
+
+The priority order for providing this parameter is as follows:
+
+* CLI argument: `--config-path`
+* Default: `config.yaml`
+
+.Examples
+[%collapsible]
+====
+
+
+[source,bash]
+----
+# Via CLI argument
+./uhc --config-path /path/to/custom_config.yaml
+
+# Default (if not provided)
+# Tool will look for config.yaml in the current directory
+----
+====
+
+
+=== Runs output path
+
+The `--runs-path` parameter specifies a custom directory for storing run outputs and reports.
+
+The priority order for providing this parameter is as follows:
+
+* CLI argument: `--runs-path`
+* Config file: `APP.RUNS_PATH`
+* Default: `./runs`
+
+.Examples
+[%collapsible]
+====
+
+
+[source,bash]
+----
+# Via CLI argument
+./uhc --runs-path /custom/output/path
+
+# Via config.yaml
+APP:
+  RUNS_PATH: "/custom/output/path"
+
+# Default (if not provided)
+# Tool will use ./runs directory
+----
+====
+
+
+=== Skip compatibility check
+
+The `--skip-compatibility-check` parameter bypasses hardware compatibility checks and uses the specified target version.
+
+CAUTION: Only use this option if you are certain the target version is compatible with your hardware.
+
+The priority order for providing this parameter is as follows:
+
+* CLI argument: `--skip-compatibility-check`
+* Config file: `CLUSTER.SKIP_COMPATIBILITY_CHECK`
+* Default: `false`
+
+.Examples
+[%collapsible]
+====
+
+[source,bash]
+----
+# Via CLI argument
+./uhc --skip-compatibility-check true
+
+# Via config.yaml
+CLUSTER:
+  SKIP_COMPATIBILITY_CHECK: true
+----
+====
+
+
+== Examples using each input method
+
+=== Combined CLI arguments
+
+[source,bash]
+----
+./uhc \
+  --cluster-ip 192.168.1.100 \
+  --cluster-username admin \
+  --cluster-password mypassword \
+  --target-ontap-version 9.15.1 \
+  --accept-eula true \
+  --config-path /path/to/custom_config.yaml \
+  --runs-path /custom/output \
+  --skip-compatibility-check false
+----
+
+=== Config.yaml file
+
+[source,yaml]
+----
+CLUSTER:
+  IP: "192.168.1.100"
+  USERNAME: "admin"
+  PASSWORD: "mypassword"
+  TARGET_ONTAP_VERSION: "9.15.1"
+  ACCEPT_EULA: true
+  SKIP_COMPATIBILITY_CHECK: false
+
+APP:
+  RUNS_PATH: "/custom/output"
+----
+
+=== Interactive mode
+
+Run Upgrade Health Checker without arguments:
+
+[source,bash]
+----
+./uhc
+----
+
+The tool will prompt for all required parameters interactively.
+
+== Additional capabilities
+
+These commands provide some additional capabilities beyond the full run of the tool:
+
+[source,bash]
+----
+# Display help
+./uhc --help
+
+# Display version
+./uhc --version
+
+# Test cluster connectivity
+./uhc --test-connectivity cluster
+
+# Test telemetry connectivity
+./uhc --test-connectivity telemetry
+
+# Run all tests
+./uhc --test all
+----
