@@ -15,13 +15,11 @@ You can learn more about the input parameters for Upgrade Health Checker and how
 
 == Input methods priority
 
-Upgrade Health Checker provides flexible input options for all input parameters. Each parameter can be provided through multiple methods with a clear priority order.
+Upgrade Health Checker provides several input options for all parameters. Its priority order for accepting inputs is:
 
-The priority order is as follows:
-
-. CLI Arguments (Highest priority)
-. Configuration File (`config.yaml`)
-. Interactive Prompts (Lowest priority)
+. CLI arguments (highest priority)
+. Configuration file (`config.yaml`)
+. Interactive prompts (lowest priority)
 
 When a parameter is provided through multiple methods, the tool will use the value from the highest priority source.
 
@@ -29,9 +27,9 @@ When a parameter is provided through multiple methods, the tool will use the val
 
 === Cluster IP 
 
-The `--cluster-ip` paramater specifies the IP address or hostname of the ONTAP cluster to connect to. 
+The `--cluster-ip` parameter specifies the IP address or hostname of the ONTAP cluster to connect to. 
 
-The priority order for providing this parameter is as follows:
+The priority order for providing this parameter is:
 
 * CLI argument: `--cluster-ip`
 * Config file: `CLUSTER.IP`
@@ -59,7 +57,7 @@ CLUSTER:
 
 The `--cluster-username` parameter specifies the username for authenticating with the ONTAP cluster. 
 
-The priority order for providing this parameter is as follows:
+The priority order for providing this parameter is:
 
 * CLI argument: `--cluster-username`
 * Config file: `CLUSTER.USERNAME`
@@ -88,7 +86,7 @@ CLUSTER:
 
 The `--cluster-password` parameter specifies the password for authenticating with the ONTAP cluster. 
 
-The priority order for providing this parameter is as follows:
+The priority order for providing this parameter is:
 
 * CLI argument: `--cluster-password`
 * Config file: `CLUSTER.PASSWORD`
@@ -116,9 +114,9 @@ CLUSTER:
 
 === Target ONTAP version
 
-The `--target-ontap-version` parameter specifies the target ONTAP version for upgrade analysis. Use "current" to keep the existing cluster ONTAP version.
+The `--target-ontap-version` parameter specifies the ONTAP version you want to upgrade to for analysis. Use "current" to keep the existing cluster ONTAP version.
 
-The priority order for providing this parameter is as follows:
+The priority order for providing this parameter is:
 
 * CLI argument: `--target-ontap-version`
 * Config file: `CLUSTER.TARGET_ONTAP_VERSION`
@@ -150,7 +148,7 @@ CLUSTER:
 
 The `--accept-eula` parameter specifies whether to accept the End User License Agreement. Must be set to `true` to proceed.
 
-The priority order for providing this parameter is as follows:
+The priority order for providing this parameter is:
 
 * CLI argument: `--accept-eula`
 * Config file: `CLUSTER.ACCEPT_EULA`
@@ -180,7 +178,7 @@ CLUSTER:
 
 The `--config-path` parameter specifies the path to a custom configuration YAML file.
 
-The priority order for providing this parameter is as follows:
+The priority order for providing this parameter is:
 
 * CLI argument: `--config-path`
 * Default: `config.yaml`
@@ -205,7 +203,7 @@ The priority order for providing this parameter is as follows:
 
 The `--runs-path` parameter specifies a custom directory for storing run outputs and reports.
 
-The priority order for providing this parameter is as follows:
+The priority order for providing this parameter is:
 
 * CLI argument: `--runs-path`
 * Config file: `APP.RUNS_PATH`
@@ -237,7 +235,7 @@ The `--skip-compatibility-check` parameter bypasses hardware compatibility check
 
 CAUTION: Only use this option if you are certain the target version is compatible with your hardware.
 
-The priority order for providing this parameter is as follows:
+The priority order for providing this parameter is:
 
 * CLI argument: `--skip-compatibility-check`
 * Config file: `CLUSTER.SKIP_COMPATIBILITY_CHECK`
@@ -303,7 +301,7 @@ Run Upgrade Health Checker without arguments:
 
 The tool will prompt for all required parameters interactively.
 
-== Additional capabilities
+== Additional commands
 
 These commands provide some additional capabilities beyond the full run of the tool:
 
