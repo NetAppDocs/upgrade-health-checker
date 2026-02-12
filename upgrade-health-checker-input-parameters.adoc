@@ -231,9 +231,9 @@ APP:
 
 === Skip compatibility check
 
-The `--skip-compatibility-check` parameter bypasses hardware compatibility checks and uses the specified target version.
+The `--skip-compatibility-check` parameter bypasses hardware compatibility checks and uses the specified version of ONTAP you want to upgrade to.
 
-CAUTION: Only use this option if you are certain the target version is compatible with your hardware.
+CAUTION: Only use this option if you are certain the target ONTAP version is compatible with your hardware.
 
 The priority order for providing this parameter is:
 
