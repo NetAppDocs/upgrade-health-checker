@@ -74,6 +74,11 @@ After the AutoSupport log is downloaded for a cluster, processing generally take
 The Input Parameters Guide also provides information for specifying a custom configuration file path and run path to streamline your workflow. The best practice is to create a custom output directory for each cluster to organize your reports and logs effectively.
 
 .. Run Upgrade Health Checker by accepting the EULA and entering the target ONTAP version and any additional parameters.
++
+[source,cli]
+----
+./uhc
+----
 
 . After Upgrade Health Checker completes its checks, navigate to the `runs` folder to view the upgrade plan and cluster report.
 +
