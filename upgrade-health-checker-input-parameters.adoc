@@ -144,7 +144,7 @@ CLUSTER:
 ----
 ====
 
-=== EULA acceptance
+=== Accept EULA
 
 The `--accept-eula` parameter specifies whether to accept the End User License Agreement. Must be set to `true` to proceed.
 
@@ -199,7 +199,7 @@ The priority order for providing this parameter is:
 ====
 
 
-=== Runs output path
+=== Run output path
 
 The `--runs-path` parameter specifies a custom directory for storing run outputs and reports.
 
@@ -256,6 +256,27 @@ CLUSTER:
 ----
 ====
 
+=== Disable telemetry
+
+To disable telemetry, add the following to your `config.yaml` file:
+
+[source,bash]
+----
+# Telemetry Configuration
+TELEMETRY:
+  ENABLED: false
+----
+
+=== Disable auto-update
+
+To disable automatic updates for Upgrade Health Checker, add the following to your `config.yaml` file:
+
+[source,bash]
+----
+# Auto Update Configuration
+AUTO_UPDATE:
+  ENABLED: false
+----
 
 == Examples using each input method
 
@@ -292,14 +313,13 @@ APP:
 
 === Interactive mode
 
-Run Upgrade Health Checker without arguments:
+To prompt all required input parameters interactively, run Upgrade Health Checker without arguments:
 
 [source,bash]
 ----
 ./uhc
 ----
 
-The tool will prompt for all required parameters interactively.
 
 == Additional commands
 
@@ -318,6 +338,9 @@ These commands provide some additional capabilities beyond the full run of the t
 
 # Test telemetry connectivity
 ./uhc --test-connectivity telemetry
+
+# Test auto-update connectivity
+./uhc --test-connectivity autoupdate
 
 # Run all tests
 ./uhc --test all
