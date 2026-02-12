@@ -267,7 +267,7 @@ TELEMETRY:
   ENABLED: false
 ----
 
-=== Disable auto-update
+=== Disable automatic updates
 
 To disable automatic updates for Upgrade Health Checker, add the following to your `config.yaml` file:
 
