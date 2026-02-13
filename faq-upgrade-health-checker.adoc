@@ -1,0 +1,37 @@
+---
+sidebar: sidebar
+permalink: faq-upgrade-health-checker.html
+keywords: upgrade, health, checker, faq, frequently asked questions, frequently asked questions about upgrade health checker
+summary: "Frequently asked questions (FAQ) for Upgrade Health Checker."
+---
+= FAQ for Upgrade Health Checker
+:hardbreaks:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+[.lead]
+Frequently asked questions (FAQ) for Upgrade Health Checker.
+
+
+== How does Upgrade Health Checker differ from Upgrade Advisor?
+
+Upgrade Health Checker is an onsite tool suitable for users with large or complex environments, limited access to the internet, or existing automation and orchestration frameworks. Upgrade Advisor is suitable for users with a smaller environment who prefer a cloud-based, UI-centered experience.
+
+You can learn more about about link:learn-about-upgrade-health-checker.html[Upgrade Health Checker] and link:https://docs.netapp.com/us-en/active-iq/upgrade_advisor_overview.html[Upgrade Advisor^] to determine which tool best fits your needs.
+
+
+== What information does an Upgrade Health Checker report include?
+
+Upgrade Health Checker reports provide detailed information on potential blockers and warnings that need to be addressed before upgrading your ONTAP clusters, risks associated with your clusters, and information about new features and enhancements in the ONTAP version you're upgrading to.
+
+
+== Can Upgrade Health Checker be used without an internet connection?
+
+You don't need an internet connection to run Upgrade Health Checker. It generates upgrade plans and reports onsite using your ONTAP cluster's current configuration data.
+
+However, internet access is required for automatic tool updates. If your environment lacks internet connectivity, contact NetApp for guidance on how to ensure your Upgrade Health Checker tool remains up to date.
+
+== What versions of ONTAP does Upgrade Health Checker support?
+
+Upgrade Health Checker supports upgrades to ONTAP 9.11.1 and later.

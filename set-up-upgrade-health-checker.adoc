@@ -1,0 +1,132 @@
+---
+sidebar: sidebar
+permalink: set-up-upgrade-health-checker.html
+keywords: upgrade, health, checker, set up, download
+summary: "You can download Upgrade Health Checker to generate onsite, comprehensive reports before upgrading to a newer version of ONTAP."
+---
+= Download and set up Upgrade Health Checker
+:hardbreaks:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+[.lead]
+You can download Upgrade Health Checker to generate onsite, comprehensive reports before upgrading to a newer version of ONTAP.
+
+.Before you begin
+
+Set up a virtual machine for Upgrade Health Checker with the following specifications:
+
+* Processing and memory: m5.large VM or equivalent with 2 vCPUs and 8 GiB RAM.
+* Recommended operating system: Ubuntu 22.04 for optimal compatibility.
+* Storage: Provide a root volume with a minimum of 100 GB and an additional NFS volume of at least 100 GB to ensure data preservation if the virtual machine is compromised.
+* Hosting requirements: Place the VM in a location with cluster connectivity and internet access to allow for automatic tool updates. The machine should have access to the following endpoints through HTTPS to conduct automatic updates:
+** https://api.uhc.netapp.com
+** https://gql.aiq.netapp.com
++
+If internet access is unavailable, consult NetApp for guidance.
+* Recommended packages: Install a web server to facilitate access.
+
+Additionally, ensure the virtual machine can connect to the telemetry endpoint (https://support.netapp.com/) through HTTPS to enable NetApp to receive AutoSupport information about your upgrade plans.
+
+
+
+.Steps
+
+. Download the Upgrade Health Checker binary by link:https://console.netapp.com/automationHub[navigating to the NetApp Console Automation Hub] and finding the Upgrade Health Checker tile.
+
+. Set up the Upgrade Health Checker virtual machine and use SSH to place the binary in the location of your choice.
+
+. Verify the digital signature of Upgrade Health Checker.
++
+Upgrade Health Checker has a public code signing certificate (`UHC-Linux-codesigning-certificate-public.pem`) and intermediate and root certificates chain (`UHC-Linux-chain-certificates-public.pem`).
+
+.. (Optional) Verify the code signing certificate against the chain:
++
+----
+openssl verify -CAfile UHC-Linux-chain-certificates-public.pem UHC-Linux-codesigning-certificate-public.pem
+----
++
+An output of `OK` confirms a valid chain of trust.
+
+.. Extract the public key from the code signing certificate:
++
+----
+openssl x509 -in UHC-Linux-codesigning-certificate-public.pem -pubkey -noout -out UHC-Linux-public.pub
+----
+
+.. Verify the signature file (`uhc.sig`) against the Upgrade Health Checker binary using the public key:
++
+----
+openssl dgst -sha256 -verify UHC-Linux-public.pub -signature uhc.sig uhc
+----
++
+An output of `Verified OK` confirms the signature is valid.
+
+
+. Configure a service account and role for ONTAP cluster access. For cluster access through Upgrade Health Checker, create the service role as a REST-role. 
++
+NOTE: You can build an Ansible playbook to automate the deployment of the role and user to all ONTAP clusters.
++
+You must create the service account for the http application. Use the following CLI commands to configure the necessary permissions:
++
+[source,cli]
+----
+security login rest-role create -role uhctool -api /api -access readonly -vserver
+
+security login rest-role create -role uhctool -api /api/support/autosupport -access read_create_modify -vserver
+
+security login rest-role create -role uhctool -api /api/support/autosupport/messages -access read_create_modify -vserver
+
+vserver services web access create -name spi -role uhctool -vserver
+
+security login create -user-or-group-name uhctool -role uhctool -application http -authentication-method password
+
+security login create -user-or-group-name uhctool -role uhctool -application ssh -authentication-method password
+----
+
+
+. Set up credential management to secure access to the application. 
++
+For example, if you have CyberArk and Conjur, you can configure your environment to avoid passing credentials through a yaml file or command line.
+
+.. Create required CyberArk Safes:
+... Create a Safe (Main-Conjur-Safe) that holds the application credentials and secrets
+... Create a Safe (API-Credentials-Safe) that holds the Conjur Host ID and API Key
+... Create a Safe (Conjur-SSL-Certificate) that holds the necessary certificate
+
+.. Create the configuration (Conjur.conf) and identity (Conjur.identity) files for this application:
+... Conjur.conf
++
+----
+account:
+plugins:[]
+appliance_url: https://FQDN
+cert_file: /etc/conjur.pem
+----
+... Conjur.identity
++
+----
+machine https://FQDN/authn
+login host /prodvault/devops/<Main-Conjur-Safe>/host1
+password XXXXXX
+----
+
++
+Here is an example of how to use CyberArk and Conjur in an Ansible playbook:
+.. Install Conjur Ansible Collection, which includes the Conjur Ansible Lookup Plugin, on Ansible Host: 
++                           
+----
+ansible-galaxy collection install cyberark.conjur
+----
+.. Create a task in a yaml file to fetch the username and password from CyberArk:
++
+----
+conjur_username: "{{ lookup('cyberark.conjur.conjur_variable', 'prodvault/devops/<Main-Conjur-Safe>/<Account name>/username', validate_certs=false) }}"
+conjur_password: "{{ lookup('cyberark.conjur.conjur_variable', 'prodvault/devops/<Main-Conjur-Safe>/<Account name>/password', validate_certs=false) }}"
+----
+
+
+.What's next?
+
+You can use Upgrade Health Checker to help you plan for an ONTAP upgrade by link:generate-report-upgrade-health-checker.html[generating an upgrade report].
