@@ -332,23 +332,27 @@ To prompt all required input parameters interactively, run Upgrade Health Checke
 
 These commands provide some additional capabilities beyond the full run of the tool:
 
-[source,bash]
-----
-# Display help
-./uhc --help
+* Display help
++
+`./uhc --help`
 
-# Display version
-./uhc --version
+* Display version
++
+`./uhc --version`
 
-# Test cluster connectivity
-./uhc --test-connectivity cluster
+* Test cluster connectivity
++
+`./uhc --test-connectivity cluster`
 
-# Test telemetry connectivity
-./uhc --test-connectivity telemetry
+* Test telemetry connectivity
++
+`./uhc --test-connectivity telemetry`
 
-# Test auto-update connectivity
-./uhc --test-connectivity autoupdate
+* Test auto-update connectivity
++
+`./uhc --test-connectivity autoupdate`
 
-# Run all tests
-./uhc --test all
-----
+* Run all tests
++
+`./uhc --test all`
+

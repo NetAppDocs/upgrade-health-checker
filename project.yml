@@ -28,7 +28,7 @@ sidebar:
       url: "/automate-report-upgrade-health-checker.html"
   - title: Reference
     entries:
-    - title: Input Parameters Guide
+    - title: Learn about the input parameters for Upgrade Health Checker
       url: "/upgrade-health-checker-input-parameters.html"
   - title: FAQ
     url: "/faq-upgrade-health-checker.html"
