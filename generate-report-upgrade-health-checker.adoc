@@ -84,10 +84,10 @@ The Input Parameters Guide also provides information for specifying a custom con
 +
 NOTE: Each execution of the program is a "unique run" and will have all the associated data, logs and results in the associated `runs` folder.
 
-. Open the report file (named `<cluster-name>_<YYYYMMDDHHMMSS>.html`) in a web browser to view the report. If you are running it on a remote host, first download the report file to a machine where you can view the report on a web browser.
+. Open the report file (named `uhc_<cluster-name>_<YYYYMMDDHHMMSS>.html`) in a web browser to view the report. If you are running it on a remote host, first download the report file to a machine where you can view the report on a web browser.
 +
 The log path and report path are as follows:
 
 ** Log Path: `<output-path>/<unique-run-dir>/<cluster-name>/logs`
-** Report Path: `<output-path>/<unique-run-dir>/<cluster-name>/results/<cluster-name>_<YYYYMMDDHHMMSS>.html`
+** Report Path: `<output-path>/<unique-run-dir>/<cluster-name>/results/uhc_<cluster-name>_<YYYYMMDDHHMMSS>.html`
 
