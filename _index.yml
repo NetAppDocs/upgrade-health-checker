@@ -18,7 +18,7 @@ indexpage:
           url: automate-report-upgrade-health-checker.html
     - title: More resources
       links: 
-        - title: Input Parameters Guide for Upgrade Health Checker
+        - title: Learn about the input parameters for Upgrade Health Checker
           url: upgrade-health-checker-input-parameters.html
         - title: FAQ for Upgrade Health Checker
           url: faq.html

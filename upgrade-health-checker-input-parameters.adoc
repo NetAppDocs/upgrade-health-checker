@@ -4,7 +4,7 @@ permalink: upgrade-health-checker-input-parameters.html
 keywords: upgrade, health, checker, input, parameter
 summary: "You can learn more about the input parameters for Upgrade Health Checker to assist you with generating an upgrade report for your ONTAP cluster."
 ---
-= Input Parameters Guide for Upgrade Health Checker
+= Learn about the input parameters for Upgrade Health Checker
 :hardbreaks:
 :icons: font
 :linkattrs:
@@ -31,26 +31,29 @@ The `--cluster-ip` parameter specifies the IP address or hostname of the ONTAP c
 
 The priority order for providing this parameter is:
 
-* CLI argument: `--cluster-ip`
-* Config file: `CLUSTER.IP`
-* Interactive prompt
+. CLI argument: `--cluster-ip`
+. Config file: `CLUSTER.IP`
+. Interactive prompt
 
 .Examples
 [%collapsible]
 ====
 
-[source,bash]
-----
-# Via CLI argument
-./uhc --cluster-ip 192.168.1.100
+* CLI argument:
++
+`./uhc --cluster-ip 192.168.1.100`
 
-# Via config.yaml
+* Config.yaml:
++
+----
 CLUSTER:
   IP: "192.168.1.100"
-
-# Interactive mode (if not provided above)
-# Tool will prompt: "Enter cluster IP address:"
 ----
+
+* Interactive mode (if not provided above):
++
+Tool will prompt: `Enter cluster IP address:`
+
 ====
 
 === Cluster username
@@ -59,26 +62,29 @@ The `--cluster-username` parameter specifies the username for authenticating wit
 
 The priority order for providing this parameter is:
 
-* CLI argument: `--cluster-username`
-* Config file: `CLUSTER.USERNAME`
-* Interactive prompt
+. CLI argument: `--cluster-username`
+. Config file: `CLUSTER.USERNAME`
+. Interactive prompt
 
 .Examples
 [%collapsible]
 ====
 
-[source,bash]
-----
-# Via CLI argument
-./uhc --cluster-username admin
+* CLI argument:
++
+`./uhc --cluster-username admin`
 
-# Via config.yaml
+* Config.yaml:
++
+----
 CLUSTER:
   USERNAME: "admin"
-
-# Interactive mode (if not provided above)
-# Tool will prompt: "Enter cluster username:"
 ----
+
+* Interactive mode (if not provided above):
++
+Tool will prompt: `Enter cluster username:`
+
 ====
 
 
@@ -88,27 +94,29 @@ The `--cluster-password` parameter specifies the password for authenticating wit
 
 The priority order for providing this parameter is:
 
-* CLI argument: `--cluster-password`
-* Config file: `CLUSTER.PASSWORD`
-* Interactive prompt (secure input)
+. CLI argument: `--cluster-password`
+. Config file: `CLUSTER.PASSWORD`
+. Interactive prompt (secure input)
 
 .Examples
 [%collapsible]
 ====
 
+* CLI argument (not recommended for security):
++
+`./uhc --cluster-password mypassword`
 
-[source,bash]
+* Config.yaml (ensure file permissions are restricted):
++
 ----
-# Via CLI argument (not recommended for security)
-./uhc --cluster-password mypassword
-
-# Via config.yaml (ensure file permissions are restricted)
 CLUSTER:
   PASSWORD: "mypassword"
-
-# Interactive mode (recommended - password hidden)
-# Tool will prompt: "Enter cluster password:"
 ----
+
+* Interactive mode (recommended - password hidden):
++
+Tool will prompt: `Enter cluster password:`
+
 ====
 
 
@@ -118,30 +126,31 @@ The `--target-ontap-version` parameter specifies the ONTAP version you want to u
 
 The priority order for providing this parameter is:
 
-* CLI argument: `--target-ontap-version`
-* Config file: `CLUSTER.TARGET_ONTAP_VERSION`
-* Interactive selection menu
+. CLI argument: `--target-ontap-version`
+. Config file: `CLUSTER.TARGET_ONTAP_VERSION`
+. Interactive selection menu
 
 .Examples
 [%collapsible]
 ====
 
+* CLI argument:
++
+Updated version of ONTAP: `./uhc --target-ontap-version 9.15.1`
++
+Keep current version of ONTAP: `./uhc --target-ontap-version current`
 
-[source,bash]
+* Config.yaml:
++
 ----
-# Via CLI argument
-./uhc --target-ontap-version 9.15.1
-
-# Keep current version
-./uhc --target-ontap-version current
-
-# Via config.yaml
 CLUSTER:
   TARGET_ONTAP_VERSION: "9.15.1"
-
-# Interactive mode (if not provided above)
-# Tool will display available versions and prompt for selection
 ----
+
+* Interactive mode (if not provided above):
++
+Tool will display available versions and prompt for selection
+
 ====
 
 === Accept EULA
@@ -150,27 +159,29 @@ The `--accept-eula` parameter specifies whether to accept the End User License A
 
 The priority order for providing this parameter is:
 
-* CLI argument: `--accept-eula`
-* Config file: `CLUSTER.ACCEPT_EULA`
-* Interactive prompt
+. CLI argument: `--accept-eula`
+. Config file: `CLUSTER.ACCEPT_EULA`
+. Interactive prompt
 
 .Examples
 [%collapsible]
 ====
 
+* CLI argument:
++
+`./uhc --accept-eula true`
 
-[source,bash]
+* Config.yaml:
++
 ----
-# Via CLI argument
-./uhc --accept-eula true
-
-# Via config.yaml
 CLUSTER:
   ACCEPT_EULA: true
-
-# Interactive mode (if not provided above)
-# Tool will display EULA and prompt for acceptance
 ----
+
+* Interactive mode (if not provided above):
++
+Tool will display EULA and prompt for acceptance
+
 ====
 
 
@@ -180,22 +191,21 @@ The `--config-path` parameter specifies the path to a custom configuration YAML 
 
 The priority order for providing this parameter is:
 
-* CLI argument: `--config-path`
-* Default: `config.yaml`
+. CLI argument: `--config-path`
+. Default: `config.yaml`
 
 .Examples
 [%collapsible]
 ====
 
+* CLI argument:
++
+`./uhc --config-path /path/to/custom_config.yaml`
 
-[source,bash]
-----
-# Via CLI argument
-./uhc --config-path /path/to/custom_config.yaml
+* Default (if not provided):
++
+Tool will look for config.yaml in the current directory
 
-# Default (if not provided)
-# Tool will look for config.yaml in the current directory
-----
 ====
 
 
@@ -205,27 +215,29 @@ The `--runs-path` parameter specifies a custom directory for storing run outputs
 
 The priority order for providing this parameter is:
 
-* CLI argument: `--runs-path`
-* Config file: `APP.RUNS_PATH`
-* Default: `./runs`
+. CLI argument: `--runs-path`
+. Config file: `APP.RUNS_PATH`
+. Default: `./runs`
 
 .Examples
 [%collapsible]
 ====
 
+* CLI argument:
++
+`./uhc --runs-path /custom/output/path`
 
-[source,bash]
+* Config.yaml:
++
 ----
-# Via CLI argument
-./uhc --runs-path /custom/output/path
-
-# Via config.yaml
 APP:
   RUNS_PATH: "/custom/output/path"
-
-# Default (if not provided)
-# Tool will use ./runs directory
 ----
+
+* Default (if not provided):
++
+Tool will use `./runs` directory
+
 ====
 
 
@@ -237,20 +249,21 @@ CAUTION: Only use this option if you are certain the target ONTAP version is com
 
 The priority order for providing this parameter is:
 
-* CLI argument: `--skip-compatibility-check`
-* Config file: `CLUSTER.SKIP_COMPATIBILITY_CHECK`
-* Default: `false`
+. CLI argument: `--skip-compatibility-check`
+. Config file: `CLUSTER.SKIP_COMPATIBILITY_CHECK`
+. Default: `false`
 
 .Examples
 [%collapsible]
 ====
 
-[source,bash]
-----
-# Via CLI argument
-./uhc --skip-compatibility-check true
+* CLI argument:
++
+`./uhc --skip-compatibility-check true`
 
-# Via config.yaml
+* Config.yaml:
++
+----
 CLUSTER:
   SKIP_COMPATIBILITY_CHECK: true
 ----
@@ -260,9 +273,7 @@ CLUSTER:
 
 To disable telemetry, add the following to your `config.yaml` file:
 
-[source,bash]
 ----
-# Telemetry Configuration
 TELEMETRY:
   ENABLED: false
 ----
@@ -271,9 +282,7 @@ TELEMETRY:
 
 To disable automatic updates for Upgrade Health Checker, add the following to your `config.yaml` file:
 
-[source,bash]
 ----
-# Auto Update Configuration
 AUTO_UPDATE:
   ENABLED: false
 ----
@@ -282,7 +291,6 @@ AUTO_UPDATE:
 
 === Combined CLI arguments
 
-[source,bash]
 ----
 ./uhc \
   --cluster-ip 192.168.1.100 \
@@ -297,7 +305,6 @@ AUTO_UPDATE:
 
 === Config.yaml file
 
-[source,yaml]
 ----
 CLUSTER:
   IP: "192.168.1.100"
