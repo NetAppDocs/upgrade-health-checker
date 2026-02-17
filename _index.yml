@@ -1,14 +1,26 @@
 indexpage:
-  title: # Unquoted string 
-  lead: # Quoted string
-  summary: # Quoted string 
-  keywords: # Unquoted comma-delimited list of keywords 
+  title: Upgrade Health Checker docs
+  lead: "Upgrade Health Checker performs comprehensive health checks to help you plan and perform a successful ONTAP upgrade."
+  summary: "Upgrade Health Checker performs comprehensive health checks to help you plan and perform a successful ONTAP upgrade."
+  keywords: upgrade health checker, ontap, upgrade advisor
   tiles: 
-    # Tile definition 
-    - title: # Quoted or unquoted string
+    - title: Get started
       links: 
-        # Link definition
-        - title: # Quoted or unquoted string
-          url: # Path to target
-        # Next link on this tile (title/url pair)
-    # Next tile on this page (title/links)
+        - title: Learn about Upgrade Health Checker
+          url: learn-about-upgrade-health-checker.html
+        - title: Set up Upgrade Health Checker
+          url: set-up-upgrade-health-checker.html
+    - title: Use Upgrade Health Checker
+      links: 
+        - title: Generate an ONTAP upgrade report
+          url: generate-report-upgrade-health-checker.html
+        - title: Automate report generation
+          url: automate-report-upgrade-health-checker.html
+    - title: More resources
+      links: 
+        - title: Learn about the input parameters for Upgrade Health Checker
+          url: upgrade-health-checker-input-parameters.html
+        - title: FAQ for Upgrade Health Checker
+          url: faq.html
+
+
