@@ -32,9 +32,6 @@ You don't need an internet connection to run Upgrade Health Checker. It generate
 
 However, internet access is required for automatic tool updates. If your environment lacks internet connectivity, you can manually download the latest version of the tool from the Upgrade Health Checker tile on the link:https://console.netapp.com/automationHub[NetApp Console Automation Hub].
 
-
- contact NetApp for guidance on how to ensure your Upgrade Health Checker tool remains up to date.
-
 == What versions of ONTAP does Upgrade Health Checker support?
 
 Upgrade Health Checker supports upgrades to ONTAP 9.11.1 and later.
