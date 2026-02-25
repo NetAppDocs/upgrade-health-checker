@@ -15,7 +15,7 @@ You can automate generating Upgrade Health Checker reports to reduce your manual
 
 .Steps
 
-. To ensure the successful creation of your upgrade reports, complete any necessary set up steps and one-time tasks outlined in link:generate-upgrade-health-checker-report.html[Generate an ONTAP upgrade report].
+. To ensure the successful creation of your upgrade reports, complete any necessary set up steps and one-time tasks outlined in link:generate-report-upgrade-health-checker.html[Generate an ONTAP upgrade report].
 
 . Create a script to run Upgrade Health Checker with the appropriate parameters for your environment.
 +
