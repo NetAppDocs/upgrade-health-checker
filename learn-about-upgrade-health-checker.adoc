@@ -15,4 +15,6 @@ Upgrade Health Checker is an upgrade advisory service tool that provides detaile
 
 Upgrade Health Checker can integrate into your existing automation and orchestration frameworks to aid in upgrading a single or multiple clusters. It uses your most recent AutoSupport data to generate a detailed, accurate report on risks associated with your clusters, information about new features and enhancements in the ONTAP version you're upgrading to, and any actions to take before attempting an ONTAP upgrade.
 
-To learn more about Upgrade Health Checker, see the link:faq-upgrade-health-checker.html[FAQ for Upgrade Health Checker].
+To learn more about Upgrade Health Checker, you can refer to the link:faq-upgrade-health-checker.html[FAQ for Upgrade Health Checker] or watch the following introduction video.
+
+video::5mwmigXAB9c[youtube]
