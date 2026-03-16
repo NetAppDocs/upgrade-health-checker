@@ -13,12 +13,20 @@ summary: "You can download Upgrade Health Checker to generate onsite, comprehens
 [.lead]
 You can download Upgrade Health Checker to generate onsite, comprehensive reports before upgrading to a newer version of ONTAP.
 
+.About this task
+
+Upgrade Health Checker supports upgrades for on-premises ONTAP versions 9.11.1 and later. If you are using Cloud Volumes ONTAP, refer to link:https://docs.netapp.com/us-en/storage-management-cloud-volumes-ontap/task-updating-ontap-cloud.html#supported-upgrade-paths[Upgrade Cloud Volumes ONTAP] for information on upgrading your system. 
+
+
 .Before you begin
 
 Set up a virtual machine for Upgrade Health Checker with the following specifications:
 
 * Processing and memory: m5.large VM or equivalent with 2 vCPUs and 8 GiB RAM.
-* Recommended operating system: Ubuntu 22.04 for optimal compatibility.
+* Recommended operating system: Any Linux OS with glibc library version 2.28 or higher for optimal compatibility. This includes:
+** Ubuntu 22.04
+** RHEL8
+** RHEL9
 * Storage: Provide a root volume with a minimum of 100 GB and an additional NFS volume of at least 100 GB to ensure data preservation if the virtual machine is compromised.
 * Hosting requirements: Place the VM in a location with cluster connectivity and internet access to allow for automatic tool updates. The machine should have access to the following endpoints through HTTPS to conduct automatic updates:
 ** https://api.uhc.netapp.com
