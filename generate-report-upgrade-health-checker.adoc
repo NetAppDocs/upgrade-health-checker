@@ -45,7 +45,7 @@ The comprehensive check ensures the virtual machine hosting Upgrade Health Check
 +
 ** Connectivity to the ONTAP cluster IP address through HTTPS
 ** Connectivity to the telemetry endpoint (https://support.netapp.com/) through HTTPS
-** Connectivity to the auto-update endpoints (https://api.uhc.netapp.com and https://gql.aiq.netapp.com) through HTTPS
+** Connectivity to the auto-update endpoints (https://api.uhc.netapp.com, https://gql.aiq.netapp.com, and https://api.aiq.netapp.com) through HTTPS
 ** At least 4 GB of available `/tmp` space
 
 . (Optional) If you want to use a configuration file to store parameters, rename the `config.yaml.example` file located in the same location you downloaded the binary to `config.yaml`.
@@ -88,10 +88,12 @@ The Input Parameters Guide also provides information for specifying a custom con
 +
 NOTE: Each execution of the program is a "unique run" and will have all the associated data, logs and results in the associated `runs` folder.
 
-. Open the report file (named `uhc_<cluster-name>_<YYYYMMDDHHMMSS>.html`) in a web browser to view the report. If you are running it on a remote host, first download the report file to a machine where you can view the report on a web browser.
+. Open the report file (named `uhc_<cluster-name>_<YYYYMMDDHHMMSS>`) in a web browser or Microsoft Excel to view the report. If you are running it on a remote host, first download the report file to a machine where you can view the report on a web browser or in Excel.
 +
 The log path and report path are as follows:
 
 ** Log Path: `<output-path>/<unique-run-dir>/<cluster-name>/logs`
-** Report Path: `<output-path>/<unique-run-dir>/<cluster-name>/results/uhc_<cluster-name>_<YYYYMMDDHHMMSS>.html`
+** HTML Report Path: `<output-path>/<unique-run-dir>/<cluster-name>/results/uhc_<cluster-name>_<YYYYMMDDHHMMSS>.html`
+** Excel Report Path: `<output-path>/<unique-run-dir>/<cluster-name>/results/uhc_<cluster-name>_<YYYYMMDDHHMMSS>.xlsx`
 
+// 10-APRIL_2026 April 15, 2026 update
