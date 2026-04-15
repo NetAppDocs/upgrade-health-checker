@@ -36,7 +36,7 @@ Set up a virtual machine for Upgrade Health Checker with the following specifica
 If internet access is unavailable, consult NetApp for guidance.
 * Recommended packages: Install a web server to facilitate access.
 
-Additionally, ensure the virtual machine can connect to the telemetry endpoint (https://support.netapp.com/) through HTTPS to enable NetApp to receive AutoSupport information about your upgrade plans.
+Additionally, ensure the virtual machine can connect to the telemetry endpoint (https://support.netapp.com/ and https://api.activeiq.netapp.com) through HTTPS to enable NetApp to receive AutoSupport information about your upgrade plans.
 
 
 .Steps
