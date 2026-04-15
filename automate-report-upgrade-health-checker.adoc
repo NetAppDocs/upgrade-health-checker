@@ -54,12 +54,13 @@ Cron job:
 +
 NOTE: Each execution of the program is a unique run and will have all the associated data, logs, and results in the associated `runs` folder.
 
-. Open the report file (named `uhc_<cluster-name>_<YYYYMMDDHHMMSS>`) in a web browser or Microsoft Excel to view the report. If you are running Upgrade Health Checker on a remote host, first download the report file to a machine where you can view it on a web browser or in Excel.
+. Open the report file (named `uhc_<cluster-name>_<YYYYMMDDHHMMSS>`) in a web browser, Microsoft Excel, or JSON viewer to view the report. If you are running Upgrade Health Checker on a remote host, first download the report file to a machine where you can view the report on a web browser, in Excel, or in a JSON viewer.
 +
 The log path and report path are as follows:
 
 ** Log Path: `<output-path>/<unique-run-dir>/<cluster-name>/logs`
 ** HTML Report Path: `<output-path>/<unique-run-dir>/<cluster-name>/results/uhc_<cluster-name>_<YYYYMMDDHHMMSS>.html`
 ** Excel Report Path: `<output-path>/<unique-run-dir>/<cluster-name>/results/uhc_<cluster-name>_<YYYYMMDDHHMMSS>.xlsx`
+** JSON Report Path: `<output-path>/<unique-run-dir>/<cluster-name>/results/uhc_<cluster-name>_<YYYYMMDDHHMMSS>.json`
 
 // 10-APRIL_2026 April 15, 2026 update
