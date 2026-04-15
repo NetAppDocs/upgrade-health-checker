@@ -17,7 +17,7 @@ Learn what's new in Upgrade Health Checker. You can find additional enhancement 
 
 This update of Upgrade Health Checker documentation includes the following features.
 
-* UHC needs access to a new end point (https://api.aiq.netapp.com) for auto-updates features to work.
+* UHC needs access to a new end point (https://api.activeiq.netapp.com) for auto-updates features to work.
 +
 link:set-up-upgrade-health-checker.html[Download and set up Upgrade Health Checker].
 

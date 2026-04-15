@@ -31,7 +31,7 @@ Set up a virtual machine for Upgrade Health Checker with the following specifica
 * Hosting requirements: Place the VM in a location with cluster connectivity and internet access to allow for automatic tool updates. The machine should have access to the following endpoints through HTTPS (443) to conduct automatic updates:
 ** https://api.uhc.netapp.com
 ** https://gql.aiq.netapp.com
-** https://api.aiq.netapp.com
+** https://api.activeiq.netapp.com
 +
 If internet access is unavailable, consult NetApp for guidance.
 * Recommended packages: Install a web server to facilitate access.
