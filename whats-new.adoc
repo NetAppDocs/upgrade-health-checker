@@ -15,12 +15,13 @@ Learn what's new in Upgrade Health Checker. You can find additional enhancement 
 
 == 15 April 2026
 
-This update of the Upgrade Health Checker documentation includes the following features:
+This update of Upgrade Health Checker documentation includes the following features.
 
-* A new host VM access point requirement for the https://api.aiq.netapp.com endpoint. 
+* UHC needs access to a new end point (https://api.aiq.netapp.com) for auto-updates features to work.
 +
 link:set-up-upgrade-health-checker.html[Download and set up Upgrade Health Checker].
-* A new report output in Excel format to complement the existing HTML report output. The Excel report provides the same comprehensive information as the HTML report but in a format that can be easily manipulated for further analysis and sharing.
+
+* UHC now provides a new report format (.XLSX - human-editable) that complements the HTML (human-readable) and JSON (machine-readable) formats.
 +
 link:generate-report-upgrade-health-checker.html[Generate an ONTAP upgrade report].
 +
