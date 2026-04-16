@@ -28,15 +28,15 @@ Set up a virtual machine for Upgrade Health Checker with the following specifica
 ** RHEL8
 ** RHEL9
 * Storage: Provide a root volume with a minimum of 100 GB and an additional NFS volume of at least 100 GB to ensure data preservation if the virtual machine is compromised.
-* Hosting requirements: Place the VM in a location with cluster connectivity and internet access to allow for automatic tool updates. The machine should have access to the following endpoints through HTTPS to conduct automatic updates:
+* Hosting requirements: Place the VM in a location with cluster connectivity and internet access to allow for automatic tool updates. The machine should have access to the following endpoints through HTTPS (443) to conduct automatic updates:
 ** https://api.uhc.netapp.com
 ** https://gql.aiq.netapp.com
+** https://api.activeiq.netapp.com
 +
 If internet access is unavailable, consult NetApp for guidance.
 * Recommended packages: Install a web server to facilitate access.
 
-Additionally, ensure the virtual machine can connect to the telemetry endpoint (https://support.netapp.com/) through HTTPS to enable NetApp to receive AutoSupport information about your upgrade plans.
-
+Additionally, ensure the virtual machine can connect to the telemetry endpoint (https://support.netapp.com/ and https://api.activeiq.netapp.com) through HTTPS to enable NetApp to receive AutoSupport information about your upgrade plans.
 
 
 .Steps
@@ -138,3 +138,5 @@ conjur_password: "{{ lookup('cyberark.conjur.conjur_variable', 'prodvault/devops
 .What's next?
 
 You can use Upgrade Health Checker to help you plan for an ONTAP upgrade by link:generate-report-upgrade-health-checker.html[generating an upgrade report].
+
+// 10-APRIL_2026 April 15, 2026 update

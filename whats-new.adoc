@@ -13,9 +13,24 @@ summary: "Learn what's new in this doc site."
 [.lead]
 Learn what's new in Upgrade Health Checker. You can find additional enhancement information by navigating to the Upgrade Health Checker tile in the link:https://console.netapp.com/automationHub[NetApp Console Automation Hub^] and viewing the latest Upgrade Health Checker download files.
 
+== 15 April 2026
+
+This update of Upgrade Health Checker documentation includes the following features.
+
+* UHC needs access to a new end point (https://api.activeiq.netapp.com) for auto-updates features to work.
++
+link:set-up-upgrade-health-checker.html[Download and set up Upgrade Health Checker].
+
+* UHC now provides a new report format (.XLSX - human-editable) that complements the HTML (human-readable) and JSON (machine-readable) formats.
++
+link:generate-report-upgrade-health-checker.html[Generate an ONTAP upgrade report].
++
+link:automate-report-upgrade-health-checker.html[Automate generating upgrade plans with Upgrade Health Checker].
 
 == 13 February 2026
 
 Upgrade Health Checker offers a new solution for generating comprehensive, onsite reports to enable you to complete a successful ONTAP upgrade. It can be used with existing automation and orchestration frameworks to enhance efficiency when upgrading single or multiple clusters. Upgrade Health Checker supports upgrades to ONTAP 9.11.1 and later.
 
 link:learn-about-upgrade-health-checker.html[Learn more about Upgrade Health Checker].
+
+// 10-APRIL_2026 April 15, 2026 update
