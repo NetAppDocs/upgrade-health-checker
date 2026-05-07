@@ -76,6 +76,124 @@ If internet access is unavailable, consult NetApp for guidance.
 +
 `sudo chmod +x /opt/uhc/tool/uhc`
 
+. Create the configuration file `config.yaml` with the following content:
++
+----
+# opt/uhc/tool/config.yaml
+# Production config file for Upgrade Health Checker
+
+# Accept EULA (required for non-interactive environments)
+ACCEPT_EULA: true
+
+# Application configuration
+APP:
+  RUNS_PATH: "/mnt/nfs/uhc/runs/"
+
+# Cluster credentials
+CLUSTER:
+    USERNAME: "uhctool"
+    PASSWORD: "<password>"
+
+TARGET_ONTAP_VERSIONS: "" 
+# leave empty to specify per-run or use "current" 
+
+SKIP_COMPATIBILITY_CHECKS: false
+----
+
+CAUTION: For a production system, if you have an enterprise password management solution, for example, if you have CyberArk and Conjur, you can configure your environment to avoid passing credentials through a yaml file or command line. 
+
+[start=3]
+. [[step3]] Create the `uhctool` service account for each ONTAP cluster. 
++
+Use the following CLI commands to configure the necessary permissions:
++
+[source,cli]
+----
+security login rest-role create -role uhctool -api /api -access readonly -vserver <cluster-name>
+
+security login rest-role create -role uhctool -api /api/support/autosupport -access read_create_modify -vserver <cluster-name>
+
+security login rest-role create -role uhctool -api /api/support/autosupport/messages -access read_create_modify -vserver <cluster-name>
+
+vserver services web access create -name spi -role uhctool -vserver
+
+security login create -user-or-group-name uhctool -role uhctool -application http -authentication-method password
+
+security login create -user-or-group-name uhctool -role uhctool -application ssh -authentication-method password
+----
++
+NOTE: You can build an Ansible playbook to automate the deployment of the `uhctool` role and service account across all ONTAP clusters.
++
+After configuring each cluster, verify connectivity to each cluster:
++
+`/opt/uhc/tool/uhc --test all --cluster-ip <cluster-mgmt-ip>`
+
+.  Set up cron schedules or other automation to run Upgrade Health Checker. For example, you can set up a cron job to run Upgrade Health Checker weekly.
+
+.. Create the automation script.
++
+----
+#! /bin/bash
+# /opt/uhc/tool/uhccron.sh
+# Automated weekly Upgrade Health Checker run for all managed clusters
+# schedule: Every Monday at 4am
+
+cd /opt/uhc/tool/
+
+# Cluster1 - keep current version (health check only)
+/opt/uhc/tool/uhc --cluster-ip cluster1-mgmt.example.com \ --target-ontap-version current
+
+# Cluster2 - target upgrade to 9.16.1
+/opt/uhc/tool/uhc --cluster-ip cluster2-mgmt.example.com \ --target-ontap-version 9.16.1
+
+# Cluster3 - target upgrade to 9.17.1
+/opt/uhc/tool/uhc --cluster-ip cluster3-mgmt.example.com \ --target-ontap-version 9.17.1
+
+# Cluster4 - by IP address
+/opt/uhc/tool/uhc --cluster-ip 10.20.30.40 --target-ontap-version 9.16.1
+
+# Add additional clusters as needed
+
+# Make the script executionable
+chmod +x /opt/uhc/tool/uhccron.sh
+----
+
+.. Set up the cron job to run the script weekly.
++
+----
+# Edit the crontab for the uhctool user
+crontab -e
+
+# Add the following line to schedule the script to run every Monday at 4:00 am
+0 4 * * 1 /opt/uhc/tool/uhccron.sh
+----
+
+[NOTE]
+================
+* Use `--target-ontap-version current` for ongoing health monitoring without a specific upgrade target.
+* Credentials are automatically read from `config.yaml`.
+* EULA acceptance is set in `config.yaml`.
+* Each cluster run create a separate output directory under `/mnt/nfs/uhc/runs/`
+================
+
+[start=5]
+. [[step5]] On the day of your upgrade, run Upgrade Health Checker interactively for the target cluster to get the most current assessment before you begin your upgrade.
++
+----
+cd /opt/uhc/tool/
+
+./uhc \
+  --cluster-ip=<cluster-ip> \
+  --cluster-username=<cluster-username> \
+  --cluster-password=<cluster-password> \
+  --target-ontap-version=<target-ontap-version> \
+  --accept-eula=true
+----
++
+Review the output and address any issues before proceeding with your upgrade. If you have multiple clusters, run the above command for each cluster to get individual reports.
+
+
+
 . Download the Upgrade Health Checker binary by link:https://console.netapp.com/automationHub[navigating to the NetApp Console Automation Hub] and finding the Upgrade Health Checker tile.
 
 . Set up the Upgrade Health Checker virtual machine and use SSH to place the binary in the location of your choice.
