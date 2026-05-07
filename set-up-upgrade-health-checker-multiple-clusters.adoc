@@ -45,18 +45,36 @@ a| *Runs output path* | `/mnt/nfs/uhc/runs/` | On NFS volume for durability.
 //** RHEL8
 //** RHEL9
 //* Storage: Provide a root volume with a minimum of 100 GB and an additional NFS volume of at least 100 GB to ensure data preservation if the virtual machine is compromised.
-* Hosting requirements: Place the VM in a location with cluster connectivity and internet access to allow for automatic tool updates. The machine should have access to the following endpoints through HTTPS (443) to conduct automatic updates:
+* Additionally, place the VM in a location with cluster connectivity and internet access to allow for automatic tool updates. The machine should have access to the following endpoints through HTTPS (443) to conduct automatic updates and to enable NetApp to receive AutoSupport information about your upgrade plans:
+** https://support.netapp.com/
 ** https://api.uhc.netapp.com
 ** https://gql.aiq.netapp.com
 ** https://api.activeiq.netapp.com
 +
 If internet access is unavailable, consult NetApp for guidance.
-* Recommended packages: Install a web server to facilitate access.
+* Recommended packages: 
+** Install a web server to facilitate access.
 
-Additionally, ensure the virtual machine can connect to the telemetry endpoint (https://support.netapp.com/ and https://api.activeiq.netapp.com) through HTTPS to enable NetApp to receive AutoSupport information about your upgrade plans.
+//Additionally, ensure the virtual machine can connect to the telemetry endpoint (https://support.netapp.com/ and https://api.activeiq.netapp.com) through HTTPS to enable NetApp to receive AutoSupport information about your upgrade plans.
 
 
 .Steps
+. Create the directory structure, mount the NFS volume to the virtual machine, and set up the Upgrade Health Checker binary.
+.. Create the directory structure:
++
+`mkdir -p /opt/uhc/tool`
++
+`mkdir -p /mnt/nfs/uhc/runs`
+
+.. Mount the NFS volume to the virtual machine:
++
+`sudo mount -t nfs nfs-server:/uhc_data /mnt/nfs/uhc`
+
+.. Set up the UHC binary and make it executable:
++
+`sudo cp uhc /opt/uhc/tool/`
++
+`sudo chmod +x /opt/uhc/tool/uhc`
 
 . Download the Upgrade Health Checker binary by link:https://console.netapp.com/automationHub[navigating to the NetApp Console Automation Hub] and finding the Upgrade Health Checker tile.
 
