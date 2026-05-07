@@ -8,8 +8,10 @@ indexpage:
       links: 
         - title: Learn about Upgrade Health Checker
           url: learn-about-upgrade-health-checker.html
-        - title: Set up Upgrade Health Checker
+        - title: Set up Upgrade Health Checker for a single cluster
           url: set-up-upgrade-health-checker.html
+        - title: Set up Upgrade Health Checker for multiple clusters
+          url: set-up-upgrade-health-checker-multiple-clusters.html
     - title: Use Upgrade Health Checker
       links: 
         - title: Generate an ONTAP upgrade report
