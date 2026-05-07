@@ -1,10 +1,10 @@
 ---
 sidebar: sidebar
-permalink: set-up-upgrade-health-checker.html
+permalink: set-up-upgrade-health-checker-multiple-clusters.html
 keywords: upgrade, health, checker, set up, download
 summary: "You can download Upgrade Health Checker to generate onsite, comprehensive reports before upgrading to a newer version of ONTAP."
 ---
-= Download and set up Upgrade Health Checker for a single cluster
+= Download and set up Upgrade Health Checker for multiple clusters
 :hardbreaks:
 :icons: font
 :linkattrs:
@@ -22,12 +22,29 @@ Upgrade Health Checker supports upgrades for on-premises ONTAP versions 9.11.1 a
 
 Set up a virtual machine for Upgrade Health Checker with the following specifications:
 
-* Processing and memory: m5.large VM or equivalent with 2 vCPUs and 8 GiB RAM.
-* Recommended operating system: Any Linux OS with glibc library version 2.28 or higher for optimal compatibility. This includes:
-** Ubuntu 22.04
-** RHEL8
-** RHEL9
-* Storage: Provide a root volume with a minimum of 100 GB and an additional NFS volume of at least 100 GB to ensure data preservation if the virtual machine is compromised.
+|===
+| Component | Specification | Notes
+
+a| *VM* | m5.large VM or equivalent with 2 vCPUs and 8 GiB RAM.
+ | Dedicated VM for UHC
+a| *OS* | 
+Any Linux OS with glibc library version 2.28 or higher for optimal compatibility. This includes:
+* Ubuntu 22.04
+* RHEL8
+* RHEL9 | -
+a| *Root Volume* | 100 GB minimum | Ensure 8+GB free in `/tmp`.
+a| *NFS Volume* | An additional 100 GB minimum | For UHC run output - to ensure data preservation if the virtual machine is compromised.
+a| *UHC install path* | `/opt/uhc/tool/` | Binary plus `config.yaml` file.
+a| *Runs output path* | `/mnt/nfs/uhc/runs/` | On NFS volume for durability.
+|===
+
+
+//* Processing and memory: m5.large VM or equivalent with 2 vCPUs and 8 GiB RAM.
+//* Recommended operating system: Any Linux OS with glibc library version 2.28 or higher for optimal compatibility. This includes:
+//** Ubuntu 22.04
+//** RHEL8
+//** RHEL9
+//* Storage: Provide a root volume with a minimum of 100 GB and an additional NFS volume of at least 100 GB to ensure data preservation if the virtual machine is compromised.
 * Hosting requirements: Place the VM in a location with cluster connectivity and internet access to allow for automatic tool updates. The machine should have access to the following endpoints through HTTPS (443) to conduct automatic updates:
 ** https://api.uhc.netapp.com
 ** https://gql.aiq.netapp.com
@@ -41,7 +58,7 @@ Additionally, ensure the virtual machine can connect to the telemetry endpoint (
 
 .Steps
 
-. Download the Upgrade Health Checker binary by navigating to the link:https://console.netapp.com/automationHub[NetApp Console Automation Hub^] and finding the Upgrade Health Checker tile.
+. Download the Upgrade Health Checker binary by link:https://console.netapp.com/automationHub[navigating to the NetApp Console Automation Hub] and finding the Upgrade Health Checker tile.
 
 . Set up the Upgrade Health Checker virtual machine and use SSH to place the binary in the location of your choice.
 
