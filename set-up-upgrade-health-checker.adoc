@@ -47,8 +47,6 @@ If internet access is unavailable, consult NetApp for guidance.
 
 .Steps
 
-//. Download the Upgrade Health Checker binary by navigating to the link:https://console.netapp.com/automationHub[NetApp Console Automation Hub^] and finding the Upgrade Health Checker tile.
-
 . Set up the Upgrade Health Checker virtual machine and use SSH to place the binary in the location of your choice.
 
 . Verify the digital signature of Upgrade Health Checker.
@@ -162,13 +160,6 @@ a| *UHC install path* | `/opt/uhc/tool/` | Binary plus `config.yaml` file.
 a| *Runs output path* | `/mnt/nfs/uhc/runs/` | On NFS volume for durability.
 |===
 
-
-//* Processing and memory: m5.large VM or equivalent with 2 vCPUs and 8 GiB RAM.
-//* Recommended operating system: Any Linux OS with glibc library version 2.28 or higher for optimal compatibility. This includes:
-//** Ubuntu 22.04
-//** RHEL8
-//** RHEL9
-//* Storage: Provide a root volume with a minimum of 100 GB and an additional NFS volume of at least 100 GB to ensure data preservation if the virtual machine is compromised.
 * Additionally, place the VM in a location with cluster connectivity and internet access to allow for automatic tool updates. The machine should have access to the following endpoints through HTTPS (443) to conduct automatic updates and to enable NetApp to receive AutoSupport information about your upgrade plans:
 ** https://support.netapp.com/
 ** https://api.uhc.netapp.com
@@ -176,11 +167,20 @@ a| *Runs output path* | `/mnt/nfs/uhc/runs/` | On NFS volume for durability.
 ** https://api.activeiq.netapp.com
 +
 If internet access is unavailable, consult NetApp for guidance.
++
+Refer to the following table for network and endpoint requirements:
++
+|===
+| Endpoint | Protocol | Purpose | Required? 
+
+a| ONTAP Cluster management LIF | HTTPS | Cluster connectivity & ASUP collection | Yes
+a| support.netapp.com | HTTPS | Telemetry endpoint | Optional
+a| api.uhc.netapp.com | HTTPS | Auto-update | Optional
+a| gql.aiq.netapp.com | HTTPS | Auto-update | Optional
+a| https://api.aiq.netapp.com | HTTPS | Auto-update | Optional
+|===
 * Recommended packages: 
 ** Install a web server to facilitate access.
-
-//Additionally, ensure the virtual machine can connect to the telemetry endpoint (https://support.netapp.com/ and https://api.activeiq.netapp.com) through HTTPS to enable NetApp to receive AutoSupport information about your upgrade plans.
-
 
 .Steps
 . Create the directory structure, mount the NFS volume to the virtual machine, and set up the Upgrade Health Checker binary.
