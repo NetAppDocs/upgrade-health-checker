@@ -1,0 +1,53 @@
+---
+sidebar: sidebar
+permalink: troubleshoot-upgrade-health-checker.html
+keywords: upgrade, health, checker, troubleshoot, issues, errors, ontap
+summary: "Troubleshooting Upgrade Health Checker: Common issues, errors, and solutions for ONTAP upgrades."
+---
+= Troubleshoot Upgrade Health Checker
+:hardbreaks:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+[.lead]
+Use this topic to troubleshoot common Upgrade Health Checker issues and resolve errors that can block ONTAP upgrade planning. The following questions and answers help you identify likely causes, understand tool behavior, and apply the appropriate next steps.
+
+== Issue: "Permission denied" or "Cannot execute binary" on /tmp
+The following error occurs when running the tool:
+----
+[Errno 13] Permission denied
+OSError: [Errno 13] Permission denied: '/tmp/_MEI...'
+Cannot execute binary file
+----
+This error can occur when the tool is unable to execute files in the `/tmp` directory, which is used for extracting and running the tool's components. This can be caused by restrictive permissions on the `/tmp` directory or security policies that prevent execution from this location.
+
+To resolve this issue:
+
+. Check if `/tmp` has `noexec` enabled:
+----
+mount | grep /tmp
+# If you see `noexec` in the output, this is the issue.
+----
+
+. Remount `/tmp` with `exec` (requires root by System administrator):
+----
+# Temporary fix
+sudo mount -o remount,exec /tmp
+# Permanent fix - edit /etc/fstab
+# Change "noexec" to "exec" for /tmp mount point
+----
++
+If the previous step cannot be performed due to constraints, you can configure the tool to use an alternative temporary directory with appropriate permissions:
+----
+mkdir -p /custom-tmp-path 
+# This only needs to be done one time.
+TMPDIR=/custom-tmp-path ./uhc 
+# The TMPDIR prefix has to be added every time.
+----
+
+NOTE: The custom path must first exist for this workaround to work. If it doesn’t already exist, it is not created and falls back to using `/tmp`.
+
+. After adjusting permissions or changing the temporary directory, try running the tool again to see if the issue is resolved.
+
+// OTHERDOC-222, 2026-MAY-12
