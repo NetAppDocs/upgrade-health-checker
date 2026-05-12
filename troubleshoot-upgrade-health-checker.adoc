@@ -56,8 +56,7 @@ NOTE: The custom path must first exist for this workaround to work. If it doesnâ
 [start=4]
 . [[step4]] After adjusting permissions or changing the temporary directory, try running the tool again to see if the issue is resolved.
 
-== Maintain Upgrade Health Checker
-
+== Maintenance tasks
 Maintain Upgrade Health Checker by regularly checking for updates, monitoring logs for any recurring issues, and ensuring that the tool is configured correctly for your environment. If you encounter new issues or need further assistance, refer to the NetApp support resources or contact NetApp support.
 
 === /tmp space management
