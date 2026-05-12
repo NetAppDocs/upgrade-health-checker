@@ -73,7 +73,8 @@ crontab -e
 
 NOTE: For ongoing health monitoring, use `--target-ontap-version current` without a specific upgrade target.
 
-. After Upgrade Health Checker completes its checks, navigate to the `runs` folder to view the upgrade plan and cluster report.
+[start=5]
+. [[step5]]After Upgrade Health Checker completes its checks, navigate to the `runs` folder to view the upgrade plan and cluster report.
 +
 NOTE: Each execution of the program is a unique run and will have all the associated data, logs, and results in the associated `runs` folder.
 
