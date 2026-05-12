@@ -4,7 +4,7 @@ permalink: set-up-upgrade-health-checker.html
 keywords: upgrade, health, checker, set up, download
 summary: "You can download Upgrade Health Checker to generate onsite, comprehensive reports before upgrading to a newer version of ONTAP."
 ---
-= Download and set up Upgrade Health Checker for a single cluster
+= Download and set up Upgrade Health Checker
 :hardbreaks:
 :icons: font
 :linkattrs:
@@ -17,27 +17,31 @@ You can download Upgrade Health Checker to generate onsite, comprehensive report
 
 Upgrade Health Checker supports upgrades for on-premises ONTAP versions 9.11.1 and later. If you are using Cloud Volumes ONTAP, refer to link:https://docs.netapp.com/us-en/storage-management-cloud-volumes-ontap/task-updating-ontap-cloud.html#supported-upgrade-paths[Upgrade Cloud Volumes ONTAP] for information on upgrading your system. 
 
+== Download and set up for a single cluster
 
 .Before you begin
 
 Set up a virtual machine for Upgrade Health Checker with the following specifications:
 
-* Processing and memory: m5.large VM or equivalent with 2 vCPUs and 8 GiB RAM.
-* Recommended operating system: Any Linux OS with glibc library version 2.28 or higher for optimal compatibility. This includes:
-** Ubuntu 22.04
-** RHEL8
-** RHEL9
-* Storage: Provide a root volume with a minimum of 100 GB and an additional NFS volume of at least 100 GB to ensure data preservation if the virtual machine is compromised.
-* Hosting requirements: Place the VM in a location with cluster connectivity and internet access to allow for automatic tool updates. The machine should have access to the following endpoints through HTTPS (443) to conduct automatic updates:
+
+|===
+| Component | Specification
+
+a| *VM* | m5.large VM or equivalent with 2 vCPUs and 8 GiB RAM
+a| *Operating System* | Any Linux OS with glibc library version 2.28 or higher (Ubuntu 22.04, RHEL8, or RHEL9)
+a| *Disk space* | At least 8+ GB free in `/tmp` with execute permissions
+a| *Network* | HTTPS connectivity to the ONTAP cluster(s) management LIF
+a| *ONTAP version* | Cluster running ONTAP 9.11.1 or later
+|===
+* Additionally, place the VM in a location with cluster connectivity and internet access to allow for automatic tool updates. The machine should have access to the following endpoints through HTTPS (443) to conduct automatic updates and to enable NetApp to receive AutoSupport information about your upgrade plans:
+** https://support.netapp.com/
 ** https://api.uhc.netapp.com
 ** https://gql.aiq.netapp.com
 ** https://api.activeiq.netapp.com
 +
 If internet access is unavailable, consult NetApp for guidance.
-* Recommended packages: Install a web server to facilitate access.
-
-Additionally, ensure the virtual machine can connect to the telemetry endpoint (https://support.netapp.com/ and https://api.activeiq.netapp.com) through HTTPS to enable NetApp to receive AutoSupport information about your upgrade plans.
-
+* Recommended packages: 
+** Install a web server to facilitate access.
 
 .Steps
 
@@ -93,7 +97,6 @@ security login create -user-or-group-name uhctool -role uhctool -application htt
 security login create -user-or-group-name uhctool -role uhctool -application ssh -authentication-method password
 ----
 
-
 . (Optional) Set up credential management to secure access to the application. 
 +
 For example, if you have CyberArk and Conjur, you can configure your environment to avoid passing credentials through a yaml file or command line.
@@ -134,6 +137,116 @@ conjur_username: "{{ lookup('cyberark.conjur.conjur_variable', 'prodvault/devops
 conjur_password: "{{ lookup('cyberark.conjur.conjur_variable', 'prodvault/devops/<Main-Conjur-Safe>/<Account name>/password', validate_certs=false) }}"
 ----
 
+== Download and set up for multiple clusters
+.Before you begin
+
+Set up a virtual machine for Upgrade Health Checker with the following specifications:
+
+|===
+| Component | Specification | Notes
+
+a| *VM* | m5.large VM or equivalent with 2 vCPUs and 8 GiB RAM.
+ | Dedicated VM for UHC
+a| *OS* | 
+Any Linux OS with glibc library version 2.28 or higher for optimal compatibility. This includes:
+* Ubuntu 22.04
+* RHEL8
+* RHEL9 | -
+a| *Root Volume* | 100 GB minimum | Ensure 8+GB free in `/tmp`.
+a| *NFS Volume* | An additional 100 GB minimum | For UHC run output - to ensure data preservation if the virtual machine is compromised.
+a| *UHC install path* | `/opt/uhc/tool/` | Binary plus `config.yaml` file.
+a| *Runs output path* | `/mnt/nfs/uhc/runs/` | On NFS volume for durability.
+|===
+
+
+//* Processing and memory: m5.large VM or equivalent with 2 vCPUs and 8 GiB RAM.
+//* Recommended operating system: Any Linux OS with glibc library version 2.28 or higher for optimal compatibility. This includes:
+//** Ubuntu 22.04
+//** RHEL8
+//** RHEL9
+//* Storage: Provide a root volume with a minimum of 100 GB and an additional NFS volume of at least 100 GB to ensure data preservation if the virtual machine is compromised.
+* Additionally, place the VM in a location with cluster connectivity and internet access to allow for automatic tool updates. The machine should have access to the following endpoints through HTTPS (443) to conduct automatic updates and to enable NetApp to receive AutoSupport information about your upgrade plans:
+** https://support.netapp.com/
+** https://api.uhc.netapp.com
+** https://gql.aiq.netapp.com
+** https://api.activeiq.netapp.com
++
+If internet access is unavailable, consult NetApp for guidance.
+* Recommended packages: 
+** Install a web server to facilitate access.
+
+//Additionally, ensure the virtual machine can connect to the telemetry endpoint (https://support.netapp.com/ and https://api.activeiq.netapp.com) through HTTPS to enable NetApp to receive AutoSupport information about your upgrade plans.
+
+
+.Steps
+. Create the directory structure, mount the NFS volume to the virtual machine, and set up the Upgrade Health Checker binary.
+.. Create the directory structure:
++
+`mkdir -p /opt/uhc/tool`
++
+`mkdir -p /mnt/nfs/uhc/runs`
+
+.. Mount the NFS volume to the virtual machine:
++
+`sudo mount -t nfs nfs-server:/uhc_data /mnt/nfs/uhc`
+
+.. Set up the UHC binary and make it executable:
++
+`sudo cp uhc /opt/uhc/tool/`
++
+`sudo chmod +x /opt/uhc/tool/uhc`
+
+. Create the configuration file `config.yaml` with the following content:
++
+----
+# opt/uhc/tool/config.yaml
+# Production config file for Upgrade Health Checker
+
+# Accept EULA (required for non-interactive environments)
+ACCEPT_EULA: true
+
+# Application configuration
+APP:
+  RUNS_PATH: "/mnt/nfs/uhc/runs/"
+
+# Cluster credentials
+CLUSTER:
+    USERNAME: "uhctool"
+    PASSWORD: "<password>"
+
+TARGET_ONTAP_VERSIONS: "" 
+# leave empty to specify per-run or use "current" 
+
+SKIP_COMPATIBILITY_CHECKS: false
+----
+
+CAUTION: For a production system, if you have an enterprise password management solution, for example, if you have CyberArk and Conjur, you can configure your environment to avoid passing credentials through a yaml file or command line. 
+
+[start=3]
+. [[step3]] Create the `uhctool` service account for each ONTAP cluster. 
++
+Use the following CLI commands to configure the necessary permissions:
++
+[source,cli]
+----
+security login rest-role create -role uhctool -api /api -access readonly -vserver <cluster-name>
+
+security login rest-role create -role uhctool -api /api/support/autosupport -access read_create_modify -vserver <cluster-name>
+
+security login rest-role create -role uhctool -api /api/support/autosupport/messages -access read_create_modify -vserver <cluster-name>
+
+vserver services web access create -name spi -role uhctool -vserver
+
+security login create -user-or-group-name uhctool -role uhctool -application http -authentication-method password
+
+security login create -user-or-group-name uhctool -role uhctool -application ssh -authentication-method password
+----
++
+NOTE: You can build an Ansible playbook to automate the deployment of the `uhctool` role and service account across all ONTAP clusters.
++
+After configuring each cluster, verify connectivity to each cluster:
++
+`/opt/uhc/tool/uhc --test all --cluster-ip <cluster-mgmt-ip>`
 
 .What's next?
 
