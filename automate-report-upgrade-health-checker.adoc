@@ -32,7 +32,45 @@ Upgrade Health Checker supports upgrades for on-premises ONTAP versions 9.11.1 a
   --target-ontap-version=<target-ontap-version> \
   --accept-eula=true
 ----
+
+. Create an automation script for cron schedules to run Upgrade Health Checker. Here is an example script that runs Upgrade Health Checker for multiple clusters. The binary and config.yaml files have been installed into /opt/uhc/tool/.
 +
+----
+#! /bin/bash
+# /opt/uhc/tool/uhccron.sh
+# Automated weekly Upgrade Health Checker run for all managed clusters
+# Schedule: Every Monday at 4am
+
+cd /opt/uhc/tool/
+
+# Cluster1 - keep current version (health check only)
+/opt/uhc/tool/uhc --cluster-ip cluster1-mgmt.example.com \ --target-ontap-version current
+
+# Cluster2 - target upgrade to 9.16.1
+/opt/uhc/tool/uhc --cluster-ip cluster2-mgmt.example.com \ --target-ontap-version 9.16.1
+
+# Cluster3 - target upgrade to 9.17.1
+/opt/uhc/tool/uhc --cluster-ip cluster3-mgmt.example.com \ --target-ontap-version 9.17.1
+
+# Cluster4 - by IP address
+/opt/uhc/tool/uhc --cluster-ip 10.20.30.40 --target-ontap-version 9.16.1
+
+# Add additional clusters as needed
+
+# Make the script executionable
+chmod +x /opt/uhc/tool/uhccron.sh
+----
+
+. Set up the cron job to run the script weekly.
++
+----
+# Edit the crontab for the uhctool user
+crontab -e
+
+# Add the following line to schedule the script to run Monday through Friday at 4:00 am
+0 4 * * 1-5 /opt/uhc/tool/uhccron.sh
+----
+
 Here is an example of a cronjob that runs the tool Monday through Friday at 4AM. The binary and config.yaml files have been installed into /opt/uhc/tool/.
 +
 Bash script:
@@ -50,6 +88,8 @@ Cron job:
 0 4 * * 1-5 /usr/local/bin/uhccron.sh
 ----
 
+NOTE: For ongoing health monitoring, use `--target-ontap-version current` without a specific upgrade target.
+
 . After Upgrade Health Checker completes its checks, navigate to the `runs` folder to view the upgrade plan and cluster report.
 +
 NOTE: Each execution of the program is a unique run and will have all the associated data, logs, and results in the associated `runs` folder.
@@ -64,3 +104,4 @@ The log path and report path are as follows:
 ** JSON Report Path: `<output-path>/<unique-run-dir>/<cluster-name>/results/uhc_<cluster-name>_<YYYYMMDDHHMMSS>.json`
 
 // 10-APRIL_2026 April 15, 2026 update
+// OTHERD0C-222, 2026-MAY-07
