@@ -44,8 +44,8 @@ NOTE: Upgrade Health Checker is a self-contained package and will need to unpack
 The comprehensive check ensures the virtual machine hosting Upgrade Health Checker has:
 +
 ** Connectivity to the ONTAP cluster IP address through HTTPS
-** Connectivity to the telemetry endpoint (https://support.netapp.com/ and https://api.activeiq.netapp.com) through HTTPS
-** Connectivity to the auto-update endpoints (https://api.uhc.netapp.com, https://gql.aiq.netapp.com, and https://api.activeiq.netapp.com) through HTTPS (443)
+** Connectivity to the telemetry endpoint (+https://support.netapp.com/+ and +https://api.activeiq.netapp.com+) through HTTPS
+** Connectivity to the auto-update endpoints (+https://api.uhc.netapp.com+, +https://gql.aiq.netapp.com+, and +https://api.activeiq.netapp.com+) through HTTPS (443)
 ** At least 4 GB of available `/tmp` space
 
 . (Optional) If you want to use a configuration file to store parameters, rename the `config.yaml.example` file located in the same location you downloaded the binary to `config.yaml`.
