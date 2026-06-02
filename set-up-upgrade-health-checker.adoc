@@ -20,7 +20,7 @@ Upgrade Health Checker supports upgrades for on-premises ONTAP versions 9.11.1 a
 == Download Upgrade Health Checker
 * Download the Upgrade Health Checker binary by navigating to the link:https://console.netapp.com/automationHub[NetApp Console Automation Hub^] and finding the Upgrade Health Checker tile.
 
-== Set up for a single cluster
+== Set up for a single cluster or test cluster environment
 
 .Before you begin
 

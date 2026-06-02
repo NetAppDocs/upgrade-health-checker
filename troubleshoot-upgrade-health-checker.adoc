@@ -22,7 +22,7 @@ The following error occurs when running the tool:
 OSError: [Errno 13] Permission denied: '/tmp/_MEI...'
 Cannot execute binary file
 ----
-This error can occur when the tool is unable to execute files in the `/tmp` directory, which is used for extracting and running the tool's components. This can be caused by restrictive permissions on the `/tmp` directory or security policies that prevent execution from this location.
+This error might occur when the tool is unable to execute files in the `/tmp` directory, which is used for extracting and running the tool's components. This can be caused by restrictive permissions on the `/tmp` directory or security policies that prevent execution from this location.
 
 To resolve this issue:
 
