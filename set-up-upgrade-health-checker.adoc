@@ -20,6 +20,7 @@ Upgrade Health Checker supports upgrades for on-premises ONTAP versions 9.11.1 a
 == Download Upgrade Health Checker
 * Download the Upgrade Health Checker binary by navigating to the link:https://console.netapp.com/automationHub[NetApp Console Automation Hub^] and finding the Upgrade Health Checker tile.
 
+
 // start of tabbed content 
 [role="tabbed-block"] 
 
@@ -259,16 +260,20 @@ After configuring each cluster, verify connectivity to each cluster:
 +
 `/opt/uhc/tool/uhc --test all --cluster-ip <cluster-mgmt-ip>`
 ----
-
 ----
 --
 ====
 
 // end of tabbed content
 
+.Related information
+* link:generate-report-upgrade-health-checker.html[Generate an ONTAP upgrade report]
+* link:automate-report-upgrade-health-checker.html[Automate generating upgrade reports] 
+* link:upgrade-health-checker-input-parameters.html[Learn about the input parameters for Upgrade Health Checker]
+
 .What's next?
 
 You can use Upgrade Health Checker to help you plan for an ONTAP upgrade by link:generate-report-upgrade-health-checker.html[generating an upgrade report].
 
 // 10-APRIL_2026 April 15, 2026 update
-// OTHERD0C-222, 2026-MAY-07
+// OTHERDOC-222, 2026-MAY-07

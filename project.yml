@@ -31,9 +31,9 @@ sidebar:
   
   - title: Maintain, troubleshoot, FAQ
     entries:
-    - title: Maintain Upgrade Health Checker
+    - title: Maintain
       url: "/maintain-upgrade-health-checker.html"
-    - title: Troubleshoot Upgrade Health Checker
+    - title: Troubleshoot
       url: "/troubleshoot-upgrade-health-checker.html"
     - title: FAQ
       url: "/faq-upgrade-health-checker.html"
