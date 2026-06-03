@@ -8,10 +8,10 @@ indexpage:
       links: 
         - title: Learn about Upgrade Health Checker
           url: learn-about-upgrade-health-checker.html
-        - title: Set up Upgrade Health Checker for a single cluster
+        - title: Set up Upgrade Health Checker
           url: set-up-upgrade-health-checker.html
-        - title: Set up Upgrade Health Checker for multiple clusters
-          url: set-up-upgrade-health-checker-multiple-clusters.html
+        - title: Learn about the input parameters for Upgrade Health Checker
+          url: upgrade-health-checker-input-parameters.html
     - title: Use Upgrade Health Checker
       links: 
         - title: Generate an ONTAP upgrade report
@@ -20,11 +20,14 @@ indexpage:
           url: automate-report-upgrade-health-checker.html
     - title: More resources
       links: 
-        - title: Learn about the input parameters for Upgrade Health Checker
-          url: upgrade-health-checker-input-parameters.html
         - title: Getting Started with Upgrade Health Checker Using NetApp Lab on Demand
           url: https://community.netapp.com/t5/Tech-ONTAP-Blogs/Getting-Started-with-Upgrade-Health-Checker-Using-NetApp-Lab-on-Demand/ba-p/466818
+        - title: Maintain Upgrade Health Checker
+          url: maintain-upgrade-health-checker.html
+        - title: Troubleshoot Upgrade Health Checker
+          url: troubleshoot-upgrade-health-checker.html
         - title: FAQ for Upgrade Health Checker
           url: faq-upgrade-health-checker.html
+        
 
 

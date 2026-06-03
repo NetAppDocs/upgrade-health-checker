@@ -266,9 +266,7 @@ After configuring each cluster, verify connectivity to each cluster:
 
 // end of tabbed content
 
-.Related information
-* link:generate-report-upgrade-health-checker.html[Generate an ONTAP upgrade report]
-* link:automate-report-upgrade-health-checker.html[Automate generating upgrade reports] 
+.Related information 
 * link:upgrade-health-checker-input-parameters.html[Learn about the input parameters for Upgrade Health Checker]
 
 .What's next?
