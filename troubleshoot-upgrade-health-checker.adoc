@@ -11,7 +11,7 @@ summary: "Troubleshooting Upgrade Health Checker: Common issues, errors, and sol
 :imagesdir: ./media/
 
 [.lead]
-Use this topic to troubleshoot common Upgrade Health Checker issues, resolve errors that can block ONTAP upgrade planning, and perform routine maintenance tasks to keep the tool running reliably.
+Use this topic to troubleshoot common Upgrade Health Checker issues and to resolve errors that can block ONTAP upgrade planning.
 
 == Troubleshoot issues
 
