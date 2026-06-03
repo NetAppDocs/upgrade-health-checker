@@ -15,6 +15,56 @@ Use this topic to troubleshoot common Upgrade Health Checker issues and to resol
 
 == Troubleshoot issues
 
+=== Issue: Authentication/Credential Errors
+
+*Symptoms:*
+
+----
+Failed to fetch cluster details for <cluster-ip>
+Error connecting to ONTAP cluster: 401 Unauthorized
+Missing cluster credentials
+----
+
+These errors indicate that Upgrade Health Checker is unable to authenticate with the ONTAP cluster using the provided credentials. This can be caused by incorrect username or password, insufficient permissions for the user account, or an account that is locked or disabled.
+
+*Solutions:*
+
+* Verify username and password are correct
+* Ensure the user has sufficient ONTAP REST API permissions
+* Check if the account is locked or disabled
+----
+./uhc --test-connectivity cluster
+----
+
+=== Issue: Auto-update fails
+
+*Symptoms:*
+
+----
+Auto-update failed: ...
+Failed to download update
+----
+These errors indicate that Upgrade Health Checker is unable to connect to the internet to check for or download updates. This can be caused by network connectivity issues, firewall rules blocking access, or proxy settings that are not configured correctly.
+
+*Solutions:*
+
+* Check internet connectivity:
+----
+./uhc --test-connectivity autoupdate
+----
+
+* Check disk space (requires 1 GB):
+----
+df -h <location of uhc>
+----
+
+
+=== Issue: Binary takes a long time to start
+
+*Cause:* The binary is self-contained and needs to unpack itself before executing.
+
+*Expected Behavior:* First execution might take a few seconds to load. This is normal.
+
 === Issue: "Permission denied" or "Cannot execute binary" on /tmp
 The following error occurs when running the tool:
 ----
@@ -55,6 +105,142 @@ NOTE: The custom path must first exist for this workaround to work. If it doesnâ
 
 [start=4]
 . [[step4]] After adjusting permissions or changing the temporary directory, try running the tool again to see if the issue is resolved.
+
+
+==== Issue: Connection Timeout
+
+*Symptoms:*
+
+----
+Connection timeout
+Request timeout
+----
+
+*Solutions:*
+
+* Check network connectivity to the cluster
+* Verify no firewall is blocking HTTPS (443) traffic
+* Check the cluster is responsive and not under a heavy load
+
+=== Issue: Insufficient disk space
+
+*Symptoms:*
+----
+Not enough disk space available
+OSError: [Errno 28] No space left on device
+----
+
+*Solutions:*
+
+* Check disk space:
+----
+df -h /tmp
+df -h .
+----
+
+* Clean old runs:
+----
+# Remove old run directories
+rm -rf runs/<old_run_directories>
+----
+
+* Clean temporary files:
+----
+# Remove temporary files
+rm -rf /tmp/_MEI*
+----
+
+=== Issue: Invalid Runs Path
+
+*Symptoms:*
+----
+Invalid basepath_runs: <error>
+RUNS path is not set
+Cannot create tarball: basepath_runs '<path>' does not exist
+----
+
+*Solutions:*
+
+* Ensure the runs output directory exists and is writable
+* Specify a valid path via CLI: `--runs-path /valid/path`
+* Configure in config.yaml: `APP.RUNS_PATH: "/valid/path"`
+
+=== Issue: Invalid Target ONTAP Version
+
+*Symptoms:*
+----
+Invalid ONTAP version: '<version>' does not exist
+Invalid ONTAP version: '<version>' is not a recognized ONTAP version
+Downgrade is not supported. Target version must be greater than or equal to the current version.
+----
+*Solutions:*
+
+* Verify the target version string format (e.g. "9.16.1")
+* Ensure the target version is newer than or equal to current cluster version
+* Use "current" to keep existing ONTAP version: `--target-ontap-version=current`
+
+=== Issue: Signature verification fails
+
+*Symptoms:*
+----
+Signature verification failed
+Invalid code signature
+----
+*Cause:* Downloaded update file might be corrupted or tampered with.
+
+*Solution:*
+
+* Manual update - Download from official NetApp Support Site
+
+* Verify signature manually:
++
+----
+openssl dgst -sha256 -verify UHC-Linux-public.pub -signature uhc.sig uhc
+----
+
+=== Issue: Telemetry Upload Failure
+
+*Symptoms:*
+
+----
+body.7z upload failed
+Telemetry endpoint is not reachable
+----
+*Solutions:*
+
+* Check connectivity to telemetry endpoint:
+----
+./uhc --test-connectivity telemetry
+----
+
+=== Issue: "UPDATE IN PROGRESS" lock file
+
+*Symptoms:*
+
+=================================================================
+UPDATE IN PROGRESS
+=================================================================
+Another instance of UHC auto-update is currently running.
+Please wait for the update to complete before running again.
+
+*Cause:* Lock file exists from previous update process.
+
+*Solutions:*
+
+. *Wait:* Update typically completes in 1-2 minutes.
+
+. *Check if stale:* (automatic cleanup after 1 hour):
+----
+ls -la uhc_update.lock
+# If older than 1 hour, it will be auto-cleaned
+----
+
+. *Manual cleanup if necessary:*
+----
+rm uhc_update.lock
+----
+
+
 
 
 // OTHERDOC-222, 2026-MAY-12
