@@ -66,7 +66,8 @@ df -h <location of uhc>
 *Expected Behavior:* First execution might take a few seconds to load. This is normal.
 
 === Issue: "Permission denied" or "Cannot execute binary" on /tmp
-The following error occurs when running the tool:
+*Symptoms:*
+
 ----
 [Errno 13] Permission denied
 OSError: [Errno 13] Permission denied: '/tmp/_MEI...'
@@ -74,7 +75,7 @@ Cannot execute binary file
 ----
 This error might occur when the tool is unable to execute files in the `/tmp` directory, which is used for extracting and running the tool's components. This can be caused by restrictive permissions on the `/tmp` directory or security policies that prevent execution from this location.
 
-To resolve this issue:
+*Solutions:*
 
 . Check if `/tmp` has `noexec` enabled:
 ----
@@ -119,7 +120,7 @@ Request timeout
 *Solutions:*
 
 * Check network connectivity to the cluster
-* Verify no firewall is blocking HTTPS (443) traffic
+* Verify that no firewall is blocking HTTPS (443) traffic
 * Check the cluster is responsive and not under a heavy load
 
 === Issue: Insufficient disk space
@@ -177,7 +178,7 @@ Downgrade is not supported. Target version must be greater than or equal to the 
 
 * Verify the target version string format (e.g. "9.16.1")
 * Ensure the target version is newer than or equal to current cluster version
-* Use "current" to keep existing ONTAP version: `--target-ontap-version=current`
+* Use "current" to keep the existing ONTAP version: `--target-ontap-version=current`
 
 === Issue: Signature verification fails
 
@@ -186,11 +187,11 @@ Downgrade is not supported. Target version must be greater than or equal to the 
 Signature verification failed
 Invalid code signature
 ----
-*Cause:* Downloaded update file might be corrupted or tampered with.
+*Cause:* Downloaded update file might be corrupted or have been tampered with.
 
 *Solution:*
 
-* Manual update - Download from official NetApp Support Site
+* Manual update - download from the NetApp support site
 
 * Verify signature manually:
 +
@@ -208,7 +209,7 @@ Telemetry endpoint is not reachable
 ----
 *Solutions:*
 
-* Check connectivity to telemetry endpoint:
+* Check connectivity to the telemetry endpoint:
 ----
 ./uhc --test-connectivity telemetry
 ----
@@ -219,9 +220,10 @@ Telemetry endpoint is not reachable
 
 =================================================================
 UPDATE IN PROGRESS
-=================================================================
+
 Another instance of UHC auto-update is currently running.
 Please wait for the update to complete before running again.
+=================================================================
 
 *Cause:* Lock file exists from previous update process.
 
@@ -234,8 +236,8 @@ Please wait for the update to complete before running again.
 ls -la uhc_update.lock
 # If older than 1 hour, it will be auto-cleaned
 ----
-
-. *Manual cleanup if necessary:*
+[start=3]
+. [[step3]] *Manual cleanup if necessary:*
 ----
 rm uhc_update.lock
 ----
