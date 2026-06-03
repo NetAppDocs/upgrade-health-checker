@@ -20,19 +20,22 @@ sidebar:
       url: "/learn-about-upgrade-health-checker.html"
     - title: Set up Upgrade Health Checker
       url: "/set-up-upgrade-health-checker.html"
-#    - title: Set up Upgrade Health Checker for multiple clusters
-#      url: "/set-up-upgrade-health-checker-multiple-clusters.html"
+    - title: Input parameters for Upgrade Health Checker
+      url: "/upgrade-health-checker-input-parameters.html"
   - title: Use Upgrade Health Checker
     entries:
     - title: Generate an ONTAP upgrade report
       url: "/generate-report-upgrade-health-checker.html"
     - title: Automate report generation
       url: "/automate-report-upgrade-health-checker.html"
-  - title: Input parameters for Upgrade Health Checker
-    url: "/upgrade-health-checker-input-parameters.html"
-  - title: FAQ
-    url: "/faq-upgrade-health-checker.html"
-  - title: Troubleshoot & maintain Upgrade Health Checker
-    url: "/troubleshoot-upgrade-health-checker.html"
+  
+  - title: Maintain, troubleshoot, FAQ
+    entries:
+    - title: Maintain Upgrade Health Checker
+      url: "/maintain-upgrade-health-checker.html"
+    - title: Troubleshoot Upgrade Health Checker
+      url: "/troubleshoot-upgrade-health-checker.html"
+    - title: FAQ
+      url: "/faq-upgrade-health-checker.html"
   - title: Legal notices
     url: "/legal-notices.html"
