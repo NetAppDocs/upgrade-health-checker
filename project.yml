@@ -28,7 +28,7 @@ sidebar:
       url: "/generate-report-upgrade-health-checker.html"
     - title: Automate report generation
       url: "/automate-report-upgrade-health-checker.html"
-    - title: Set up email for Upgrade Health Checker
+    - title: Set up to receive reports by email
       url: "/setup-email-upgrade-health-checker.html"
   
   - title: Maintain, troubleshoot, FAQ

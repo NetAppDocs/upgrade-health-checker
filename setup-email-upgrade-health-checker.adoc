@@ -85,6 +85,4 @@ EMAIL:
 
 NOTE: If report generation fails and email is enabled, the log files are sent to the configured recipients.
 
-
-// 10-APRIL_2026 April 15, 2026 update
-// OTHERD0C-222, 2026-MAY-07
+// OTHERDOC-233, 2026-JUN-04
