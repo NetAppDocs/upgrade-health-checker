@@ -136,7 +136,11 @@ The priority order for providing this parameter is:
 
 * CLI argument:
 +
-`./uhc --dashboard`
+----
+./uhc --dashboard
+./uhc --dashboard --runs-path /custom/output
+./uhc --dashboard --config-path /path/to/custom_config.yaml
+----
 
 * Config.yaml:
 +
