@@ -39,10 +39,7 @@ a| *Hosting requirements* | Place the VM in a location with cluster connectivity
 a| *Recommended packages* | Install a web server to facilitate access
 |===
 
-
-If internet access is unavailable, consult NetApp for guidance.
-
-Additionally, ensure the virtual machine can connect to the telemetry endpoint (https://support.netapp.com/ and https://api.activeiq.netapp.com) through HTTPS (443) to enable NetApp to receive AutoSupport information about your upgrade plans.
+NOTE: Ensure that the virtual machine can connect to the auto-update and telemetry endpoints (https://support.netapp.com/ and https://api.activeiq.netapp.com) through HTTPS (443) to enable NetApp to receive AutoSupport information about your upgrade plans. If internet access is unavailable, you must manually download the latest version of Upgrade Health Checker.
 
 .Steps
 
