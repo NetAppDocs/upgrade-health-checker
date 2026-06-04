@@ -119,6 +119,36 @@ Tool will prompt: `Enter cluster password:`
 
 ====
 
+=== Dashboard
+
+The `--dashboard` parameter regenerates the dashboard from existing runs without contacting a cluster. You use it to refresh the fleet view outside of a normal run.  The dashboard provides a high-level overview of the health status of all clusters that were assessed in that run, allowing you to easily monitor and compare the upgrade readiness of multiple clusters in one place. You can open the dashboard in a web browser to view the health status, potential blockers, and risks for each cluster at a glance.
+
+
+The priority order for providing this parameter is:
+
+. CLI argument: `--dashboard`
+. Config file: `APP.RUNS_PATH`
+. Interactive selection menu
+
+.Examples
+[%collapsible]
+====
+
+* CLI argument:
++
+`./uhc --dashboard`
+
+* Config.yaml:
++
+----
+APP:
+  RUNS_PATH: "runs/dashboard/index.html"
+----
+
+* Interactive mode (if not provided above):
++
+Tool will use `./runs` directory to find existing runs and regenerate dashboard.
+====
 
 === Target ONTAP version
 
