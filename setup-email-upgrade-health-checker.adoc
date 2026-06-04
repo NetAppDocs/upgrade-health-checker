@@ -1,0 +1,90 @@
+---
+sidebar: sidebar
+permalink: setup-email-upgrade-health-checker.html
+keywords: upgrade, health, checker
+summary: "You can set up emails to receive Upgrade Health Checker reports."
+---
+= Receive Upgrade Health Checker reports by Email
+:hardbreaks:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+[.lead]
+You can integrate emails into Upgrade Health Checker to receive reports in your inbox. You enable this feature through the config.yaml file or command line argument. When enabled, Upgrade Health Checker sends the generated reports (HTML, Excel, or JSON) to one or more configured recipients using an SMTP server. When the feature is disabled, no reports are sent.
+
+
+.Steps
+
+. Set up email configuration in the config.yaml file. 
+.. Enable email reports in the config.yaml file.
++
+----
+# Email Report Configuration
+EMAIL
+  ENABLED: true
+----
+.. Provide the SMTP configuration setting along with sender details and subject:
++
+----
+# SMTP Server Configuration
+EMAIL:
+  ENABLED: true
+  FROM: "uhc-notify@example.com"
+  SUBJECT: "UHC Upgrade Health Report"
+  REPLY_TO: <email>
+  SMTP:
+    USE_SMTP_AUTH: true / false
+    HOST: "smtp.example.com"
+    PORT: [PORT]
+    USE_TLS: true / false
+    USE_SSL: true / false
+    USERNAME: "user@example.com"
+    PASSWORD: "********"
+----
+.. Provide recipient email addresses and configure which report formats are sent by email, for example, HTML, EXCEL, JSON, ALL:
++ 
+----
+# Recipient Email Addresses, report formats
+EMAIL:
+  ENABLED: true
+  TO:
+  EMAIL:
+  ENABLED: true
+  FROM: "uhc-notify@example.com"
+  SUBJECT: "UHC Upgrade Health Report"
+  REPLY_TO: <email>
+  RECIPIENTS: "user1@example.com, user2@example.com"
+  REPORT_FORMATS: "HTML,EXCEL,JSON"   # valid values: HTML, EXCEL, JSON or ALL
+  SMTP:
+    USE_SMTP_AUTH: true / false
+    HOST: "smtp.example.com"
+    PORT: [PORT]
+    USE_TLS: true / false
+    USE_SSL: true / false
+    USERNAME: "user@example.com"
+    PASSWORD: "********"
+----
+
+. Set up email configuration using command line arguments.
+.. Enable email reports using command line arguments:
++
+----
+./uhc --email=true
+----
+.. Provide recipient email addresses: 
++
+----
+--recipients=user1@example.com, user2@example.com
+----
+.. Configure which report formats are sent by email, for example, HTML, EXCEL, JSON:
++
+----
+./uhc --email=true --email-report-formats=HTML,EXCEL,JSON
+----
+
+NOTE: If report generation fails and email is enabled, the log files are sent to the configured recipients.
+
+
+// 10-APRIL_2026 April 15, 2026 update
+// OTHERD0C-222, 2026-MAY-07
