@@ -17,17 +17,6 @@ You can download Upgrade Health Checker to generate onsite, comprehensive report
 
 Upgrade Health Checker supports upgrades for on-premises ONTAP versions 9.11.1 and later. If you are using Cloud Volumes ONTAP, refer to link:https://docs.netapp.com/us-en/storage-management-cloud-volumes-ontap/task-updating-ontap-cloud.html#supported-upgrade-paths[Upgrade Cloud Volumes ONTAP] for information on upgrading your system. 
 
-== Download Upgrade Health Checker
-* Download the Upgrade Health Checker binary by navigating to the link:https://console.netapp.com/automationHub[NetApp Console Automation Hub^] and finding the Upgrade Health Checker tile.
-
-
-// start of tabbed content 
-[role="tabbed-block"] 
-
-====
-
-.Set up for a single cluster or test environment
---
 .Before you begin
 
 Set up a virtual machine for Upgrade Health Checker with the following specifications:
@@ -40,19 +29,24 @@ a| *Operating System* | Any Linux OS with glibc library version 2.28 or higher (
 a| *Disk space* | At least 8+ GB free in `/tmp` with execute permissions
 a| *Network* | HTTPS connectivity to the ONTAP cluster(s) management LIF
 a| *ONTAP version* | Cluster running ONTAP 9.11.1 or later
+a| *Hosting requirements* | Place the VM in a location with cluster connectivity and internet access to allow for automatic tool updates. The machine should have access to the following endpoints through HTTPS (443) to conduct automatic updates and to enable NetApp to receive AutoSupport information about your upgrade plans:
+
+ https://support.netapp.com/
+ https://api.uhc.netapp.com
+ https://gql.aiq.netapp.com
+ https://api.activeiq.netapp.com
+
+a| *Recommended packages* | Install a web server to facilitate access
 |===
-* Additionally, place the VM in a location with cluster connectivity and internet access to allow for automatic tool updates. The machine should have access to the following endpoints through HTTPS (443) to conduct automatic updates and to enable NetApp to receive AutoSupport information about your upgrade plans:
-** https://support.netapp.com/
-** https://api.uhc.netapp.com
-** https://gql.aiq.netapp.com
-** https://api.activeiq.netapp.com
-+
+
+
 If internet access is unavailable, consult NetApp for guidance.
-* Recommended packages: 
-** Install a web server to facilitate access.
+
+Additionally, ensure the virtual machine can connect to the telemetry endpoint (https://support.netapp.com/ and https://api.activeiq.netapp.com) through HTTPS (443) to enable NetApp to receive AutoSupport information about your upgrade plans.
 
 .Steps
 
+. Download the Upgrade Health Checker binary by navigating to the link:https://console.netapp.com/automationHub[NetApp Console Automation Hub^] and finding the Upgrade Health Checker tile.
 . Set up the Upgrade Health Checker virtual machine and use SSH to place the binary in the location of your choice.
 
 . Verify the digital signature of Upgrade Health Checker.
@@ -86,7 +80,7 @@ An output of `Verified OK` confirms the signature is valid.
 +
 NOTE: You can build an Ansible playbook to automate the deployment of the role and user to all ONTAP clusters.
 +
-You must create the service account for the http application. Use the following CLI commands to configure the necessary permissions:
+You must create the service account for the HTTP application. Use the following CLI commands to configure the necessary permissions:
 +
 [source,cli]
 ----
@@ -142,129 +136,6 @@ ansible-galaxy collection install cyberark.conjur
 conjur_username: "{{ lookup('cyberark.conjur.conjur_variable', 'prodvault/devops/<Main-Conjur-Safe>/<Account name>/username', validate_certs=false) }}"
 conjur_password: "{{ lookup('cyberark.conjur.conjur_variable', 'prodvault/devops/<Main-Conjur-Safe>/<Account name>/password', validate_certs=false) }}"
 ----
---
-
-.Set up for multiple clusters
---
-If you have more than one cluster, you can use the same service account and role for each cluster, but you must ensure that the service account is created on each cluster and that the Upgrade Health Checker configuration file is updated with the credentials for each cluster.
-
-.Before you begin
-
-Set up a virtual machine for Upgrade Health Checker with the following specifications:
-
-|===
-| Component | Specification | Notes
-
-a| *VM* | m5.large VM or equivalent with 2 vCPUs and 8 GiB RAM.
- | Dedicated VM for UHC
-a| *OS* | 
-Any Linux OS with glibc library version 2.28 or higher for optimal compatibility. This includes:
-- Ubuntu 22.04
-- RHEL8
-- RHEL9 | -
-a| *Root Volume* | 100 GB minimum | Ensure 8+GB free in `/tmp`.
-a| *NFS Volume* | An additional 100 GB minimum | For UHC run output - to ensure data preservation if the virtual machine is compromised.
-a| *UHC install path* | `/opt/uhc/tool/` | Binary plus `config.yaml` file.
-a| *Runs output path* | `/mnt/nfs/uhc/runs/` | On NFS volume for durability.
-|===
-
-* Additionally, place the VM in a location with cluster connectivity and internet access to allow for automatic tool updates. The machine should have access to the following endpoints through HTTPS (443) to conduct automatic updates and to enable NetApp to receive AutoSupport information about your upgrade plans:
-** https://support.netapp.com/
-** https://api.uhc.netapp.com
-** https://gql.aiq.netapp.com
-** https://api.activeiq.netapp.com
-+
-If internet access is unavailable, consult NetApp for guidance.
-+
-Refer to the following table for network and endpoint requirements:
-+
-|===
-| Endpoint | Protocol | Purpose | Required? 
-
-a| ONTAP Cluster management LIF | HTTPS | Cluster connectivity & ASUP collection | Yes
-a| support.netapp.com | HTTPS | Telemetry endpoint | Optional
-a| api.uhc.netapp.com | HTTPS | Auto-update | Optional
-a| gql.aiq.netapp.com | HTTPS | Auto-update | Optional
-a| https://api.aiq.netapp.com | HTTPS | Auto-update | Optional
-|===
-* Recommended packages: 
-** Install a web server to facilitate access.
-
-.Steps
-. Create the directory structure, mount the NFS volume to the virtual machine, and set up the Upgrade Health Checker binary.
-.. Create the directory structure:
-+
-`mkdir -p /opt/uhc/tool`
-+
-`mkdir -p /mnt/nfs/uhc/runs`
-
-.. Mount the NFS volume to the virtual machine:
-+
-`sudo mount -t nfs nfs-server:/uhc_data /mnt/nfs/uhc`
-
-.. Set up the UHC binary and make it executable:
-+
-`sudo cp uhc /opt/uhc/tool/`
-+
-`sudo chmod +x /opt/uhc/tool/uhc`
-
-. Create the configuration file `config.yaml` with the following content:
-+
-----
-# opt/uhc/tool/config.yaml
-# Production config file for Upgrade Health Checker
-
-# Accept EULA (required for non-interactive environments)
-ACCEPT_EULA: true
-
-# Application configuration
-APP:
-  RUNS_PATH: "/mnt/nfs/uhc/runs/"
-
-# Cluster credentials
-CLUSTER:
-    USERNAME: "uhctool"
-    PASSWORD: "<password>"
-
-TARGET_ONTAP_VERSIONS: "" 
-# leave empty to specify per-run or use "current" 
-
-SKIP_COMPATIBILITY_CHECKS: false
-----
-
-CAUTION: For a production system, if you have an enterprise password management solution, for example, if you have CyberArk and Conjur, you can configure your environment to avoid passing credentials through a yaml file or command line. 
-
-[start=3]
-. [[step3]] Create the `uhctool` service account for each ONTAP cluster. 
-+
-Use the following CLI commands to configure the necessary permissions:
-+
-[source,cli]
-----
-security login rest-role create -role uhctool -api /api -access readonly -vserver <cluster-name>
-
-security login rest-role create -role uhctool -api /api/support/autosupport -access read_create_modify -vserver <cluster-name>
-
-security login rest-role create -role uhctool -api /api/support/autosupport/messages -access read_create_modify -vserver <cluster-name>
-
-vserver services web access create -name spi -role uhctool -vserver
-
-security login create -user-or-group-name uhctool -role uhctool -application http -authentication-method password
-
-security login create -user-or-group-name uhctool -role uhctool -application ssh -authentication-method password
-----
-+
-NOTE: You can build an Ansible playbook to automate the deployment of the `uhctool` role and service account across all ONTAP clusters.
-+
-After configuring each cluster, verify connectivity to each cluster:
-+
-`/opt/uhc/tool/uhc --test all --cluster-ip <cluster-mgmt-ip>`
-----
-----
---
-====
-
-// end of tabbed content
 
 .Related information 
 * link:upgrade-health-checker-input-parameters.html[Learn about the input parameters for Upgrade Health Checker]

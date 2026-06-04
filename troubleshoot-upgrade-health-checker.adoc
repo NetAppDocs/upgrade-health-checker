@@ -231,13 +231,13 @@ Please wait for the update to complete before running again.
 
 . *Wait:* Update typically completes in 1-2 minutes.
 
-. *Check if stale:* (automatic cleanup after 1 hour):
+. *Check, if stale:* (automatic cleanup after 1 hour):
 ----
 ls -la uhc_update.lock
 # If older than 1 hour, it will be auto-cleaned
 ----
 [start=3]
-. [[step3]] *Manual cleanup if necessary:*
+. [[step3]] *Manual cleanup, if necessary:*
 ----
 rm uhc_update.lock
 ----

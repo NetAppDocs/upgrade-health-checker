@@ -88,13 +88,9 @@ The Input Parameters Guide also provides information for specifying a custom con
 +
 NOTE: Each execution of the program is a "unique run" and will have all the associated data, logs and results in the associated `runs` folder.
 
-. List the generated report files, `ls -lrt`:
+. List the generated report files:
 +
-----
-# uhc_cluster1_2026040651815.html
-# uhc_cluster1_2026040651815.xlsx 
-# uhc_cluster1_2026040651815.json
-----
+`ls -lrt`
 
 . Open the report file (named `uhc_<cluster-name>_<YYYYMMDDHHMMSS>`) in a web browser, Microsoft Excel, or JSON viewer to view the report. If you are running it on a remote host, first download the report file to a machine where you can view the report on a web browser, in Excel, or in a JSON viewer.
 +
