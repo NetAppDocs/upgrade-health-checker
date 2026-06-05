@@ -13,6 +13,35 @@ summary: "You can set up emails to receive Upgrade Health Checker reports."
 [.lead]
 You can integrate emails into Upgrade Health Checker to receive reports in your inbox. You enable this feature through the config.yaml file or command line argument. When enabled, Upgrade Health Checker sends the generated reports (HTML, Excel, or JSON) to one or more configured recipients using an SMTP server. When the feature is disabled, no reports are sent.
 
+.Configuration details
+The following attributes can be configured using CLI parameters as well as in as the config.yaml file; the remaining attributes are configurable in the config.yaml file only:
+
+*Email Enabled
+
+*Email Recipients
+
+*Email Report Formats
+
+NOTE: CLI parameters, if provided, override config.yaml file values.
+
+For example:
+
+----
+./uhc \
+  --email-enabled=true
+  --email-recipients=user1@example.com, user2@example.com
+  --email-report-formats=HTML,EXCEL,JSON
+----
+
+----
+EMAIL:
+  FROM: "uhc-notify@example.com"
+  SUBJECT: "UHC Upgrade Health Report"
+  REPLY_TO: <email>
+  SMTP:
+    HOST: "smtp.example.com"
+    PORT: [PORT]
+----
 
 .Steps
 
@@ -34,13 +63,8 @@ EMAIL:
   SUBJECT: "UHC Upgrade Health Report"
   REPLY_TO: <email>
   SMTP:
-    USE_SMTP_AUTH: true / false
     HOST: "smtp.example.com"
     PORT: [PORT]
-    USE_TLS: true / false
-    USE_SSL: true / false
-    USERNAME: "user@example.com"
-    PASSWORD: "********"
 ----
 .. Provide recipient email addresses and configure which report formats are sent by email, for example, HTML, EXCEL, JSON, ALL:
 + 
@@ -57,13 +81,8 @@ EMAIL:
   RECIPIENTS: "user1@example.com, user2@example.com"
   REPORT_FORMATS: "HTML,EXCEL,JSON"   # valid values: HTML, EXCEL, JSON or ALL
   SMTP:
-    USE_SMTP_AUTH: true / false
     HOST: "smtp.example.com"
     PORT: [PORT]
-    USE_TLS: true / false
-    USE_SSL: true / false
-    USERNAME: "user@example.com"
-    PASSWORD: "********"
 ----
 
 . Set up email configuration using command line arguments.
