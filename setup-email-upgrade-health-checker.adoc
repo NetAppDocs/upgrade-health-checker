@@ -13,7 +13,7 @@ summary: "You can set up emails to receive Upgrade Health Checker reports."
 [.lead]
 You can integrate emails into Upgrade Health Checker to receive reports in your inbox. You enable this feature through the config.yaml file or command line argument. When enabled, Upgrade Health Checker sends the generated reports (HTML, Excel, or JSON) to one or more configured recipients using an SMTP server. When the feature is disabled, no reports are sent.
 
-[NOTE]
+[IMPORTANT]
 ===========
 The following three attributes can be configured using both command line arguments and the config.yaml file; the remaining attributes are only configurable in the config.yaml file:
 
