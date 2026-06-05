@@ -119,41 +119,6 @@ Tool will prompt: `Enter cluster password:`
 
 ====
 
-=== Dashboard
-
-The `--dashboard` parameter regenerates the dashboard from existing runs without contacting a cluster. You use it to refresh the fleet view outside of a normal run.  The dashboard provides a high-level overview of the health status of all clusters that were assessed in that run, allowing you to easily monitor and compare the upgrade readiness of multiple clusters in one place. You can open the dashboard in a web browser to view the health status, potential blockers, and risks for each cluster at a glance.
-
-
-The priority order for providing this parameter is:
-
-. CLI argument: `--dashboard`
-. Config file: `APP.RUNS_PATH`
-. Interactive selection menu
-
-.Examples
-[%collapsible]
-====
-
-* CLI argument:
-+
-----
-./uhc --dashboard
-./uhc --dashboard --runs-path /custom/output
-./uhc --dashboard --config-path /path/to/custom_config.yaml
-----
-
-* Config.yaml:
-+
-----
-APP:
-  RUNS_PATH: "runs/dashboard/index.html"
-----
-
-* Interactive mode (if not provided above):
-+
-Tool will use `./runs` directory to find existing runs and regenerate dashboard.
-====
-
 === Target ONTAP version
 
 The `--target-ontap-version` parameter specifies the ONTAP version you want to upgrade to for analysis. Use "current" to keep the existing cluster ONTAP version.
@@ -300,6 +265,27 @@ The priority order for providing this parameter is:
 ----
 CLUSTER:
   SKIP_COMPATIBILITY_CHECK: true
+----
+====
+
+=== Dashboard
+
+The `--dashboard` parameter regenerates the dashboard from existing runs at `<runs>/dashboard/index.html` without contacting a cluster. You use it to refresh the fleet view outside of a normal run.  The dashboard provides a high-level overview of the health status of all the clusters that have been assessed recently, allowing you to easily monitor and compare the upgrade readiness of multiple clusters in one place. You can open the dashboard in a web browser to view the health status, potential blockers, and risks for each cluster at a glance.
+
+
+* CLI argument: `--dashboard`
++
+
+.Examples
+[%collapsible]
+====
+
+* CLI argument:
++
+----
+./uhc --dashboard
+./uhc --dashboard --runs-path /custom/output
+./uhc --dashboard --config-path /path/to/custom_config.yaml
 ----
 ====
 

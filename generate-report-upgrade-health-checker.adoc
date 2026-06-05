@@ -100,6 +100,19 @@ The log path and report path are as follows:
 ** HTML Report Path: `<output-path>/<unique-run-dir>/<cluster-name>/results/uhc_<cluster-name>_<YYYYMMDDHHMMSS>.html`
 ** Excel Report Path: `<output-path>/<unique-run-dir>/<cluster-name>/results/uhc_<cluster-name>_<YYYYMMDDHHMMSS>.xlsx`
 ** JSON Report Path: `<output-path>/<unique-run-dir>/<cluster-name>/results/uhc_<cluster-name>_<YYYYMMDDHHMMSS>.json`
++
+
+[NOTE]
+================ 
+A static HTML dashboard is generated at `runs/dashboard/index.html` at the end of every Upgrade Health Checker run, using `--dashboard`. The dashboard provides a high-level overview of the health status of all the clusters that have been assessed recently, allowing you to easily monitor and compare the upgrade readiness of multiple clusters in one place. The dashboard aggregates runs from the last 30 days under `APP.RUNS_PATH`. You can open the `<runs>/dashboard/index.html` file directly in a browser to view the health status, potential blockers, and risks for each cluster at a glance; no web server or internet access is required.
+
+----
+./uhc --dashboard
+./uhc --dashboard --runs-path /custom/output
+./uhc --dashboard --config-path /path/to/custom_config.yaml
+----
+================
+
 
 // 10-APRIL_2026 April 15, 2026 update
 // OTHERD0C-222, 2026-MAY-07
