@@ -13,8 +13,9 @@ summary: "You can set up emails to receive Upgrade Health Checker reports."
 [.lead]
 You can integrate emails into Upgrade Health Checker to receive reports in your inbox. You enable this feature through the config.yaml file or command line argument. When enabled, Upgrade Health Checker sends the generated reports (HTML, Excel, or JSON) to one or more configured recipients using an SMTP server. When the feature is disabled, no reports are sent.
 
-.Configuration details
-The following attributes can be configured using CLI parameters as well as in as the config.yaml file; the remaining attributes are configurable in the config.yaml file only:
+[NOTE]
+===========
+The following three attributes can be configured using both command line arguments and the config.yaml file; the remaining attributes are only configurable in the config.yaml file:
 
 *Email Enabled
 
@@ -22,7 +23,7 @@ The following attributes can be configured using CLI parameters as well as in as
 
 *Email Report Formats
 
-NOTE: CLI parameters, if provided, override config.yaml file values.
+Note that where command line arguments are provided, they override the config.yaml file values.
 
 For example:
 
@@ -42,18 +43,18 @@ EMAIL:
     HOST: "smtp.example.com"
     PORT: [PORT]
 ----
+===========
 
-.Steps
+.Configure using the config.yaml file
 
-. Set up email configuration in the config.yaml file. 
-.. Enable email reports in the config.yaml file.
+. Enable email reports in the config.yaml file.
 +
 ----
 # Email Report Configuration
 EMAIL
   ENABLED: true
 ----
-.. Provide the SMTP configuration setting along with sender details and subject:
+. Provide the SMTP configuration setting along with sender details and subject:
 +
 ----
 # SMTP Server Configuration
@@ -66,7 +67,7 @@ EMAIL:
     HOST: "smtp.example.com"
     PORT: [PORT]
 ----
-.. Provide recipient email addresses and configure which report formats are sent by email, for example, HTML, EXCEL, JSON, ALL:
+. Provide recipient email addresses and configure which report formats are sent by email, for example, HTML, EXCEL, JSON, ALL:
 + 
 ----
 # Recipient Email Addresses, report formats
@@ -85,18 +86,18 @@ EMAIL:
     PORT: [PORT]
 ----
 
-. Set up email configuration using command line arguments.
-.. Enable email reports using command line arguments:
+.Configure using command line arguments
+. Enable email reports using command line arguments:
 +
 ----
 ./uhc --email=true
 ----
-.. Provide recipient email addresses: 
+. Provide recipient email addresses: 
 +
 ----
 --recipients=user1@example.com, user2@example.com
 ----
-.. Configure which report formats are sent by email, for example, HTML, EXCEL, JSON:
+. Configure which report formats are sent by email, for example, HTML, EXCEL, JSON:
 +
 ----
 ./uhc --email=true --email-report-formats=HTML,EXCEL,JSON
