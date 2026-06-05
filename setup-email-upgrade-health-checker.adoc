@@ -43,7 +43,7 @@ EMAIL:
 ----
 ===========
 
-.Configure using the config.yaml file
+== Configure using the config.yaml file
 
 . Enable email reports in the config.yaml file.
 +
@@ -84,7 +84,7 @@ EMAIL:
     PORT: [PORT]
 ----
 
-.Configure using command line arguments
+== Configure using command line arguments
 . Enable email reports using command line arguments:
 +
 ----
