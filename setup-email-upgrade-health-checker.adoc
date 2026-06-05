@@ -99,21 +99,7 @@ EMAIL:
     HOST: "smtp.example.com"
     PORT: [PORT]
 ----
-
-The remaining attributes that are only configurable in the config.yaml file include:
-----
-
-EMAIL:
-  ENABLED: true
-  FROM: "uhc-notify@example.com"
-  SUBJECT: "UHC Upgrade Health Report"
-  REPLY_TO: <email>
-  SMTP:
-    HOST: "smtp.example.com"
-    PORT: [PORT]
-----
 ================
-
 
 
 // OTHERDOC-233, 2026-JUN-04
