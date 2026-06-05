@@ -11,37 +11,7 @@ summary: "You can set up emails to receive Upgrade Health Checker reports."
 :imagesdir: ./media/
 
 [.lead]
-You can integrate emails into Upgrade Health Checker to receive reports in your inbox. You enable this feature through the config.yaml file or command line argument. When enabled, Upgrade Health Checker sends the generated reports (HTML, Excel, or JSON) to one or more configured recipients using an SMTP server. When the feature is disabled, no reports are sent.
-
-[IMPORTANT]
-===========
-The following three attributes can be configured using both command line arguments and the config.yaml file; the remaining attributes are only configurable in the config.yaml file:
-
-* Email Enabled
-
-* Email Recipients
-
-* Email Report Formats
-
-Note that where command line arguments are provided, they override the config.yaml file values.
-
-For example:
-----
-./uhc \
-  --email-enabled=true
-  --email-recipients=user1@example.com, user2@example.com
-  --email-report-formats=HTML,EXCEL,JSON
-----
-----
-EMAIL:
-  FROM: "uhc-notify@example.com"
-  SUBJECT: "UHC Upgrade Health Report"
-  REPLY_TO: <email>
-  SMTP:
-    HOST: "smtp.example.com"
-    PORT: [PORT]
-----
-===========
+You can integrate emails into Upgrade Health Checker to receive reports in your inbox. You enable this feature through the config.yaml file or command line argument. When enabled, Upgrade Health Checker sends the generated reports (HTML, Excel, or JSON) to one or more configured recipients using an SMTP server. When the feature is disabled, no reports are sent. If report generation fails and email is enabled, the log files are sent to the configured recipients.
 
 == Configure using the config.yaml file
 
@@ -88,19 +58,62 @@ EMAIL:
 . Enable email reports using command line arguments:
 +
 ----
-./uhc --email=true
+./uhc --email-enabled=true
 ----
 . Provide recipient email addresses: 
 +
 ----
---recipients=user1@example.com, user2@example.com
+./uhc --email-recipients=user1@example.com, user2@example.com
 ----
 . Configure which report formats are sent by email, for example, HTML, EXCEL, JSON:
 +
 ----
-./uhc --email=true --email-report-formats=HTML,EXCEL,JSON
+./uhc --email-report-formats=HTML,EXCEL,JSON
 ----
 
-NOTE: If report generation fails and email is enabled, the log files are sent to the configured recipients.
+[NOTE]
+================
+The following three attributes can be configured using both command line arguments and the config.yaml file; the remaining attributes are only configurable in the config.yaml file:
+
+* Email Enabled
+
+* Email Recipients
+
+* Email Report Formats
+
+Note that where command line arguments are provided, they override the config.yaml file values.
+
+For example:
+----
+./uhc \
+  --email-enabled=true
+  --email-recipients=user1@example.com, user2@example.com
+  --email-report-formats=HTML,EXCEL,JSON
+----
+----
+EMAIL:
+  FROM: "uhc-notify@example.com"
+  SUBJECT: "UHC Upgrade Health Report"
+  REPLY_TO: <email>
+  SMTP:
+    HOST: "smtp.example.com"
+    PORT: [PORT]
+----
+
+The remaining attributes that are only configurable in the config.yaml file include:
+----
+
+EMAIL:
+  ENABLED: true
+  FROM: "uhc-notify@example.com"
+  SUBJECT: "UHC Upgrade Health Report"
+  REPLY_TO: <email>
+  SMTP:
+    HOST: "smtp.example.com"
+    PORT: [PORT]
+----
+================
+
+
 
 // OTHERDOC-233, 2026-JUN-04
