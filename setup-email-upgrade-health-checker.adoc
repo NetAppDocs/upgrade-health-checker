@@ -17,23 +17,21 @@ You can integrate emails into Upgrade Health Checker to receive reports in your 
 ===========
 The following three attributes can be configured using both command line arguments and the config.yaml file; the remaining attributes are only configurable in the config.yaml file:
 
-*Email Enabled
+* Email Enabled
 
-*Email Recipients
+* Email Recipients
 
-*Email Report Formats
+* Email Report Formats
 
 Note that where command line arguments are provided, they override the config.yaml file values.
 
 For example:
-
 ----
 ./uhc \
   --email-enabled=true
   --email-recipients=user1@example.com, user2@example.com
   --email-report-formats=HTML,EXCEL,JSON
 ----
-
 ----
 EMAIL:
   FROM: "uhc-notify@example.com"
