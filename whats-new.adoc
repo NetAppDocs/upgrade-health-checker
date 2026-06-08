@@ -30,15 +30,15 @@ link:upgrade-health-checker-input-parameters.html#dashboard[Dashboard parameter]
 +
 ** Maintain Upgrade Health Checker by regularly checking for updates, monitoring logs for any recurring issues, and ensuring that the tool is configured correctly for your environment. 
 +
-link:maintain-upgrade-health-checker.html[maintain-upgrade-health-checker.html]
-
+link:maintain-upgrade-health-checker.html[Maintain Upgrade Health Checker]
+ 
 ** Troubleshoot common Upgrade Health Checker issues and resolve errors that can block ONTAP upgrade planning.
 +
-link:[troubleshoot-upgrade-health-checker.html]
+link:troubleshoot-upgrade-health-checker.html[Troubleshoot Upgrade Health Checker]
 
 ** Frequently asked questions (FAQ) for Upgrade Health Checker.
 +
-link:[faq-upgrade-health-checker.html]
+link:faq-upgrade-health-checker.html[FAQ for Upgrade Health Checker]
 
 
 == 15 April 2026
