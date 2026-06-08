@@ -30,6 +30,10 @@ a| *Disk space* | At least 4 GB free (8 GB recommended) in `/tmp` with execute p
 a| *Network* | HTTPS connectivity to the ONTAP cluster(s) management LIF
 a| *ONTAP version* | Cluster running ONTAP 9.11.1 or later
 a| *Hosting requirements* | Place the VM in a location with cluster connectivity and internet access to allow for automatic tool updates. The machine should have access to the following endpoints through HTTPS (443) to conduct automatic updates and to enable NetApp to receive AutoSupport information about your upgrade plans:
+ https://support.netapp.com/
+ https://api.uhc.netapp.com
+ https://gql.aiq.netapp.com
+ https://api.activeiq.netapp.com
 
 https://support.netapp.com/
 https://api.uhc.netapp.com
