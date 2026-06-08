@@ -14,7 +14,7 @@ summary: "Troubleshooting Upgrade Health Checker: Common issues, errors, and sol
 Use this topic to troubleshoot common Upgrade Health Checker issues and to resolve errors that can block ONTAP upgrade planning.
 
 == Troubleshoot issues
-
+{empty} +
 {empty} +
 
 === Issue Authentication/Credential Errors
@@ -37,9 +37,8 @@ These errors indicate that Upgrade Health Checker is unable to authenticate with
 ----
 ./uhc --test-connectivity cluster
 ----
-
 {empty} +
-
+{empty} +
 === Issue Auto-update fails
 
 *Symptoms:*
@@ -231,8 +230,8 @@ Telemetry endpoint is not reachable
 ----
 ./uhc --test-connectivity telemetry
 ----
-
-{empty} +
++
+{empty} 
 
 === Issue: "UPDATE IN PROGRESS" lock file
 
