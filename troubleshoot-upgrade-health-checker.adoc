@@ -61,7 +61,7 @@ These errors indicate that Upgrade Health Checker is unable to connect to the in
 ----
 df -h <location of uhc>
 ----
-{empty} +
+{empty} 
 {empty} 
 
 === Issue Binary takes a long time to start
@@ -69,6 +69,7 @@ df -h <location of uhc>
 *Cause:* The binary is self-contained and needs to unpack itself before executing.
 
 *Expected Behavior:* First execution might take a few seconds to load. This is normal.
+{empty} +
 {empty} +
 {empty} 
 
