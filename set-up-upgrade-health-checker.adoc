@@ -26,15 +26,15 @@ Set up a virtual machine for Upgrade Health Checker with the following specifica
 
 a| *VM* | m5.large VM or equivalent with 2 vCPUs and 8 GiB RAM
 a| *Operating System* | Any Linux OS with glibc library version 2.28 or higher (Ubuntu 22.04, RHEL8, or RHEL9)
-a| *Disk space* | At least 8+ GB free in `/tmp` with execute permissions
+a| *Disk space* | At least 4 GB free (8 GB recommended) in `/tmp` with execute permissions
 a| *Network* | HTTPS connectivity to the ONTAP cluster(s) management LIF
 a| *ONTAP version* | Cluster running ONTAP 9.11.1 or later
 a| *Hosting requirements* | Place the VM in a location with cluster connectivity and internet access to allow for automatic tool updates. The machine should have access to the following endpoints through HTTPS (443) to conduct automatic updates and to enable NetApp to receive AutoSupport information about your upgrade plans:
 
- https://support.netapp.com/
- https://api.uhc.netapp.com
- https://gql.aiq.netapp.com
- https://api.activeiq.netapp.com
+https://support.netapp.com/
+https://api.uhc.netapp.com
+https://gql.aiq.netapp.com
+https://api.activeiq.netapp.com
 
 a| *Recommended packages* | Install a web server to facilitate access
 |===

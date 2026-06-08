@@ -36,10 +36,10 @@ Upgrade Health Checker supports upgrades for on-premises ONTAP versions 9.11.1 a
 . Create an automation script for cron schedules to run Upgrade Health Checker. Here is an example script that runs Upgrade Health Checker for multiple clusters. The binary and config.yaml files have been installed into /opt/uhc/tool/.
 +
 ----
-#! /bin/bash
+#!/bin/bash
 # /opt/uhc/tool/uhccron.sh
 # Automated weekly Upgrade Health Checker run for all managed clusters
-# Schedule: Every Monday at 4am
+# Schedule: Every Monday to Friday at 4am
 
 cd /opt/uhc/tool/
 
@@ -57,11 +57,11 @@ cd /opt/uhc/tool/
 
 # Add additional clusters as needed
 
-# Make the script executionable
+# Make the script executable (one-time setup step)
 chmod +x /opt/uhc/tool/uhccron.sh
 ----
 
-. Set up the cron job to run the script Monday through Friday.
+. Set up the cron job to run the script Monday through Friday  at 4:00 am:
 +
 ----
 # Edit the crontab for the uhctool user
@@ -74,7 +74,7 @@ crontab -e
 NOTE: For ongoing health monitoring, use `--target-ontap-version current` without a specific upgrade target.
 
 [start=5]
-. [[step5]]After Upgrade Health Checker completes its checks, navigate to the `runs` folder to view the upgrade plan and cluster report.
+. [[step5]] After Upgrade Health Checker completes its checks, navigate to the `runs` folder to view the upgrade plan and cluster report.
 +
 NOTE: Each execution of the program is a unique run and will have all the associated data, logs, and results in the associated `runs` folder.
 
@@ -89,25 +89,6 @@ The log path and report path are as follows:
 ** JSON Report Path: `<output-path>/<unique-run-dir>/<cluster-name>/results/uhc_<cluster-name>_<YYYYMMDDHHMMSS>.json`
 
 
-[NOTE]
-================
-A static HTML dashboard is generated at `runs/dashboard/index.html` at the end of every Upgrade Health Checker run. The dashboard provides a high-level overview of the health status of all clusters that were assessed in that run, allowing you to easily monitor and compare the upgrade readiness of multiple clusters in one place. You can open the dashboard in a web browser to view the health status, potential blockers, and risks for each cluster at a glance.
-
-----
-./uhc --dashboard
-----
-
-This command aligns with `--runs-path / APP.RUNS_PATH` and `--config-path`, and exits after writing `runs/dashboard/index.html`. It does not require cluster credentials.
-
-For example:
-----
-./uhc --dashboard
-./uhc --dashboard --runs-path /custom/output
-./uhc --dashboard --config-path /path/to/custom_config.yaml
-----
-================
-
-
 // 10-APRIL_2026 April 15, 2026 update
-// OTHERD0C-222, 2026-MAY-07
+// OTHERDOC-222, 2026-MAY-07
 // OTHERDOC-233, 2026-JUN-04

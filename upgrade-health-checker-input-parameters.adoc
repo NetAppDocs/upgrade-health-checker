@@ -274,7 +274,6 @@ The `--dashboard` parameter regenerates the dashboard from existing runs at `<ru
 
 
 * CLI argument: `--dashboard`
-+
 
 .Examples
 [%collapsible]

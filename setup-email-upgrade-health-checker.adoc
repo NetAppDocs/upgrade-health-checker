@@ -19,7 +19,7 @@ You can integrate emails into Upgrade Health Checker to receive reports in your 
 +
 ----
 # Email Report Configuration
-EMAIL
+EMAIL:
   ENABLED: true
 ----
 . Provide the SMTP configuration setting along with sender details and subject:
@@ -33,7 +33,7 @@ EMAIL:
   REPLY_TO: <email>
   SMTP:
     HOST: "smtp.example.com"
-    PORT: [PORT]
+    PORT: [<port-number>]
 ----
 . Provide recipient email addresses and configure which report formats are sent by email, for example, HTML, EXCEL, JSON, ALL:
 + 
@@ -41,9 +41,7 @@ EMAIL:
 # Recipient Email Addresses, report formats
 EMAIL:
   ENABLED: true
-  TO:
-  EMAIL:
-  ENABLED: true
+  TO: <recipient>
   FROM: "uhc-notify@example.com"
   SUBJECT: "UHC Upgrade Health Report"
   REPLY_TO: <email>
@@ -63,7 +61,7 @@ EMAIL:
 . Provide recipient email addresses: 
 +
 ----
-./uhc --email-recipients=user1@example.com, user2@example.com
+./uhc --email-recipients="user1@example.com, user2@example.com"
 ----
 . Configure which report formats are sent by email, for example, HTML, EXCEL, JSON:
 +
@@ -87,8 +85,8 @@ For example:
 ----
 ./uhc \
   --email-enabled=true
-  --email-recipients=user1@example.com, user2@example.com
-  --email-report-formats=HTML,EXCEL,JSON
+  --email-recipients="user1@example.com, user2@example.com" \
+  --email-report-formats=HTML,EXCEL,JSON \
 ----
 ----
 EMAIL:
