@@ -17,7 +17,7 @@ Use this topic to troubleshoot common Upgrade Health Checker issues and to resol
 {empty} +
 {empty} 
 
-==== Issue Authentication/Credential Errors
+=== Issue Authentication/Credential Errors
 
 *Symptoms:*
 
@@ -40,7 +40,7 @@ These errors indicate that Upgrade Health Checker is unable to authenticate with
 {empty} +
 {empty} 
 
-==== Issue Auto-update fails
+=== Issue Auto-update fails
 
 *Symptoms:*
 
