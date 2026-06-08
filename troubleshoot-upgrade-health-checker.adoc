@@ -65,6 +65,8 @@ df -h <location of uhc>
 
 *Expected Behavior:* First execution might take a few seconds to load. This is normal.
 
+
+
 === Issue: "Permission denied" or "Cannot execute binary" on /tmp
 *Symptoms:*
 
@@ -108,7 +110,7 @@ NOTE: The custom path must first exist for this workaround to work. If it doesnâ
 . [[step4]] After adjusting permissions or changing the temporary directory, try running the tool again to see if the issue is resolved.
 
 
-==== Issue: Connection Timeout
+=== Issue: Connection Timeout
 
 *Symptoms:*
 
