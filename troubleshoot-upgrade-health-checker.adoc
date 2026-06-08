@@ -15,7 +15,7 @@ Use this topic to troubleshoot common Upgrade Health Checker issues and to resol
 
 == Troubleshoot issues
 
-=== Issue: Authentication/Credential Errors
+=== *Issue:* Authentication/Credential Errors
 
 *Symptoms:*
 
@@ -36,7 +36,7 @@ These errors indicate that Upgrade Health Checker is unable to authenticate with
 ./uhc --test-connectivity cluster
 ----
 
-=== Issue: Auto-update fails
+=== *Issue:* Auto-update fails
 
 *Symptoms:*
 
@@ -124,6 +124,8 @@ Request timeout
 * Check network connectivity to the cluster
 * Verify that no firewall is blocking HTTPS (443) traffic
 * Check the cluster is responsive and not under a heavy load
+
+
 
 === Issue: Insufficient disk space
 
