@@ -15,7 +15,6 @@ Use this topic to troubleshoot common Upgrade Health Checker issues and to resol
 
 == Troubleshoot issues
 {empty} +
-{empty} +
 
 === Issue Authentication/Credential Errors
 
@@ -39,6 +38,7 @@ These errors indicate that Upgrade Health Checker is unable to authenticate with
 ----
 {empty} +
 {empty} +
+
 === Issue Auto-update fails
 
 *Symptoms:*
@@ -60,7 +60,7 @@ These errors indicate that Upgrade Health Checker is unable to connect to the in
 ----
 df -h <location of uhc>
 ----
-
+{empty} +
 {empty} +
 
 === Issue Binary takes a long time to start
@@ -68,7 +68,7 @@ df -h <location of uhc>
 *Cause:* The binary is self-contained and needs to unpack itself before executing.
 
 *Expected Behavior:* First execution might take a few seconds to load. This is normal.
-
+{empty} +
 {empty} +
 
 === Issue: "Permission denied" or "Cannot execute binary" on /tmp
@@ -112,7 +112,7 @@ NOTE: The custom path must first exist for this workaround to work. If it doesnâ
 
 [start=4]
 . [[step4]] After adjusting permissions or changing the temporary directory, try running the tool again to see if the issue is resolved.
-
+{empty} +
 {empty} +
 
 === Issue: Connection Timeout
@@ -129,7 +129,7 @@ Request timeout
 * Check network connectivity to the cluster
 * Verify that no firewall is blocking HTTPS (443) traffic
 * Check the cluster is responsive and not under a heavy load
-
+{empty} +
 {empty} +
 
 === Issue: Insufficient disk space
@@ -159,7 +159,7 @@ rm -rf runs/<old_run_directories>
 # Remove temporary files
 rm -rf /tmp/_MEI*
 ----
-
+{empty} +
 {empty} +
 
 === Issue: Invalid Runs Path
@@ -176,7 +176,7 @@ Cannot create tarball: basepath_runs '<path>' does not exist
 * Ensure the runs output directory exists and is writable
 * Specify a valid path via CLI: `--runs-path /valid/path`
 * Configure in config.yaml: `APP.RUNS_PATH: "/valid/path"`
-
+{empty} +
 {empty} +
 
 === Issue: Invalid Target ONTAP Version
@@ -192,7 +192,7 @@ Downgrade is not supported. Target version must be greater than or equal to the 
 * Verify the target version string format (e.g. "9.16.1")
 * Ensure the target version is newer than or equal to current cluster version
 * Use "current" to keep the existing ONTAP version: `--target-ontap-version=current`
-
+{empty} +
 {empty} +
 
 === Issue: Signature verification fails
@@ -213,7 +213,7 @@ Invalid code signature
 ----
 openssl dgst -sha256 -verify UHC-Linux-public.pub -signature uhc.sig uhc
 ----
-
+{empty} +
 {empty} +
 
 === Issue: Telemetry Upload Failure
@@ -230,8 +230,8 @@ Telemetry endpoint is not reachable
 ----
 ./uhc --test-connectivity telemetry
 ----
-+
-{empty} 
+{empty} +
+{empty} +
 
 === Issue: "UPDATE IN PROGRESS" lock file
 
