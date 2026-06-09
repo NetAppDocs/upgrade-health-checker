@@ -11,13 +11,13 @@ summary: "Troubleshooting Upgrade Health Checker: Common issues, errors, and sol
 :imagesdir: ./media/
 
 [.lead]
-Use this topic to troubleshoot common Upgrade Health Checker issues and to resolve errors that can block ONTAP upgrade planning.
+Learn how to troubleshoot common Upgrade Health Checker issues and resolve errors that can block ONTAP upgrade planning.
 
 == Troubleshoot issues
 {empty} +
 {empty} 
 
-=== Issue Authentication/Credential Errors
+=== Issue: Authentication or credential errors
 
 *Symptoms:*
 
@@ -27,11 +27,11 @@ Error connecting to ONTAP cluster: 401 Unauthorized
 Missing cluster credentials
 ----
 
-These errors indicate that Upgrade Health Checker is unable to authenticate with the ONTAP cluster using the provided credentials. This can be caused by incorrect username or password, insufficient permissions for the user account, or an account that is locked or disabled.
+These errors indicate that Upgrade Health Checker is unable to authenticate with the ONTAP cluster using the provided credentials. This can be caused by an incorrect username or password, insufficient permissions for the user account, or an account that is locked or disabled.
 
 *Solutions:*
 
-* Verify username and password are correct
+* Verify that the username and password are correct
 * Ensure the user has sufficient ONTAP REST API permissions
 * Check if the account is locked or disabled
 ----
@@ -40,7 +40,7 @@ These errors indicate that Upgrade Health Checker is unable to authenticate with
 {empty} +
 {empty} 
 
-=== Issue Auto-update fails
+=== Issue: Auto-update fails
 
 *Symptoms:*
 
@@ -64,7 +64,7 @@ df -h <location of uhc>
 {empty} 
 {empty} 
 
-=== Issue Binary takes a long time to start
+=== Issue: Binary takes a long time to start
 
 *Cause:* The binary is self-contained and needs to unpack itself before executing.
 
@@ -74,6 +74,7 @@ df -h <location of uhc>
 {empty} 
 
 === Issue: "Permission denied" or "Cannot execute binary" on /tmp
+
 *Symptoms:*
 
 ----
@@ -92,7 +93,7 @@ mount | grep /tmp
 ----
 
 [start=2]
-. [[step2]] Remount `/tmp` with `exec` (requires root by System administrator):
+. [[step2]] Remount `/tmp` with `exec` (requires System administrator root permissions):
 ----
 # Temporary fix
 sudo mount -o remount,exec /tmp
@@ -117,7 +118,7 @@ NOTE: The custom path must first exist for this workaround to work. If it doesnâ
 {empty} +
 {empty} 
 
-=== Issue: Connection Timeout
+=== Issue: Connection timeout
 
 *Symptoms:*
 
@@ -164,7 +165,7 @@ rm -rf /tmp/_MEI*
 {empty} +
 {empty} 
 
-=== Issue: Invalid Runs Path
+=== Issue: Invalid runs path
 
 *Symptoms:*
 ----
@@ -175,13 +176,13 @@ Cannot create tarball: basepath_runs '<path>' does not exist
 
 *Solutions:*
 
-* Ensure the runs output directory exists and is writable
+* Ensure that the runs output directory exists and is writable
 * Specify a valid path via CLI: `--runs-path /valid/path`
 * Configure in config.yaml: `APP.RUNS_PATH: "/valid/path"`
 {empty} +
 {empty} 
 
-=== Issue: Invalid Target ONTAP Version
+=== Issue: Invalid target ONTAP version
 
 *Symptoms:*
 ----
@@ -192,7 +193,7 @@ Downgrade is not supported. Target version must be greater than or equal to the 
 *Solutions:*
 
 * Verify the target version string format (e.g. "9.16.1")
-* Ensure the target version is newer than or equal to current cluster version
+* Ensure that the target version is newer than or equal to the current cluster version
 * Use "current" to keep the existing ONTAP version: `--target-ontap-version=current`
 {empty} +
 {empty} 
@@ -218,7 +219,7 @@ openssl dgst -sha256 -verify UHC-Linux-public.pub -signature uhc.sig uhc
 {empty} +
 {empty} 
 
-=== Issue: Telemetry Upload Failure
+=== Issue: Telemetry upload failure
 
 *Symptoms:*
 

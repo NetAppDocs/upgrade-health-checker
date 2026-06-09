@@ -4,7 +4,7 @@ permalink: setup-email-upgrade-health-checker.html
 keywords: upgrade, health, checker
 summary: "You can set up emails to receive Upgrade Health Checker reports."
 ---
-= Receive Upgrade Health Checker reports by Email
+= Receive Upgrade Health Checker reports by email
 :hardbreaks:
 :icons: font
 :linkattrs:

@@ -11,7 +11,7 @@ summary: "Maintenance tasks for Upgrade Health Checker."
 :imagesdir: ./media/
 
 [.lead]
-Maintain Upgrade Health Checker by regularly checking for updates, monitoring logs for any recurring issues, and ensuring that the tool is configured correctly for your environment. This ensures the tool runs reliably and efficiently. If you encounter new issues or need further assistance, refer to the NetApp support resources or contact NetApp support.
+Maintain Upgrade Health Checker by regularly checking for updates, monitoring logs for any recurring issues, and ensuring that the tool is configured correctly for your environment. This ensures that the tool runs reliably and efficiently. If you encounter new issues or need further assistance, refer to the NetApp support resources or contact NetApp support.
 
 == /tmp space management
 Upgrade Health Checker extracts its components to the `/tmp` directory during execution. If you encounter issues related to insufficient space in `/tmp`, consider the following:

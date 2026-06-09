@@ -33,7 +33,7 @@ Upgrade Health Checker supports upgrades for on-premises ONTAP versions 9.11.1 a
   --accept-eula=true
 ----
 
-. Create an automation script for cron schedules to run Upgrade Health Checker. Here is an example script that runs Upgrade Health Checker for multiple clusters. The binary and config.yaml files have been installed into /opt/uhc/tool/.
+. Create an automation script for cron schedules to run Upgrade Health Checker. The following example script that runs Upgrade Health Checker for multiple clusters. The binary and config.yaml files have been installed into /opt/uhc/tool/.
 +
 ----
 #!/bin/bash
