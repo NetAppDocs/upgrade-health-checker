@@ -25,7 +25,7 @@ The following is a screenshot of a recently generated Upgrade Health Checker das
 
 At the top of the page, there are the following colored tabs, showing:
 
-* *Ready for update:*  Number of clusters ready for upgrade.
+* *Ready for upgrade:*  Number of clusters ready for upgrade.
 * *Blocked:*  Number of clusters blocked and unable to upgrade.
 * *Errors:*  Number of clusters that have errors currently.
 * *Stale (>7):*  Number of clusters that have not been upgraded for more than 7 days.
