@@ -1,0 +1,48 @@
+---
+sidebar: sidebar
+permalink: dashboard-upgrade-health-checker.html
+keywords: upgrade, health, checker, dashboard, for upgrade health checker
+summary: "Dashboard for Upgrade Health Checker."
+---
+= Upgrade Health Checker dashboard
+:hardbreaks:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+[.lead]
+A static HTML dashboard is generated at `runs/dashboard/index.html` at the end of every Upgrade Health Checker run. The dashboard provides a high-level overview of the health status of clusters assessed recently, allowing you to monitor and compare upgrade readiness across clusters. 
+
+To regenerate the dashboard later (without contacting a cluster), run:
+
+----
+./uhc --dashboard
+./uhc --dashboard --runs-path /custom/output
+./uhc --dashboard --config-path /path/to/custom_config.yaml
+----
+
+The following is a screenshot of a recently generated Upgrade Health Checker dashboard image:../media/dashboard.gif[NetApp Upgrade Health Checker Dashboard].
+
+At the top of the page, there are the following colored tabs, showing:
+
+* *Ready for update:*  Number of clusters ready for upgrade.
+* *Blocked:*  Number of clusters blocked and unable to upgrade.
+* *Errors:*  Number of clusters that have errors currently.
+* *Stale (>7):*  Number of clusters that have not been upgraded for more than 7 days.
+* *Fleet total:*  Total number of clusters in the fleet. 
+
+The Fleet overview section details the current state of the fleet. For each cluster in the fleet, the following details are provided: 
+
+* *Cluster name:* Name of the cluster.
+* *Status:* Current status of the cluster, e.g., blocked, ready, etc.
+* *Blockers:* Number of blockers on the cluster.
+* *At risk:* Number of at risk ?? on the cluster.
+* *Warnings:* Number of warnings on the cluster.
+* *Target version:* Current version or next targeted version?
+* *Nodes:* Name of the node.
+* *Reports:* Available report types: HTML, JSON, Excel, Log.
+* *Last run:* Date and time of last Upgrade Health Checker run.
+
+You can select  *Reload* to refresh the page. Use the search bar to search for details of a specific cluster.
+
+// OTHERDOC-235, 2026-JUN-10
