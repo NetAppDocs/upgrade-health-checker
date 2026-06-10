@@ -21,7 +21,8 @@ To regenerate the dashboard later (without contacting a cluster), run:
 ./uhc --dashboard --config-path /path/to/custom_config.yaml
 ----
 
-The following is a screenshot of a recently generated Upgrade Health Checker dashboard image:../media/dashboard.gif[NetApp Upgrade Health Checker Dashboard].
+The following is a view of a recently generated Upgrade Health Checker dashboard.
+image:../media/dashboard.gif[ ]
 
 At the top of the page there are five color-coded summary cards (each one is also a selectable filter) showing:
 
