@@ -1,0 +1,43 @@
+---
+sidebar: sidebar
+permalink: maintain-upgrade-health-checker.html
+keywords: upgrade, health, checker, maintain, maintenance tasks,
+summary: "Maintenance tasks for Upgrade Health Checker."
+---
+= Maintain Upgrade Health Checker
+:hardbreaks:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+[.lead]
+Maintain Upgrade Health Checker by regularly checking for updates, monitoring logs for any recurring issues, and ensuring that the tool is configured correctly for your environment. This ensures that the tool runs reliably and efficiently. If you encounter new issues or need further assistance, refer to the NetApp support resources or contact NetApp support.
+
+== /tmp space management
+Upgrade Health Checker extracts its components to the `/tmp` directory during execution. If you encounter issues related to insufficient space in `/tmp`, consider the following:
+
+* Check available space in `/tmp`, ensuring that there is a minimum of 4 GB of free space for the tool to operate effectively. 
+
+* Remove any unnecessary files from `/tmp` to free up space.
+
+== Run directory cleanup
+Upgrade Health Checker creates a unique run directory for each execution, which contains logs and results. To manage disk space, configure an automated cleanup process to remove old run directories after a certain period, for example, 30 days.
+----
+# Delete UHC data older than 30 days (recommended for automated workflows)
+find /mnt/nfs/uhc/runs -type d -mtime +30 -exec rm -rf {} + 2>/dev/null
+
+# Schedule as a weekly cron job 
+0 3 * * 0 find /mnt/nfs/uhc/runs -type d -mtime +30 -exec rm -rf {} + 2>/dev/null
+----
+
+== Automatic updates
+
+Upgrade Health Checker checks for updates automatically after each run when internet connectivity is available. This ensures that you have the latest features, improvements, and bug fixes. Where there is no internet access, you can manually download the latest version from the link:https://console.netapp.com/automationHub[NetApp Console Automation Hub^]. 
+
+To disable automatic updates, add the following to the `config.yaml` file: 
+----
+AUTO_UPDATE: 
+  ENABLED: false
+----
+
+// OTHERDOC-222, 2026-MAY-12

@@ -1,5 +1,5 @@
 ---
-sidebar: sidebar
+sidebar: sidebarU
 permalink: whats-new.html
 keywords: upgrade, health, checker, whats new, release, notes
 summary: "Learn what's new in this doc site."
@@ -11,7 +11,35 @@ summary: "Learn what's new in this doc site."
 :imagesdir: ./media/
 
 [.lead]
-Learn what's new in Upgrade Health Checker. You can find additional enhancement information by navigating to the Upgrade Health Checker tile in the link:https://console.netapp.com/automationHub[NetApp Console Automation Hub^] and viewing the latest Upgrade Health Checker download files.
+Learn what's new in Upgrade Health Checker (UHC). You can find additional enhancement information by navigating to the Upgrade Health Checker tile in the link:https://console.netapp.com/automationHub[NetApp Console Automation Hub^] and viewing the latest Upgrade Health Checker download files.
+
+
+== 11 June 2026
+
+This update of Upgrade Health Checker documentation includes the following features.
+
+* UHC supports the direct delivery of reports to your inbox. 
++
+link:setup-email-upgrade-health-checker.html[Receive Upgrade Health Checker reports by email].
+
+* Introduces the `--dashboard` parameter that regenerates the dashboard from existing runs at `<runs>/dashboard/index.html` without contacting a cluster. It provides a high-level overview of the health status of all the clusters that have been recently accessed.
++
+link:dashboard-upgrade-health-checker.html[Upgrade Health Checker dashboard], link:upgrade-health-checker-input-parameters.html#dashboard[Dashboard parameter].
+
+* Introduces a new  Maintain, Troubleshoot, and FAQ section.
++
+** Maintain Upgrade Health Checker by regularly checking for updates, monitoring logs for any recurring issues, and ensuring that the tool is configured correctly for your environment. 
++
+link:maintain-upgrade-health-checker.html[Maintain Upgrade Health Checker].
+ 
+** Troubleshoot common Upgrade Health Checker issues and resolve errors that can block ONTAP upgrade planning.
++
+link:troubleshoot-upgrade-health-checker.html[Troubleshoot Upgrade Health Checker].
+
+** Frequently asked questions (FAQ) for Upgrade Health Checker.
++
+link:faq-upgrade-health-checker.html[FAQ for Upgrade Health Checker].
+
 
 == 15 April 2026
 
@@ -34,3 +62,4 @@ Upgrade Health Checker offers a new solution for generating comprehensive, onsit
 link:learn-about-upgrade-health-checker.html[Learn more about Upgrade Health Checker].
 
 // 10-APRIL_2026 April 15, 2026 update
+// OTHERDOC-222, 2026-MAY-12

@@ -119,7 +119,6 @@ Tool will prompt: `Enter cluster password:`
 
 ====
 
-
 === Target ONTAP version
 
 The `--target-ontap-version` parameter specifies the ONTAP version you want to upgrade to for analysis. Use "current" to keep the existing cluster ONTAP version.
@@ -269,6 +268,26 @@ CLUSTER:
 ----
 ====
 
+=== Dashboard
+
+The `--dashboard` parameter regenerates the dashboard from existing runs at `<runs>/dashboard/index.html` without contacting a cluster. You use it to refresh the fleet view outside of a normal run.  The dashboard provides a high-level overview of the health status of all the clusters that have been assessed recently, allowing you to easily monitor and compare the upgrade readiness of multiple clusters in one place. You can open the dashboard in a web browser to view the health status, potential blockers, and risks for each cluster at a glance.
+
+
+* CLI argument: `--dashboard`
+
+.Examples
+[%collapsible]
+====
+
+* CLI argument:
++
+----
+./uhc --dashboard
+./uhc --dashboard --runs-path /custom/output
+./uhc --dashboard --config-path /path/to/custom_config.yaml
+----
+====
+
 === Disable telemetry
 
 To disable telemetry, add the following to your `config.yaml` file:
@@ -356,3 +375,4 @@ These commands provide some additional capabilities beyond the full run of the t
 +
 `./uhc --test all`
 
+// OTHERDOC-222, 2026-MAY-12
