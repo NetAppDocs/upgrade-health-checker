@@ -26,8 +26,6 @@ image:../media/dashboard3.gif[ ]
 
 At the top of the page there are five color-coded summary cards (each one is also a selectable filter) showing:
 
-image:../media/dashboard.gif[ ]
-
 * *Ready for upgrade:*  Number of clusters whose latest health check found no blockers, i.e. ready to upgrade.
 * *Blocked:*  Number of clusters blocked and unable to upgrade until the blockers are resolved.
 * *Errors:*  Number of clusters whose latest UHC run failed to complete (e.g. connection, authentication, or data-collection failure).
