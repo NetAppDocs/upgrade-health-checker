@@ -22,7 +22,7 @@ To regenerate the dashboard later (without contacting a cluster), run:
 ----
 
 The following is a view of a recently generated Upgrade Health Checker dashboard.
-image:../media/dashboard.gif[ ]
+image:../media/dashboard3.gif[ ]
 
 At the top of the page there are five color-coded summary cards (each one is also a selectable filter) showing:
 
