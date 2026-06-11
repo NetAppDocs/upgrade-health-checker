@@ -17,32 +17,33 @@ You can download Upgrade Health Checker to generate onsite, comprehensive report
 
 Upgrade Health Checker supports upgrades for on-premises ONTAP versions 9.11.1 and later. If you are using Cloud Volumes ONTAP, refer to link:https://docs.netapp.com/us-en/storage-management-cloud-volumes-ontap/task-updating-ontap-cloud.html#supported-upgrade-paths[Upgrade Cloud Volumes ONTAP] for information on upgrading your system. 
 
-
 .Before you begin
 
 Set up a virtual machine for Upgrade Health Checker with the following specifications:
 
-* Processing and memory: m5.large VM or equivalent with 2 vCPUs and 8 GiB RAM.
-* Recommended operating system: Any Linux OS with glibc library version 2.28 or higher for optimal compatibility. This includes:
-** Ubuntu 22.04
-** RHEL8
-** RHEL9
-* Storage: Provide a root volume with a minimum of 100 GB and an additional NFS volume of at least 100 GB to ensure data preservation if the virtual machine is compromised.
-* Hosting requirements: Place the VM in a location with cluster connectivity and internet access to allow for automatic tool updates. The machine should have access to the following endpoints through HTTPS (443) to conduct automatic updates:
-** +https://api.uhc.netapp.com+
-** +https://gql.aiq.netapp.com+
-** +https://api.activeiq.netapp.com+
-+
-If internet access is unavailable, consult NetApp for guidance.
-* Recommended packages: Install a web server to facilitate access.
+|===
+| Component | Specification
 
-Additionally, ensure the virtual machine can connect to the telemetry endpoint (+https://support.netapp.com+/ and +https://api.activeiq.netapp.com+) through HTTPS to enable NetApp to receive AutoSupport information about your upgrade plans.
+a| *VM* | m5.large VM or equivalent with 2 vCPUs and 8 GiB RAM
+a| *Operating System* | Any Linux OS with glibc library version 2.28 or higher (Ubuntu 22.04, RHEL8, or RHEL9)
+a| *Disk space* | At least 4 GB free (8 GB recommended) in `/tmp` with execute permissions
+a| *Network* | HTTPS connectivity to the ONTAP cluster(s) management LIF
+a| *ONTAP version* | Cluster running ONTAP 9.11.1 or later
+a| *Hosting requirements* | Place the VM in a location with cluster connectivity and internet access to allow for automatic tool updates. The machine should have access to the following endpoints through HTTPS (443) to conduct automatic updates and to enable NetApp to receive AutoSupport information about your upgrade plans:
 
+https://support.netapp.com/
+https://api.uhc.netapp.com
+https://gql.aiq.netapp.com
+https://api.activeiq.netapp.com
+
+a| *Recommended packages* | Install a web server to facilitate access
+|===
+
+NOTE: Ensure that the virtual machine can connect to the auto-update and telemetry endpoints (https://support.netapp.com/ and https://api.activeiq.netapp.com) through HTTPS (443) to enable NetApp to receive AutoSupport information about your upgrade plans. If internet access is unavailable, you must manually download the latest version of Upgrade Health Checker.
 
 .Steps
 
-. Download the Upgrade Health Checker binary by link:https://console.netapp.com/automationHub[navigating to the NetApp Console Automation Hub] and finding the Upgrade Health Checker tile.
-
+. Download the Upgrade Health Checker binary by navigating to the link:https://console.netapp.com/automationHub[NetApp Console Automation Hub^] and finding the Upgrade Health Checker tile.
 . Set up the Upgrade Health Checker virtual machine and use SSH to place the binary in the location of your choice.
 
 . Verify the digital signature of Upgrade Health Checker.
@@ -76,7 +77,7 @@ An output of `Verified OK` confirms the signature is valid.
 +
 NOTE: You can build an Ansible playbook to automate the deployment of the role and user to all ONTAP clusters.
 +
-You must create the service account for the http application. Use the following CLI commands to configure the necessary permissions:
+You must create the service account for the HTTP application. Use the following CLI commands to configure the necessary permissions:
 +
 [source,cli]
 ----
@@ -92,7 +93,6 @@ security login create -user-or-group-name uhctool -role uhctool -application htt
 
 security login create -user-or-group-name uhctool -role uhctool -application ssh -authentication-method password
 ----
-
 
 . (Optional) Set up credential management to secure access to the application. 
 +
@@ -134,9 +134,12 @@ conjur_username: "{{ lookup('cyberark.conjur.conjur_variable', 'prodvault/devops
 conjur_password: "{{ lookup('cyberark.conjur.conjur_variable', 'prodvault/devops/<Main-Conjur-Safe>/<Account name>/password', validate_certs=false) }}"
 ----
 
+.Related information 
+* link:upgrade-health-checker-input-parameters.html[Learn about the input parameters for Upgrade Health Checker]
 
 .What's next?
 
 You can use Upgrade Health Checker to help you plan for an ONTAP upgrade by link:generate-report-upgrade-health-checker.html[generating an upgrade report].
 
 // 10-APRIL_2026 April 15, 2026 update
+// OTHERDOC-222, 2026-MAY-07

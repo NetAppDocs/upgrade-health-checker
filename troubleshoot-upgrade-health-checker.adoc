@@ -1,0 +1,268 @@
+---
+sidebar: sidebar
+permalink: troubleshoot-upgrade-health-checker.html
+keywords: upgrade, health, checker, troubleshoot, issues, errors, ontap
+summary: "Troubleshooting Upgrade Health Checker: Common issues, errors, and solutions for ONTAP upgrades."
+---
+= Troubleshoot Upgrade Health Checker
+:hardbreaks:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+[.lead]
+Learn how to troubleshoot common Upgrade Health Checker issues and resolve errors that can block ONTAP upgrade planning.
+
+== Troubleshoot issues
+{empty} +
+{empty} 
+
+=== Issue: Authentication or credential errors
+
+*Symptoms:*
+
+----
+Failed to fetch cluster details for <cluster-ip>
+Error connecting to ONTAP cluster: 401 Unauthorized
+Missing cluster credentials
+----
+
+These errors indicate that Upgrade Health Checker is unable to authenticate with the ONTAP cluster using the provided credentials. This can be caused by an incorrect username or password, insufficient permissions for the user account, or an account that is locked or disabled.
+
+*Solutions:*
+
+* Verify that the username and password are correct
+* Ensure the user has sufficient ONTAP REST API permissions
+* Check if the account is locked or disabled
+----
+./uhc --test-connectivity cluster
+----
+{empty} +
+{empty} 
+
+=== Issue: Auto-update fails
+
+*Symptoms:*
+
+----
+Auto-update failed: ...
+Failed to download update
+----
+These errors indicate that Upgrade Health Checker is unable to connect to the internet to check for or download updates. This can be caused by network connectivity issues, firewall rules blocking access, or proxy settings that are not configured correctly.
+
+*Solutions:*
+
+* Check internet connectivity:
+----
+./uhc --test-connectivity autoupdate
+----
+
+* Check disk space (requires 1 GB):
+----
+df -h <location of uhc>
+----
+{empty} 
+{empty} 
+
+=== Issue: Binary takes a long time to start
+
+*Cause:* The binary is self-contained and needs to unpack itself before executing.
+
+*Expected Behavior:* First execution might take a few seconds to load. This is normal.
+{empty} +
+{empty} +
+{empty} 
+
+=== Issue: "Permission denied" or "Cannot execute binary" on /tmp
+
+*Symptoms:*
+
+----
+[Errno 13] Permission denied
+OSError: [Errno 13] Permission denied: '/tmp/_MEI...'
+Cannot execute binary file
+----
+This error might occur when the tool is unable to execute files in the `/tmp` directory, which is used for extracting and running the tool's components. This can be caused by restrictive permissions on the `/tmp` directory or security policies that prevent execution from this location.
+
+*Solutions:*
+
+. Check if `/tmp` has `noexec` enabled:
+----
+mount | grep /tmp
+# If you see noexec in the output, this is the issue.
+----
+
+[start=2]
+. [[step2]] Remount `/tmp` with `exec` (requires System administrator root permissions):
+----
+# Temporary fix
+sudo mount -o remount,exec /tmp
+# Permanent fix - edit /etc/fstab
+# Change "noexec" to "exec" for /tmp mount point
+----
+
+[start=3]
+. [[step3]] If the previous step cannot be performed due to constraints, you can configure the tool to use an alternative temporary directory with appropriate permissions:
+
+----
+mkdir -p /custom-tmp-path 
+# This only needs to be done one time.
+TMPDIR=/custom-tmp-path ./uhc 
+# The TMPDIR prefix has to be added every time.
+----
+
+NOTE: The custom path must first exist for this workaround to work. If it doesn’t already exist, it is not created and falls back to using `/tmp`.
+
+[start=4]
+. [[step4]] After adjusting permissions or changing the temporary directory, try running the tool again to see if the issue is resolved.
+{empty} +
+{empty} 
+
+=== Issue: Connection timeout
+
+*Symptoms:*
+
+----
+Connection timeout
+Request timeout
+----
+
+*Solutions:*
+
+* Check network connectivity to the cluster
+* Verify that no firewall is blocking HTTPS (443) traffic
+* Check the cluster is responsive and not under a heavy load
+{empty} +
+{empty} 
+
+=== Issue: Insufficient disk space
+
+*Symptoms:*
+----
+Not enough disk space available
+OSError: [Errno 28] No space left on device
+----
+
+*Solutions:*
+
+* Check disk space:
+----
+df -h /tmp
+df -h .
+----
+
+* Clean old runs:
+----
+# Remove old run directories
+rm -rf runs/<old_run_directories>
+----
+
+* Clean temporary files:
+----
+# Remove temporary files
+rm -rf /tmp/_MEI*
+----
+{empty} +
+{empty} 
+
+=== Issue: Invalid runs path
+
+*Symptoms:*
+----
+Invalid basepath_runs: <error>
+RUNS path is not set
+Cannot create tarball: basepath_runs '<path>' does not exist
+----
+
+*Solutions:*
+
+* Ensure that the runs output directory exists and is writable
+* Specify a valid path via CLI: `--runs-path /valid/path`
+* Configure in config.yaml: `APP.RUNS_PATH: "/valid/path"`
+{empty} +
+{empty} 
+
+=== Issue: Invalid target ONTAP version
+
+*Symptoms:*
+----
+Invalid ONTAP version: '<version>' does not exist
+Invalid ONTAP version: '<version>' is not a recognized ONTAP version
+Downgrade is not supported. Target version must be greater than or equal to the current version.
+----
+*Solutions:*
+
+* Verify the target version string format (e.g. "9.16.1")
+* Ensure that the target version is newer than or equal to the current cluster version
+* Use "current" to keep the existing ONTAP version: `--target-ontap-version=current`
+{empty} +
+{empty} 
+
+=== Issue: Signature verification fails
+
+*Symptoms:*
+----
+Signature verification failed
+Invalid code signature
+----
+*Cause:* Downloaded update file might be corrupted or have been tampered with.
+
+*Solution:*
+
+* Manual update - download from the NetApp support site
+
+* Verify signature manually:
++
+----
+openssl dgst -sha256 -verify UHC-Linux-public.pub -signature uhc.sig uhc
+----
+{empty} +
+{empty} 
+
+=== Issue: Telemetry upload failure
+
+*Symptoms:*
+
+----
+body.7z upload failed
+Telemetry endpoint is not reachable
+----
+*Solutions:*
+
+* Check connectivity to the telemetry endpoint:
+----
+./uhc --test-connectivity telemetry
+----
+{empty} +
+{empty} 
+
+=== Issue: "UPDATE IN PROGRESS" lock file
+
+*Symptoms:*
+
+=================================================================
+UPDATE IN PROGRESS
+
+Another instance of UHC auto-update is currently running.
+Please wait for the update to complete before running again.
+=================================================================
+
+*Cause:* Lock file exists from previous update process.
+
+*Solutions:*
+
+. *Wait:* Update typically completes in 1-2 minutes.
+
+. *Check, if stale:* (automatic cleanup after 1 hour):
+----
+ls -la uhc_update.lock
+# If older than 1 hour, it will be auto-cleaned
+----
+[start=3]
+. [[step3]] *Manual cleanup, if necessary:*
+----
+rm uhc_update.lock
+----
+
+
+// OTHERDOC-222, 2026-MAY-12
