@@ -35,7 +35,7 @@ EMAIL:
     HOST: "smtp.example.com"
     PORT: [<port-number>]
 ----
-. Provide recipient email addresses and configure which report formats are sent by email, for example, HTML, EXCEL, JSON, ALL:
+. Provide recipient email addresses and configure which report formats are sent by email, for example, HTML, EXCEL, JSON, ALL. Authentication and encryption is also supported in the email feature:
 + 
 ----
 # Recipient Email Addresses, report formats
@@ -50,6 +50,11 @@ EMAIL:
   SMTP:
     HOST: "smtp.example.com"
     PORT: [PORT]
+    USE_SMTP_AUTH: true 
+    USE_TLS: true
+    USE_SSL: true 
+    USERNAME: "user@example.com”  
+    PASSWORD: "********”
 ----
 
 == Configure using command line arguments
