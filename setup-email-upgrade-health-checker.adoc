@@ -35,7 +35,7 @@ EMAIL:
     HOST: "smtp.example.com"
     PORT: [<port-number>]
 ----
-. Provide recipient email addresses and configure which report formats are sent by email, for example, HTML, EXCEL, JSON, ALL. Authentication and encryption is also supported in the email feature:
+. Provide recipient email addresses and configure which report formats are sent by email, for example, HTML, EXCEL, JSON, ALL. Authentication and encryption are also supported in the email feature:
 + 
 ----
 # Recipient Email Addresses, report formats
