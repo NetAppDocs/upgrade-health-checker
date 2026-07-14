@@ -14,12 +14,10 @@ summary: "Learn what's new in this doc site."
 Learn what's new in Upgrade Health Checker (UHC). You can find additional enhancement information by navigating to the Upgrade Health Checker tile in the link:https://console.netapp.com/automationHub[NetApp Console Automation Hub^] and viewing the latest Upgrade Health Checker download files.
 
 == 17 July 2026
-
-This update of Upgrade Health Checker supports authentication and encryption for email reports.
+This update adds authentication and encryption for email reports.
 
 == 11 June 2026
-
-This update of Upgrade Health Checker documentation includes the following features.
+This update adds email delivery for reports, a dashboard parameter for quick health overviews, and new documentation sections to help you maintain and troubleshoot Upgrade Health Checker.
 
 * UHC supports the direct delivery of reports to your inbox. 
 +
@@ -45,8 +43,7 @@ link:faq-upgrade-health-checker.html[FAQ for Upgrade Health Checker].
 
 
 == 15 April 2026
-
-This update of Upgrade Health Checker documentation includes the following features.
+This update adds a new XLSX report format and requires access to a new endpoint for auto-updates to work.
 
 * You must grant UHC access to a new endpoint (+https://api.activeiq.netapp.com+) for auto-updates features to work.
 +
@@ -59,9 +56,7 @@ link:generate-report-upgrade-health-checker.html[Generate an ONTAP upgrade repor
 link:automate-report-upgrade-health-checker.html[Automate generating upgrade plans with Upgrade Health Checker].
 
 == 13 February 2026
-
-Upgrade Health Checker generates detailed, onsite reports to help you complete a successful ONTAP upgrade. You can use Upgrade Health Checker with existing automation and orchestration frameworks to save time when upgrading single or multiple clusters. Upgrade Health Checker supports upgrades to ONTAP 9.11.1 and later.
-
+Upgrade Health Checker is now available. This tool generates detailed, onsite reports to help you complete a successful ONTAP upgrade. You can use Upgrade Health Checker with existing automation and orchestration frameworks to save time when upgrading single or multiple clusters. Upgrade Health Checker supports upgrades to ONTAP 9.11.1 and later.
 
 link:learn-about-upgrade-health-checker.html[Learn more about Upgrade Health Checker].
 
