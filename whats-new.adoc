@@ -1,5 +1,5 @@
 ---
-sidebar: sidebarU
+sidebar: sidebar
 permalink: whats-new.html
 keywords: upgrade, health, checker, whats new, release, notes
 summary: "Learn what's new in this doc site."
