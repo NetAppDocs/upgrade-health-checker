@@ -11,7 +11,7 @@ summary: "You can set up emails to receive Upgrade Health Checker reports."
 :imagesdir: ./media/
 
 [.lead]
-Upgrade Health Checker can email reports directly to your inbox. Enable this feature through the config.yaml file or a command line argument. When enabled, Upgrade Health Checker sends generated reports (HTML, Excel, or JSON) to one or more recipients via an SMTP server. When disabled, no reports are sent. If report generation fails, Upgrade Health Checker emails the log files to the configured recipients.
+Upgrade Health Checker can email reports directly to your inbox. Enable this feature through the config.yaml file or a command line argument. When enabled, Upgrade Health Checker sends generated reports (HTML, Excel, or JSON) to one or more recipients via an SMTP server. When disabled, no reports are sent. If report generation fails and email is enabled, Upgrade Health Checker emails the log files to the configured recipients. 
 
 == Configure using the config.yaml file
 You can configure email settings in the config.yaml file by enabling email reports, adding SMTP server details, and specifying recipient addresses and report formats.
@@ -37,7 +37,7 @@ EMAIL:
     PORT: [<port-number>]
 ----
 . Add recipient email addresses and set which report formats the system sends by email, for example, HTML, EXCEL, JSON, or ALL. You can also use authentication and encryption:
-+ 
++
 ----
 # Recipient Email Addresses, report formats
 EMAIL:
@@ -51,11 +51,11 @@ EMAIL:
   SMTP:
     HOST: "smtp.example.com"
     PORT: [PORT]
-    USE_SMTP_AUTH: true 
+    USE_SMTP_AUTH: true
     USE_TLS: true
     USE_SSL: true 
-    USERNAME: "user@example.com”  
-    PASSWORD: "********”
+    USERNAME: "user@example.com"
+    PASSWORD: "********"
 ----
 
 == Configure using command line arguments

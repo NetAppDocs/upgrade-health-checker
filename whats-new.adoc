@@ -17,10 +17,10 @@ Learn what's new in Upgrade Health Checker (UHC). You can find additional enhanc
 This update adds several enhancements including a fleet risk view dashboard, email authentication and encryption support, drive count reporting, recommended ONTAP version support, and NAS and SAN IMT checks.
 
 * UHC Dashboard: *Fleet Risk* view now available
-* UHC - Email Integration: Support for email server with authentication and encryption
-* UHC: Added *Drive Count* in Cluster Summary in Report
-* UHC: Recommended ONTAP version now supported
-* UHC: Added support for NAS and SAN IMT checks
+* Email Integration: Support for an email server with authentication and encryption
+* Added *Drive Count* in Cluster Summary in Report
+* Recommended ONTAP version now supported
+* Added support for NAS and SAN IMT checks
 
 == 11 June 2026
 This update adds email delivery for reports, a dashboard parameter for quick health overviews, and new documentation sections to help you maintain and troubleshoot Upgrade Health Checker.
@@ -51,7 +51,7 @@ link:faq-upgrade-health-checker.html[FAQ for Upgrade Health Checker].
 == 15 April 2026
 This update adds a new XLSX report format and requires access to a new endpoint for auto-updates to work.
 
-* You must grant UHC access to a new endpoint (+https://api.activeiq.netapp.com+) for auto-updates features to work.
+* You must grant UHC access to a new endpoint (+https://api.activeiq.netapp.com+) for auto-update features to work.
 +
 link:set-up-upgrade-health-checker.html[Download and set up Upgrade Health Checker].
 
