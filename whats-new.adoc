@@ -14,7 +14,13 @@ summary: "Learn what's new in this doc site."
 Learn what's new in Upgrade Health Checker (UHC). You can find additional enhancement information by navigating to the Upgrade Health Checker tile in the link:https://console.netapp.com/automationHub[NetApp Console Automation Hub^] and viewing the latest Upgrade Health Checker download files.
 
 == 17 July 2026
-This update adds authentication and encryption for email reports.
+This update adds several enhancements including a fleet risk view dashboard, email authentication and encryption support, drive count reporting, recommended ONTAP version support, and NAS and SAN IMT checks.
+
+* UHC Dashboard - Fleet Risk View now available
+* UHC: Email Integration - Support for Email Server with authentication and encryption
+* UHC: Added Drive Count in Cluster Summary in Report
+* UHC: Recommended ONTAP Version now supported
+* UHC: Added Support for NAS and SAN IMT checks
 
 == 11 June 2026
 This update adds email delivery for reports, a dashboard parameter for quick health overviews, and new documentation sections to help you maintain and troubleshoot Upgrade Health Checker.
