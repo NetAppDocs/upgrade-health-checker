@@ -11,9 +11,10 @@ summary: "You can set up emails to receive Upgrade Health Checker reports."
 :imagesdir: ./media/
 
 [.lead]
-You can integrate emails into Upgrade Health Checker to receive reports in your inbox. You enable this feature through the config.yaml file or command line argument. When enabled, Upgrade Health Checker sends the generated reports (HTML, Excel, or JSON) to one or more configured recipients using an SMTP server. When the feature is disabled, no reports are sent. If report generation fails and email is enabled, the log files are sent to the configured recipients.
+Upgrade Health Checker can email reports directly to your inbox. Enable this feature through the config.yaml file or a command line argument. When enabled, Upgrade Health Checker sends generated reports (HTML, Excel, or JSON) to one or more recipients via an SMTP server. When disabled, no reports are sent. If report generation fails and email is enabled, Upgrade Health Checker emails the log files to the configured recipients. 
 
 == Configure using the config.yaml file
+You can configure email settings in the config.yaml file by enabling email reports, adding SMTP server details, and specifying recipient addresses and report formats.
 
 . Enable email reports in the config.yaml file.
 +
@@ -22,7 +23,7 @@ You can integrate emails into Upgrade Health Checker to receive reports in your 
 EMAIL:
   ENABLED: true
 ----
-. Provide the SMTP configuration setting along with sender details and subject:
+. Add the SMTP configuration settings, sender details, and subject:
 +
 ----
 # SMTP Server Configuration
@@ -35,8 +36,8 @@ EMAIL:
     HOST: "smtp.example.com"
     PORT: [<port-number>]
 ----
-. Provide recipient email addresses and configure which report formats are sent by email, for example, HTML, EXCEL, JSON, ALL:
-+ 
+. Add recipient email addresses and set which report formats the system sends by email, for example, HTML, EXCEL, JSON, or ALL. You can also use authentication and encryption:
++
 ----
 # Recipient Email Addresses, report formats
 EMAIL:
@@ -50,9 +51,16 @@ EMAIL:
   SMTP:
     HOST: "smtp.example.com"
     PORT: [PORT]
+    USE_SMTP_AUTH: true
+    USE_TLS: true
+    USE_SSL: true 
+    USERNAME: "user@example.com"
+    PASSWORD: "********"
 ----
 
 == Configure using command line arguments
+You can configure basic email settings using command line arguments to enable reports, specify recipients, and select report formats.
+
 . Enable email reports using command line arguments:
 +
 ----
@@ -71,7 +79,7 @@ EMAIL:
 
 [NOTE]
 ================
-The following three attributes can be configured using both command line arguments and the config.yaml file; the remaining attributes are only configurable in the config.yaml file:
+You can configure the following three attributes using command line arguments or the config.yaml file. You can configure all remaining attributes only in the config.yaml file:
 
 * Email Enabled
 
@@ -79,7 +87,7 @@ The following three attributes can be configured using both command line argumen
 
 * Email Report Formats
 
-Note that where command line arguments are provided, they override the config.yaml file values.
+Note that command line arguments override config.yaml file values.
 
 For example:
 ----
@@ -101,3 +109,4 @@ EMAIL:
 
 
 // OTHERDOC-233, 2026-JUN-04
+// OTHERDOC-244, 2026-JUL-10
