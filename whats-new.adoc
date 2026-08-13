@@ -14,10 +14,7 @@ summary: "Learn what's new in this doc site."
 Learn what's new in Upgrade Health Checker (UHC). You can find additional enhancement information by navigating to the Upgrade Health Checker tile in the link:https://console.netapp.com/automationHub[NetApp Console Automation Hub^] and viewing the latest Upgrade Health Checker download files.
 
 == 13 August 2026
-This update adds support for enhanced interoperability checks for SAN and NAS ONTAP clusters, in addition to a number of bug fixes.
-
-* Provides support for enhanced interoperability checks for SAN and NAS ONTAP clusters.
-* Includes various bug fixes.
+This update enhances interoperability checks for SAN and NAS ONTAP clusters and fixes some existing issues.
 
 == 17 July 2026
 This update adds several enhancements including a fleet risk view dashboard, email authentication and encryption support, drive count reporting, recommended ONTAP version support, and NAS and SAN IMT checks.
