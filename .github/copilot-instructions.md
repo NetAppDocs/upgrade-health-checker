@@ -6,7 +6,6 @@ Product: Upgrade Health Checker
 *Upgrade Health Checker* is an on-site advisory tool that analyzes *ONTAP* cluster data and generates upgrade-readiness reports before planned upgrades. The tool also supports fleet-level visibility through a generated dashboard and can be integrated into existing automation workflows.
 
 ### Repository structure
-- `./` – Main documentation pages for setup, parameters, report generation, dashboard use, automation, maintenance, troubleshooting, FAQ, and release updates.
 - `_include/` – Shared include-content directory reserved for reusable AsciiDoc fragments used across pages.
 - `media/` – Static media assets used by documentation pages, including dashboard visuals.
 - `.github/` – Repository automation metadata and Copilot instruction context for this documentation set.
