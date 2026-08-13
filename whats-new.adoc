@@ -17,7 +17,7 @@ Learn what's new in Upgrade Health Checker (UHC). You can find additional enhanc
 This update adds support for enhanced interoperability checks for SAN and NAS ONTAP clusters, in addition to a number of bug fixes.
 
 * Provides support for enhanced interoperability checks for SAN and NAS ONTAP clusters.
-
+* Includes various bug fixes.
 
 == 17 July 2026
 This update adds several enhancements including a fleet risk view dashboard, email authentication and encryption support, drive count reporting, recommended ONTAP version support, and NAS and SAN IMT checks.
