@@ -13,14 +13,19 @@ summary: "Learn what's new in this doc site."
 [.lead]
 Learn what's new in Upgrade Health Checker (UHC). You can find additional enhancement information by navigating to the Upgrade Health Checker tile in the link:https://console.netapp.com/automationHub[NetApp Console Automation Hub^] and viewing the latest Upgrade Health Checker download files.
 
+== 13 August 2026
+This update enhances interoperability checks for SAN and NAS ONTAP clusters and fixes some existing issues.
+
 == 17 July 2026
 This update adds several enhancements including a fleet risk view dashboard, email authentication and encryption support, drive count reporting, recommended ONTAP version support, and NAS and SAN IMT checks.
 
-* UHC Dashboard: *Fleet Risk* view now available
-* Email Integration: Support for an email server with authentication and encryption
-* Added *Drive Count* in Cluster Summary in Report
-* Recommended ONTAP version now supported
-* Added support for NAS and SAN IMT checks
+* Provides support for an email server with authentication and encryption.
++
+link:setup-email-upgrade-health-checker.html[Receive Upgrade Health Checker reports by email].
+* Includes a Fleet Risk view dashboard that risk-ranks your entire estate. You can now see which blocked clusters carry the most risk. This allows you to prioritize remediation.
+* The cluster report now includes Drive Count, alongside ONTAP version, node count, and capacity. This completes the hardware snapshot for upgrade and capacity planning.
+* The UHC assessment now includes the recommended upgrade target ONTAP version.
+* Adds support for NAS and SAN IMT checks.
 
 == 11 June 2026
 This update adds email delivery for reports, a dashboard parameter for quick health overviews, and new documentation sections to help you maintain and troubleshoot Upgrade Health Checker.
@@ -69,3 +74,4 @@ link:learn-about-upgrade-health-checker.html[Learn more about Upgrade Health Che
 // 10-APRIL_2026 April 15, 2026 update
 // OTHERDOC-222, 2026-MAY-12
 // OTHERDOC-244, 2026-JUL-14
+// OTHERDOC-255, 2026-AUG-13
