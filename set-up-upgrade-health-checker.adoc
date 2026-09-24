@@ -31,15 +31,15 @@ a| *Network* | HTTPS connectivity to the ONTAP cluster(s) management LIF
 a| *ONTAP version* | Cluster running ONTAP 9.11.1 or later
 a| *Hosting requirements* | Place the VM in a location with cluster connectivity and internet access to allow for automatic tool updates. The machine should have access to the following endpoints through HTTPS (443) to conduct automatic updates and to enable NetApp to receive AutoSupport information about your upgrade plans:
 
-https://support.netapp.com/
-https://api.uhc.netapp.com
-https://gql.aiq.netapp.com
-https://api.activeiq.netapp.com
+\https://support.netapp.com/
+\https://api.uhc.netapp.com
+\https://gql.aiq.netapp.com
+\https://api.activeiq.netapp.com
 
 a| *Recommended packages* | Install a web server to facilitate access
 |===
 
-NOTE: Ensure that the virtual machine can connect to the auto-update and telemetry endpoints (https://support.netapp.com/ and https://api.activeiq.netapp.com) through HTTPS (443) to enable NetApp to receive AutoSupport information about your upgrade plans. If internet access is unavailable, you must manually download the latest version of Upgrade Health Checker.
+NOTE: Ensure that the virtual machine can connect to the auto-update and telemetry endpoints (\https://support.netapp.com/ and \https://api.activeiq.netapp.com) through HTTPS (443) to enable NetApp to receive AutoSupport information about your upgrade plans. If internet access is unavailable, you must manually download the latest version of Upgrade Health Checker.
 
 .Steps
 
