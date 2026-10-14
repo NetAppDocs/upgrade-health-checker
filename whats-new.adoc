@@ -14,7 +14,7 @@ summary: "Learn what's new in this doc site."
 Learn what's new in Upgrade Health Checker (UHC). You can find additional enhancement information by navigating to the Upgrade Health Checker tile in the link:https://console.netapp.com/automationHub[NetApp Console Automation Hub^] and viewing the latest Upgrade Health Checker download files.
 
 == 15 October 2026
-This update adds enhancements to target-version risk assessment, report details, recommended ONTAP version selection, and firmware recommendations.
+This update adds several enhancements to target-version risk assessment, report details, recommended ONTAP version selection, and firmware recommendations.
 
 * The UHC assessment now evaluates ONTAP risks against the target version.
 * Reports now include CVE IDs, CVSS scores, and recommended fix versions.
