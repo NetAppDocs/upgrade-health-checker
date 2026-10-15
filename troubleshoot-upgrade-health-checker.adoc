@@ -2,7 +2,7 @@
 sidebar: sidebar
 permalink: troubleshoot-upgrade-health-checker.html
 keywords: upgrade, health, checker, troubleshoot, issues, errors, ontap
-summary: "Troubleshooting Upgrade Health Checker: Common issues, errors, and solutions for ONTAP upgrades."
+summary: "Troubleshoot Upgrade Health Checker by reviewing common issues, errors, and solutions for ONTAP upgrades."
 ---
 = Troubleshoot Upgrade Health Checker
 :hardbreaks:
