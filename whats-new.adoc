@@ -18,7 +18,7 @@ This update adds several enhancements to target-version risk assessment, report 
 
 * The UHC assessment now evaluates ONTAP risks against the target version.
 * Reports now include CVE IDs, CVSS scores, and recommended fix versions.
-* UHC now supports automatically selecting the ONTAP version using the `--target-ontap-version=recommended` parameter or the `config.yaml` parameter.
+* UHC now supports automatically selecting the ONTAP version using the `--target-ontap-version=recommended` parameter or in the `config.yaml` file.
 * Reports now include recommended firmware versions.
 
 == 13 August 2026
