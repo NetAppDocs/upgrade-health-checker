@@ -14,9 +14,9 @@ summary: "Learn what's new in this doc site."
 Learn what's new in Upgrade Health Checker (UHC). You can find additional enhancement information by navigating to the Upgrade Health Checker tile in the link:https://console.netapp.com/automationHub[NetApp Console Automation Hub^] and viewing the latest Upgrade Health Checker download files.
 
 == 28 October 2026
-This update adds the ability to automatically select the recommended ONTAP patch release version and lists supported ONTAP HotFix upgrade versions in the report.
+This update adds the ability to automatically select the latest ONTAP patch release version and lists supported ONTAP HotFix upgrade versions in the report.
 
-* Ability to auto-select latest recommended ONTAP patch release version using `--target-ontap-version=latest_patch` or via `config.yaml` file.
+* Provides the ability to auto-select the latest ONTAP patch release version using `--target-ontap-version=latest_patch` or by using the `config.yaml` file.
 * Supported ONTAP HotFix upgrade versions are now listed in the report.
 
 == 15 October 2026
