@@ -17,7 +17,7 @@ Learn what's new in Upgrade Health Checker (UHC). You can find additional enhanc
 This update enhances the HTML report with CVE details and delivers significant performance improvements.
 
 * The HTML report now displays the recommended version and severity for each CVE.
-* Performance improvements reduce UHC memory and storage footprints by approximately 10X, and run time footprints by approximately 3X.
+* Performance improvements significantly reduce UHC memory, storage, and run time consumption.
 
 == 28 October 2026
 This update adds the ability to automatically select the latest ONTAP patch release version and lists supported ONTAP HotFix upgrade versions in the report.
